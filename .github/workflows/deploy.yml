@@ -5,10 +5,6 @@ on:
     branches:
       - main
   workflow_dispatch: {}
-
-env:
-  GODOT_VERSION: 3.5.1
-  EXPORT_NAME: GraveyardShift
   
 jobs:
   export_web:
@@ -20,7 +16,7 @@ jobs:
         with:
           lfs: true
 
-      - name: export game
+      - name: Export Game
         id: export
         # Use latest version (see releases for all versions)
         uses: firebelley/godot-export@v4.7.0
@@ -30,12 +26,28 @@ jobs:
           godot_export_templates_download_url: https://github.com/godotengine/godot/releases/download/4.0-stable/Godot_v4.0-stable_export_templates.tpz
           relative_project_path: ./
           archive_output: true
+          use_preset_export_path: true
           use_godot_4: true
           
+#      - name: Deploy Server
+#        uses: easingthemes/ssh-deploy@main
+#        env:
+#            SSH_PRIVATE_KEY: ${{ secrets.SERVER_PRIVATE_KEY }}
+#            ARGS: "-rlgoDzvc -i --delete"
+#            SOURCE: "builds/linux"
+#            REMOTE_HOST: ${{ secrets.SERVER_IP }}
+#            REMOTE_USER: godot
+#            SCRIPT_BEFORE: |
+#              systemctl --user stop ldgjam2023
+#            SCRIPT_AFTER: |
+#              cd linux
+#              unzip linux.zip
+#              systemctl --user start ldgjam2023
+            
       - uses: KikimoraGames/itch-publish@v0.0.3
         with:
           butlerApiKey: ${{secrets.BUTLER_API_KEY}}
-          gameData: ./build/linux
+          gameData: ./builds/html/html5.zip
           itchUsername: badcop
-          itchGameId: dreams
-          buildChannel: linux
+          itchGameId: treasure
+          buildChannel: html5
