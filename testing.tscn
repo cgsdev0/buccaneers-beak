@@ -1,12 +1,52 @@
-[gd_scene load_steps=2 format=3 uid="uid://ykpslhxurjo8"]
+[gd_scene load_steps=11 format=3 uid="uid://ykpslhxurjo8"]
 
-[ext_resource type="Script" path="res://network_test.gd" id="1_sfol2"]
+[ext_resource type="PackedScene" uid="uid://csqalgft6yu33" path="res://level.glb" id="1_we47g"]
+[ext_resource type="Shader" path="res://water.gdshader" id="2_y2njl"]
+[ext_resource type="Script" path="res://Boat.gd" id="3_dc1dw"]
+[ext_resource type="Script" path="res://water.gd" id="3_g4tch"]
+[ext_resource type="PackedScene" uid="uid://p47ivrlu20xw" path="res://Sail Boat.glb" id="4_xb3g2"]
 
-[node name="Node2D" type="Node2D"]
-script = ExtResource("1_sfol2")
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qf8jr"]
+render_priority = 0
+shader = ExtResource("2_y2njl")
+shader_parameter/time = null
 
-[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
-_spawnable_scenes = PackedStringArray("res://player.tscn")
-spawn_path = NodePath("../Players")
+[sub_resource type="QuadMesh" id="QuadMesh_aim3w"]
+material = SubResource("ShaderMaterial_qf8jr")
+size = Vector2(3000, 3000)
+subdivide_width = 30
+subdivide_depth = 20
+orientation = 1
 
-[node name="Players" type="Node2D" parent="."]
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_bg88x"]
+
+[sub_resource type="Sky" id="Sky_npkot"]
+sky_material = SubResource("ProceduralSkyMaterial_bg88x")
+
+[sub_resource type="Environment" id="Environment_uxklt"]
+background_mode = 2
+sky = SubResource("Sky_npkot")
+
+[node name="Node3D" type="Node3D"]
+
+[node name="level" parent="." instance=ExtResource("1_we47g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.07652, 0, 1.79376)
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.00336, 0)
+mesh = SubResource("QuadMesh_aim3w")
+script = ExtResource("3_g4tch")
+
+[node name="Boat" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -46.9591, 0, 0)
+script = ExtResource("3_dc1dw")
+
+[node name="Sail Boat" parent="Boat" instance=ExtResource("4_xb3g2")]
+transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, 0, 0, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Boat"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 17.1832, -32.3817)
+environment = SubResource("Environment_uxklt")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+visible = false
