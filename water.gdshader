@@ -9,6 +9,8 @@ void fragment() {
 }
 
 void vertex() {
-	VERTEX.y = sin(VERTEX.x + time / 2.0) * sin(VERTEX.z + time / 2.0) * 5.0;
+	vec3 world_position = (MODEL_MATRIX * vec4(VERTEX, 1.0)).xyz;
+	VERTEX.y = sin(world_position.x / 40.0 + time / 2.0) * sin(world_position.z / 40.0 + time / 2.0) * 5.0;
+	// VERTEX.y = VERTEX.x + VERTEX.z;
 	v_vertex = VERTEX;
 }
