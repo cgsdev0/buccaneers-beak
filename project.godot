@@ -41,3 +41,14 @@ move_down={
 [rendering]
 
 renderer/rendering_method.mobile="gl_compatibility"
+
+[shader_globals]
+
+water_time={
+"type": "float",
+"value": 0.0
+}
+water_offset={
+"type": "vec2",
+"value": Vector2(0, 0)
+}

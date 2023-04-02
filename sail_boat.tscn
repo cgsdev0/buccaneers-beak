@@ -175,5 +175,5 @@ transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0.724267, 0)
 shape = SubResource("CapsuleShape3D_l5nns")
 
 [node name="CameraController" type="RemoteTransform3D" parent="."]
-transform = Transform3D(-0.0666667, 2.97067e-17, -5.82819e-09, -1.26304e-09, 0.0650824, 0.0144475, 5.68969e-09, 0.0144475, -0.0650824, 0, 3.31943, -6.70187)
+transform = Transform3D(-0.0666667, -4.37186e-16, -5.82819e-09, -2.13519e-09, 0.0620317, 0.0244237, 5.42299e-09, 0.0244237, -0.0620317, 0, 5.60716, -11.861)
 script = ExtResource("2_1cis3")

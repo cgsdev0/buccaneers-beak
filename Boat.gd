@@ -6,9 +6,11 @@ func _ready():
 	floor_max_angle = 0
 	pass # Replace with function body.
 
-func get_water_height(pos: Vector2):
-	var time = Time.get_ticks_msec() / 1000.0
-	return sin(pos.x / 40.0 + time / 2.0) * sin(pos.y / 40.0 + time / 2.0) * 5.0 - 3.0
+func get_water_height(world_position: Vector2):
+	var water_time = Time.get_ticks_msec() / 1000.0
+	var wave1 = sin((world_position.x) / 20.0 + water_time / 2.0) * sin((world_position.y) / 20.0 + water_time / 2.0) * 4.0;
+	var wave2 = sin((world_position.x) / 20.0 - water_time / 2.0) * 4.0;
+	return (wave1 + wave2) / 2.0 - 3.0;
 	
 func get_water_normal(pos: Vector2, forward: Vector3, right: Vector3):
 	var time = Time.get_ticks_msec() / 1000.0
@@ -31,12 +33,12 @@ func _process(delta):
 	
 	
 	var vh = Vector2(velocity.x, velocity.z)
-	var ih = global_transform.basis.z * input.y
+	var ih = global_transform.basis.z * input.y * 0.5
 	ih = Vector2(ih.x, ih.z)
 	vh += ih
 	
 	# apply max speed
-	vh = vh.limit_length(30.0)
+	vh = vh.limit_length(20.0)
 	
 	# apply friction
 	vh -= vh.normalized() * delta * 50.0 * min(vh.length(), 1)

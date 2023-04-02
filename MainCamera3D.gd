@@ -9,4 +9,5 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	get_parent().get_node("Water").offset = Vector2(global_transform.origin.x, global_transform.origin.z)
 	pass
