@@ -1,9 +1,12 @@
-[gd_scene load_steps=10 format=3 uid="uid://ykpslhxurjo8"]
+[gd_scene load_steps=14 format=3 uid="uid://ykpslhxurjo8"]
 
 [ext_resource type="PackedScene" uid="uid://c133ejbc1i57c" path="res://level.tscn" id="1_fwxso"]
 [ext_resource type="Shader" path="res://water.gdshader" id="2_y2njl"]
 [ext_resource type="Script" path="res://water.gd" id="3_g4tch"]
+[ext_resource type="Script" path="res://PlayerController.gd" id="5_qw6wc"]
 [ext_resource type="PackedScene" uid="uid://cu5yw8s3rxl27" path="res://sail_boat.tscn" id="5_xeuv0"]
+[ext_resource type="Script" path="res://CameraController.gd" id="5_yclud"]
+[ext_resource type="Script" path="res://MainCamera3D.gd" id="7_x4tpy"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qf8jr"]
 render_priority = 0
@@ -12,10 +15,12 @@ shader_parameter/time = null
 
 [sub_resource type="QuadMesh" id="QuadMesh_aim3w"]
 material = SubResource("ShaderMaterial_qf8jr")
-size = Vector2(3000, 3000)
-subdivide_width = 200
-subdivide_depth = 200
+size = Vector2(200, 200)
+subdivide_width = 50
+subdivide_depth = 50
 orientation = 1
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_yi6tk"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ajltt"]
 
@@ -29,18 +34,30 @@ sky = SubResource("Sky_npkot")
 [node name="Node3D" type="Node3D"]
 
 [node name="level" parent="." instance=ExtResource("1_fwxso")]
+transform = Transform3D(0.55, 0, 0, 0, 0.35, 0, 0, 0, 0.55, 0, 0, 0)
 
-[node name="CSGMesh3D" type="CSGMesh3D" parent="."]
+[node name="Water" type="CSGMesh3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.00336, 0)
 mesh = SubResource("QuadMesh_aim3w")
 script = ExtResource("3_g4tch")
 
 [node name="Sail Boat" parent="." instance=ExtResource("5_xeuv0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -46.9591, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.135676, 0, 6.28297)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 visible = false
 
+[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
+script = ExtResource("5_qw6wc")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+shape = SubResource("CapsuleShape3D_yi6tk")
+
+[node name="RemoteTransform3D" type="RemoteTransform3D" parent="CharacterBody3D"]
+script = ExtResource("5_yclud")
+
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(-1, 4.44089e-16, -8.74229e-08, -7.2074e-09, 0.996596, 0.0824429, 8.71252e-08, 0.0824429, -0.996596, 0, 0.514453, -1.0096)
+transform = Transform3D(-1, 4.44089e-16, -8.74228e-08, -7.2074e-09, 0.996596, 0.0824429, 8.71252e-08, 0.0824429, -0.996596, 0, 0.514453, -1.0096)
 environment = SubResource("Environment_3j6ef")
+current = true
+script = ExtResource("7_x4tpy")

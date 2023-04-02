@@ -8,14 +8,27 @@ func _ready():
 
 func get_water_height(pos: Vector2):
 	var time = Time.get_ticks_msec() / 1000.0
-	return sin(pos.x / 40.0 + time / 2.0) * sin(pos.y / 40.0 + time / 2.0) * 5.0 - 2.9
+	return sin(pos.x / 40.0 + time / 2.0) * sin(pos.y / 40.0 + time / 2.0) * 5.0 - 3.0
+	
+func get_water_normal(pos: Vector2, forward: Vector3, right: Vector3):
+	var time = Time.get_ticks_msec() / 1000.0
+	var front = pos + Vector2(forward.x, forward.z)
+	var back = pos - Vector2(forward.x, forward.z)
+	var cross = Vector3(right.x, 0, right.y)
+	return Vector3(front.x, get_water_height(front), front.y) - Vector3(back.x, get_water_height(back), back.y)
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	
+	if Input.is_key_pressed(KEY_SPACE):
+		$CameraController.active = true
 	var input = Input.get_vector("move_right", "move_left", "move_down", "move_up")
 	
 	global_rotation.y += input.x * delta
+	
+	var planar_origin = Vector2(global_transform.origin.x, global_transform.origin.z)
+	$RootNode.look_at(global_transform.origin - get_water_normal(planar_origin, global_transform.basis.z, global_transform.basis.x),
+		global_transform.basis.y)
+	
 	
 	var vh = Vector2(velocity.x, velocity.z)
 	var ih = global_transform.basis.z * input.y
@@ -28,7 +41,7 @@ func _process(delta):
 	# apply friction
 	vh -= vh.normalized() * delta * 50.0 * min(vh.length(), 1)
 	
-	var water_height = get_water_height(Vector2(global_transform.origin.x, global_transform.origin.z))
+	var water_height = get_water_height(planar_origin)
 	
 	# global_transform.origin.y = water_height
 	

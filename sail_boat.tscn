@@ -150,15 +150,15 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_accwp")
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_5pts7"]
-height = 0.6
-radius = 0.6
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_l5nns"]
+radius = 1.2
+height = 3.0
 
 [node name="Sail Boat" type="CharacterBody3D"]
-wall_min_slide_angle = 1.5708
 script = ExtResource("1_rwh0n")
 
 [node name="RootNode" type="Node3D" parent="."]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
 
 [node name="Sail" type="MeshInstance3D" parent="RootNode"]
 transform = Transform3D(100, 0, 0, 0, -4.37114e-06, 100, 0, -100, -4.37114e-06, -0.0103357, 0.0402573, 0.141905)
@@ -171,9 +171,9 @@ mesh = SubResource("ArrayMesh_po4d0")
 skeleton = NodePath("")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0998207, 0)
-shape = SubResource("CylinderShape3D_5pts7")
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0.724267, 0)
+shape = SubResource("CapsuleShape3D_l5nns")
 
 [node name="CameraController" type="RemoteTransform3D" parent="."]
-transform = Transform3D(-0.0666667, 5.92119e-17, -5.82819e-09, -4.80493e-10, 0.0664397, 0.0054962, 5.80835e-09, 0.0054962, -0.0664397, 0, 0.514453, -1.0096)
+transform = Transform3D(-0.0666667, 2.97067e-17, -5.82819e-09, -1.26304e-09, 0.0650824, 0.0144475, 5.68969e-09, 0.0144475, -0.0650824, 0, 3.31943, -6.70187)
 script = ExtResource("2_1cis3")
