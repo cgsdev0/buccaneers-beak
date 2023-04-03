@@ -1,9 +1,7 @@
-[gd_scene load_steps=16 format=3 uid="uid://ykpslhxurjo8"]
+[gd_scene load_steps=11 format=3 uid="uid://ykpslhxurjo8"]
 
 [ext_resource type="PackedScene" uid="uid://c133ejbc1i57c" path="res://level.tscn" id="1_fwxso"]
-[ext_resource type="Shader" path="res://water.gdshader" id="2_y2njl"]
-[ext_resource type="Script" path="res://water.gd" id="3_g4tch"]
-[ext_resource type="Texture2D" uid="uid://bummsrf2coi7n" path="res://noise.png" id="4_ip1gq"]
+[ext_resource type="PackedScene" uid="uid://b2kbc4yd0xtey" path="res://water.tscn" id="2_bevvh"]
 [ext_resource type="Script" path="res://PlayerController.gd" id="5_qw6wc"]
 [ext_resource type="PackedScene" uid="uid://cu5yw8s3rxl27" path="res://sail_boat.tscn" id="5_xeuv0"]
 [ext_resource type="Script" path="res://CameraController.gd" id="5_yclud"]
@@ -11,166 +9,32 @@
 [ext_resource type="Environment" uid="uid://747lwqmhioy3" path="res://environment.tres" id="8_xq8ue"]
 [ext_resource type="PackedScene" uid="uid://cxd5mn1da31hf" path="res://spawn.tscn" id="10_s5ncu"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_qf8jr"]
-render_priority = 0
-shader = ExtResource("2_y2njl")
-shader_parameter/noise = ExtResource("4_ip1gq")
-
-[sub_resource type="QuadMesh" id="QuadMesh_aim3w"]
-material = SubResource("ShaderMaterial_qf8jr")
-size = Vector2(200, 200)
-subdivide_width = 25
-subdivide_depth = 25
-orientation = 1
-
-[sub_resource type="QuadMesh" id="QuadMesh_etvlu"]
-material = SubResource("ShaderMaterial_qf8jr")
-size = Vector2(600, 600)
-subdivide_width = 25
-subdivide_depth = 25
-orientation = 1
+[sub_resource type="FogMaterial" id="FogMaterial_0ckys"]
+density = 0.015
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_yi6tk"]
 radius = 1.0
 height = 3.0
-
-[sub_resource type="FogMaterial" id="FogMaterial_0ckys"]
-density = 0.015
 
 [node name="Node3D" type="Node3D"]
 
 [node name="level" parent="." instance=ExtResource("1_fwxso")]
 transform = Transform3D(0.55, 0, 0, 0, 0.35, 0, 0, 0, 0.55, 0, -2.97457, 0)
 
-[node name="Water" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, 0)
-script = ExtResource("3_g4tch")
-metadata/_edit_lock_ = true
+[node name="FogVolume" type="FogVolume" parent="level"]
+transform = Transform3D(1.81818, 0, 0, 0, 2.85714, 0, 0, 0, 1.81818, 140.818, 4.89143, 11.0994)
+size = Vector3(74.2691, 58.9221, 74.0968)
+shape = 2
+material = SubResource("FogMaterial_0ckys")
 
-[node name="Water" type="CSGMesh3D" parent="Water"]
-cast_shadow = 0
-gi_mode = 2
-mesh = SubResource("QuadMesh_aim3w")
-
-[node name="Water2" type="CSGMesh3D" parent="Water"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -200, 0, 0)
-cast_shadow = 0
-gi_mode = 2
-mesh = SubResource("QuadMesh_aim3w")
-
-[node name="Water3" type="CSGMesh3D" parent="Water"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 200, 0, 0)
-cast_shadow = 0
-gi_mode = 2
-mesh = SubResource("QuadMesh_aim3w")
-
-[node name="Water4" type="CSGMesh3D" parent="Water"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 200)
-cast_shadow = 0
-gi_mode = 2
-mesh = SubResource("QuadMesh_aim3w")
-
-[node name="Water5" type="CSGMesh3D" parent="Water"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -200)
-cast_shadow = 0
-gi_mode = 2
-mesh = SubResource("QuadMesh_aim3w")
-
-[node name="Water6" type="CSGMesh3D" parent="Water"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 200, 0, -200)
-cast_shadow = 0
-gi_mode = 2
-mesh = SubResource("QuadMesh_aim3w")
-
-[node name="Water7" type="CSGMesh3D" parent="Water"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -200, 0, -200)
-cast_shadow = 0
-gi_mode = 2
-mesh = SubResource("QuadMesh_aim3w")
-
-[node name="Water10" type="CSGMesh3D" parent="Water"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -200)
-cast_shadow = 0
-gi_mode = 2
-mesh = SubResource("QuadMesh_aim3w")
-
-[node name="Water11" type="CSGMesh3D" parent="Water"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 200, 0, -200)
-cast_shadow = 0
-gi_mode = 2
-mesh = SubResource("QuadMesh_aim3w")
-
-[node name="Water12" type="CSGMesh3D" parent="Water"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -200, 0, -200)
-cast_shadow = 0
-gi_mode = 2
-mesh = SubResource("QuadMesh_aim3w")
-
-[node name="Water8" type="CSGMesh3D" parent="Water"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 200, 0, 200)
-cast_shadow = 0
-gi_mode = 2
-mesh = SubResource("QuadMesh_aim3w")
-
-[node name="Water9" type="CSGMesh3D" parent="Water"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -200, 0, 200)
-cast_shadow = 0
-gi_mode = 2
-mesh = SubResource("QuadMesh_aim3w")
-
-[node name="Water13" type="CSGMesh3D" parent="Water"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -600)
-cast_shadow = 0
-gi_mode = 2
-mesh = SubResource("QuadMesh_etvlu")
-
-[node name="Water14" type="CSGMesh3D" parent="Water"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 600)
-cast_shadow = 0
-gi_mode = 2
-mesh = SubResource("QuadMesh_etvlu")
-
-[node name="Water15" type="CSGMesh3D" parent="Water"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -600, 0, -600)
-cast_shadow = 0
-gi_mode = 2
-mesh = SubResource("QuadMesh_etvlu")
-
-[node name="Water16" type="CSGMesh3D" parent="Water"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -600, 0, 600)
-cast_shadow = 0
-gi_mode = 2
-mesh = SubResource("QuadMesh_etvlu")
-
-[node name="Water19" type="CSGMesh3D" parent="Water"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -600, 0, 0)
-cast_shadow = 0
-gi_mode = 2
-mesh = SubResource("QuadMesh_etvlu")
-
-[node name="Water17" type="CSGMesh3D" parent="Water"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 600, 0, -600)
-cast_shadow = 0
-gi_mode = 2
-mesh = SubResource("QuadMesh_etvlu")
-
-[node name="Water20" type="CSGMesh3D" parent="Water"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 600, 0, 0)
-cast_shadow = 0
-gi_mode = 2
-mesh = SubResource("QuadMesh_etvlu")
-
-[node name="Water18" type="CSGMesh3D" parent="Water"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 600, 0, 600)
-cast_shadow = 0
-gi_mode = 2
-mesh = SubResource("QuadMesh_etvlu")
+[node name="Water" parent="." instance=ExtResource("2_bevvh")]
 
 [node name="Sail Boat" parent="." instance=ExtResource("5_xeuv0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 293.324, 0, -212.409)
 
 [node name="CharacterBody3D" type="CharacterBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 224.056, 16.7029, -254.002)
+collision_layer = 3
 script = ExtResource("5_qw6wc")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
@@ -184,6 +48,7 @@ script = ExtResource("5_yclud")
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(-1, 4.44089e-16, -8.74228e-08, -7.2074e-09, 0.996596, 0.0824429, 8.71252e-08, 0.0824429, -0.996596, 0, 0.514453, -1.0096)
 current = true
+far = 1000.0
 script = ExtResource("7_x4tpy")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
@@ -198,9 +63,3 @@ environment = ExtResource("8_xq8ue")
 
 [node name="spawn" parent="." instance=ExtResource("10_s5ncu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 131.057, -7.48477, -308.535)
-
-[node name="FogVolume" type="FogVolume" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 77.4497, -1.26257, 6.10466)
-size = Vector3(74.2691, 58.9221, 74.0968)
-shape = 2
-material = SubResource("FogMaterial_0ckys")

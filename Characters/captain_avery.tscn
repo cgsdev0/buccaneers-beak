@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://c463elqruuo5v"]
+[gd_scene load_steps=7 format=3 uid="uid://c463elqruuo5v"]
 
 [ext_resource type="PackedScene" uid="uid://g5immh507xlx" path="res://Characters/captain_avery.glb" id="1_6h4cc"]
 [ext_resource type="Script" path="res://Characters/captain_avery.gd" id="2_2rxov"]
+[ext_resource type="PackedScene" uid="uid://bj8f44agdkdp5" path="res://Models/arrow.tscn" id="3_4dqtx"]
 
 [sub_resource type="Animation" id="Animation_kxg44"]
 resource_name = "breathe"
@@ -25,14 +26,27 @@ _data = {
 "breathe": SubResource("Animation_kxg44")
 }
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_dpu64"]
+radius = 12.9827
+
 [node name="captain_avery" instance=ExtResource("1_6h4cc")]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
 script = ExtResource("2_2rxov")
 
 [node name="SeaLion_Mesh" parent="." index="0"]
-transform = Transform3D(1.02719, 0, 0, 0, 0.972806, 0, 0, 0, 1.02719, 0, 0, 0)
+transform = Transform3D(1.00622, 0, 0, 0, 0.993776, 0, 0, 0, 1.00622, 0, 0, 0)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="1"]
+[node name="Arrow" parent="." index="1" instance=ExtResource("3_4dqtx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.2522, 1.08482)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="2"]
 libraries = {
 "": SubResource("AnimationLibrary_ydvpj")
 }
+
+[node name="Area3D" type="Area3D" parent="." index="3"]
+collision_mask = 2
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Area3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5.17952)
+shape = SubResource("SphereShape3D_dpu64")

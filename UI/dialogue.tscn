@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=3 uid="uid://ddo7ue3gqvu3a"]
+
+[ext_resource type="Script" path="res://UI/dialogue.gd" id="1_wnxmf"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_x5xfp"]
+
+[node name="dialogue" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wnxmf")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 0
+offset_right = 477.0
+offset_bottom = 177.0
+texture = SubResource("PlaceholderTexture2D_x5xfp")
+
+[node name="DialogueLabel" type="RichTextLabel" parent="NinePatchRect"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "awefawefawefawef hehe"

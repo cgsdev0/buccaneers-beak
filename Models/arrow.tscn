@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=3 uid="uid://bj8f44agdkdp5"]
+
+[ext_resource type="PackedScene" uid="uid://b7s1ckq7l3xwt" path="res://Models/Arrow.glb" id="1_birgn"]
+[ext_resource type="Script" path="res://Models/billboard.gd" id="2_3ib3m"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v6tlv"]
+shading_mode = 0
+albedo_color = Color(0, 1, 0.0666667, 1)
+
+[sub_resource type="Animation" id="Animation_uh7uy"]
+resource_name = "bounce"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("group905816428:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 2.36586, 0), Vector3(0, 0, 0), Vector3(0, 2.36586, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rbiqh"]
+_data = {
+"bounce": SubResource("Animation_uh7uy")
+}
+
+[node name="Arrow" instance=ExtResource("1_birgn")]
+script = ExtResource("2_3ib3m")
+
+[node name="group905816428" parent="." index="0"]
+transform = Transform3D(0.707107, 1.28028e-08, 0.707107, 0.707107, -3.09086e-08, -0.707107, 1.28028e-08, 1, -3.09086e-08, 0, 0.89473, 0)
+surface_material_override/0 = SubResource("StandardMaterial3D_v6tlv")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="1"]
+libraries = {
+"": SubResource("AnimationLibrary_rbiqh")
+}

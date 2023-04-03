@@ -36,7 +36,7 @@ func _physics_process(delta):
 	if input.y < 0.0:
 		input.y *= 0.7
 	var ih = global_transform.basis.z * input.y * 0.5
-	print(ih)
+
 	ih = Vector2(ih.x, ih.z)
 	vh += ih
 	
@@ -47,7 +47,6 @@ func _physics_process(delta):
 	
 	# apply friction
 	vh -= vh.normalized() * delta * 10.0 * min(vh.length(), 1)
-	print(vh)
 	
 	var water_height = get_water_height(planar_origin)
 	
