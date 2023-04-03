@@ -49,9 +49,10 @@ mesh = SubResource("ArrayMesh_y5acl")
 surface_material_override/0 = SubResource("ShaderMaterial_poonx")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Cube001" index="0"]
-visible = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Cube001/StaticBody3D" index="0"]
 shape = SubResource("ConcavePolygonShape3D_qgknn")
+
+[node name="CollisionPolygon3D" type="CollisionPolygon3D" parent="Cube001/StaticBody3D" index="1"]
 
 [node name="LightmapGI" type="LightmapGI" parent="." index="1"]

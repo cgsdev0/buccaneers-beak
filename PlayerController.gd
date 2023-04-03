@@ -40,12 +40,12 @@ func _process(delta):
 	
 func _physics_process(delta):
 	# Add the gravity.
-#	if not is_on_floor():
-#		velocity.y -= gravity * delta
+	if not is_on_floor():
+		velocity.y -= gravity * delta
 
 	# Handle Jump.
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
+#	if Input.is_action_just_pressed("jump") and is_on_floor():
+#		velocity.y = JUMP_VELOCITY
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
@@ -58,4 +58,16 @@ func _physics_process(delta):
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 
+	var space_state = get_world_3d().direct_space_state
+	
+	var prev = global_transform.origin
 	move_and_slide()
+	var dest = global_transform.origin
+	dest.y = -1
+	var query = PhysicsRayQueryParameters3D.create(global_transform.origin, dest)
+	var result = space_state.intersect_ray(query)
+	var angle = 10
+	if result:
+		angle = result.normal.angle_to(Vector3.UP)
+	if angle > 0.8:
+		global_transform.origin = prev

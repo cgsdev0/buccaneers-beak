@@ -163,12 +163,14 @@ mesh = SubResource("QuadMesh_etvlu")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.135676, 0, 6.28297)
 
 [node name="CharacterBody3D" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.14211, 3.31644, -22.6477)
 script = ExtResource("5_qw6wc")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
 shape = SubResource("CapsuleShape3D_yi6tk")
 
 [node name="RemoteTransform3D" type="RemoteTransform3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.228848, 0)
 script = ExtResource("5_yclud")
 
 [node name="Camera3D" type="Camera3D" parent="."]
