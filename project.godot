@@ -43,6 +43,10 @@ jump={
 ]
 }
 
+[physics]
+
+3d/default_gravity=50.0
+
 [rendering]
 
 renderer/rendering_method.mobile="gl_compatibility"

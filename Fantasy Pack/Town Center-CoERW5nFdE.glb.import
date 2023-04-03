@@ -1,0 +1,32 @@
+[remap]
+
+importer="scene"
+importer_version=1
+type="PackedScene"
+uid="uid://cwxhrpmemh5j2"
+path="res://.godot/imported/Town Center-CoERW5nFdE.glb-e8dc4ba5fdc5c0838f73b7ca0ae0b374.scn"
+
+[deps]
+
+source_file="res://Fantasy Pack/Town Center-CoERW5nFdE.glb"
+dest_files=["res://.godot/imported/Town Center-CoERW5nFdE.glb-e8dc4ba5fdc5c0838f73b7ca0ae0b374.scn"]
+
+[params]
+
+nodes/root_type="Node3D"
+nodes/root_name="Scene Root"
+nodes/apply_root_scale=true
+nodes/root_scale=1.0
+meshes/ensure_tangents=true
+meshes/generate_lods=true
+meshes/create_shadow_meshes=true
+meshes/light_baking=1
+meshes/lightmap_texel_size=0.2
+skins/use_named_skins=true
+animation/import=true
+animation/fps=30
+animation/trimming=false
+animation/remove_immutable_tracks=true
+import_script/path=""
+_subresources={}
+gltf/embedded_image_handling=1

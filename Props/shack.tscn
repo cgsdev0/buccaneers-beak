@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://ojlautmm3wh"]
+
+[ext_resource type="PackedScene" uid="uid://bpujvssh2bs6e" path="res://Fantasy Pack/Shack.glb" id="1_cvvhx"]
+[ext_resource type="Material" uid="uid://d2lnagsoy00ao" path="res://Materials/wood.tres" id="2_7piut"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_eobra"]
+size = Vector3(0.801464, 0.114008, 0.899819)
+
+[node name="Shack" instance=ExtResource("1_cvvhx")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
+
+[node name="Houses_FirstAge_2_Level1" parent="RootNode" index="0"]
+surface_material_override/1 = ExtResource("2_7piut")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.07883, 0, 0)
+shape = SubResource("BoxShape3D_eobra")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D" index="1"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.07883, 0.499514, 0.459536)
+shape = SubResource("BoxShape3D_eobra")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="StaticBody3D" index="2"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.07883, 0.499514, -0.40401)
+shape = SubResource("BoxShape3D_eobra")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="StaticBody3D" index="3"]
+transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, -0.298323, 0.499514, 0.0592199)
+shape = SubResource("BoxShape3D_eobra")

@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://drpr3t4d377yw"]
+
+[ext_resource type="PackedScene" uid="uid://mo765pq7a36q" path="res://Fantasy Pack/Dock-XViKoBh2UN.glb" id="1_5jms5"]
+[ext_resource type="Material" uid="uid://d2lnagsoy00ao" path="res://Materials/wood.tres" id="2_v60e8"]
+[ext_resource type="Material" uid="uid://djof04lbore15" path="res://Materials/wood_top.tres" id="3_4juru"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ucp4o"]
+size = Vector3(0.467654, 0.177208, 1.18499)
+
+[node name="Dock" instance=ExtResource("1_5jms5")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
+
+[node name="Dock_FirstAge" parent="RootNode" index="0"]
+surface_material_override/0 = ExtResource("2_v60e8")
+surface_material_override/1 = ExtResource("3_4juru")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+shape = SubResource("BoxShape3D_ucp4o")

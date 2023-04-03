@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://ykpslhxurjo8"]
+[gd_scene load_steps=16 format=3 uid="uid://ykpslhxurjo8"]
 
 [ext_resource type="PackedScene" uid="uid://c133ejbc1i57c" path="res://level.tscn" id="1_fwxso"]
 [ext_resource type="Shader" path="res://water.gdshader" id="2_y2njl"]
@@ -31,6 +31,11 @@ subdivide_depth = 25
 orientation = 1
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_yi6tk"]
+radius = 1.0
+height = 3.0
+
+[sub_resource type="FogMaterial" id="FogMaterial_0ckys"]
+density = 0.015
 
 [node name="Node3D" type="Node3D"]
 
@@ -40,6 +45,7 @@ transform = Transform3D(0.55, 0, 0, 0, 0.35, 0, 0, 0, 0.55, 0, -2.97457, 0)
 [node name="Water" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, 0)
 script = ExtResource("3_g4tch")
+metadata/_edit_lock_ = true
 
 [node name="Water" type="CSGMesh3D" parent="Water"]
 cast_shadow = 0
@@ -161,17 +167,18 @@ gi_mode = 2
 mesh = SubResource("QuadMesh_etvlu")
 
 [node name="Sail Boat" parent="." instance=ExtResource("5_xeuv0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.135676, 0, 6.28297)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 293.324, 0, -212.409)
 
 [node name="CharacterBody3D" type="CharacterBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.14211, 3.31644, -22.6477)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 224.056, 16.7029, -254.002)
 script = ExtResource("5_qw6wc")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4265, 0)
 shape = SubResource("CapsuleShape3D_yi6tk")
 
 [node name="RemoteTransform3D" type="RemoteTransform3D" parent="CharacterBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.228848, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.89099, 0)
 script = ExtResource("5_yclud")
 
 [node name="Camera3D" type="Camera3D" parent="."]
@@ -180,7 +187,7 @@ current = true
 script = ExtResource("7_x4tpy")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.0428407, 0.99901, -0.0119982, 0.00657032, 0.0122907, 0.999903, 0.99906, 0.0427578, -0.00709036, 0, 0, 0)
+transform = Transform3D(-0.504092, 0.863192, -0.0281389, -0.185709, -0.0765172, 0.979621, 0.843448, 0.499044, 0.198874, 0, 0, 0)
 light_bake_mode = 1
 shadow_enabled = true
 directional_shadow_blend_splits = true
@@ -191,3 +198,9 @@ environment = ExtResource("8_xq8ue")
 
 [node name="spawn" parent="." instance=ExtResource("10_s5ncu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 131.057, -7.48477, -308.535)
+
+[node name="FogVolume" type="FogVolume" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 77.4497, -1.26257, 6.10466)
+size = Vector3(74.2691, 58.9221, 74.0968)
+shape = 2
+material = SubResource("FogMaterial_0ckys")
