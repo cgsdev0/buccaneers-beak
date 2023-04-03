@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://ykpslhxurjo8"]
+[gd_scene load_steps=15 format=3 uid="uid://ykpslhxurjo8"]
 
 [ext_resource type="PackedScene" uid="uid://c133ejbc1i57c" path="res://level.tscn" id="1_fwxso"]
 [ext_resource type="Shader" path="res://water.gdshader" id="2_y2njl"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://CameraController.gd" id="5_yclud"]
 [ext_resource type="Script" path="res://MainCamera3D.gd" id="7_x4tpy"]
 [ext_resource type="Environment" uid="uid://747lwqmhioy3" path="res://environment.tres" id="8_xq8ue"]
+[ext_resource type="PackedScene" uid="uid://cxd5mn1da31hf" path="res://spawn.tscn" id="10_s5ncu"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qf8jr"]
 render_priority = 0
@@ -187,3 +188,6 @@ directional_shadow_max_distance = 272.2
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("8_xq8ue")
+
+[node name="spawn" parent="." instance=ExtResource("10_s5ncu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 131.057, -7.48477, -308.535)
