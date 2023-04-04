@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://ykpslhxurjo8"]
+[gd_scene load_steps=12 format=3 uid="uid://ykpslhxurjo8"]
 
 [ext_resource type="PackedScene" uid="uid://c133ejbc1i57c" path="res://level.tscn" id="1_fwxso"]
 [ext_resource type="PackedScene" uid="uid://b2kbc4yd0xtey" path="res://water.tscn" id="2_bevvh"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://CameraController.gd" id="5_yclud"]
 [ext_resource type="Script" path="res://MainCamera3D.gd" id="7_x4tpy"]
 [ext_resource type="Environment" uid="uid://747lwqmhioy3" path="res://environment.tres" id="8_xq8ue"]
+[ext_resource type="PackedScene" uid="uid://ddo7ue3gqvu3a" path="res://UI/dialogue.tscn" id="9_bjaa3"]
 [ext_resource type="PackedScene" uid="uid://cxd5mn1da31hf" path="res://spawn.tscn" id="10_s5ncu"]
 
 [sub_resource type="FogMaterial" id="FogMaterial_0ckys"]
@@ -63,3 +64,15 @@ environment = ExtResource("8_xq8ue")
 
 [node name="spawn" parent="." instance=ExtResource("10_s5ncu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 131.057, -7.48477, -308.535)
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="dialogue" parent="Control" instance=ExtResource("9_bjaa3")]
+visible = false
+layout_mode = 1

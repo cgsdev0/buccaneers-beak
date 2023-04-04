@@ -7,9 +7,11 @@ var type_timer
 
 func _ready():
 #	$%ConfirmIcon.get_node("AnimationPlayer").play("flash")
+	$%ConfirmIcon/AnimationPlayer.play("flash")
 	type_timer = Timer.new()
 	add_child(type_timer)
-	on_dialogue("hi", { "text": ["hey how is it going this is a longer text"]})
+	visible = false
+	# on_dialogue("hi", { "text": ["hey how is it going this is a longer text"]})
 
 var i = 0
 
@@ -42,7 +44,7 @@ func on_dialogue(line, data):
 	self.visible = true
 	
 	while !data.text.is_empty():
-		# $%ConfirmIcon.hide()
+		$%ConfirmIcon.hide()
 		var next = data.text.pop_front()
 		if typeof(next) == TYPE_STRING || typeof(next) == TYPE_DICTIONARY && next.get("clear", true):
 			$%DialogueLabel.visible_characters = 0
@@ -51,7 +53,7 @@ func on_dialogue(line, data):
 		$%DialogueLabel.append_text(get_text(next))
 		state += get_text(next)
 		
-#		$"%Friend".speak()
+		$AnimationPlayer.play("talk")
 		call_deferred("type_message", next, i)
 		await self.done_typing_or_confirmed
 		$%DialogueLabel.visible_characters = $%DialogueLabel.get_total_character_count()
@@ -60,7 +62,7 @@ func on_dialogue(line, data):
 
 		i += 1
 
-		# $"%ConfirmIcon".show()
+		$"%ConfirmIcon".show()
 		await self.confirm
 		
 	self.visible = false
@@ -91,7 +93,7 @@ func type_message(msg, i):
 #			$"%Friend".bounce()
 			type_timer.start(0.4)
 		else:
-#			$"%Friend".speak()
+			$AnimationPlayer.play("talk")
 			type_timer.start(0.04)
 		await type_timer.timeout
 	if self.i == i:

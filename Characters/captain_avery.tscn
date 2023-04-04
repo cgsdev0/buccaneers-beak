@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://c463elqruuo5v"]
+[gd_scene load_steps=8 format=3 uid="uid://c463elqruuo5v"]
 
 [ext_resource type="PackedScene" uid="uid://g5immh507xlx" path="res://Characters/captain_avery.glb" id="1_6h4cc"]
 [ext_resource type="Script" path="res://Characters/captain_avery.gd" id="2_2rxov"]
 [ext_resource type="PackedScene" uid="uid://bj8f44agdkdp5" path="res://Models/arrow.tscn" id="3_4dqtx"]
+[ext_resource type="Script" path="res://CameraController.gd" id="4_en5wr"]
 
 [sub_resource type="Animation" id="Animation_kxg44"]
 resource_name = "breathe"
@@ -50,3 +51,7 @@ collision_mask = 2
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Area3D" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5.17952)
 shape = SubResource("SphereShape3D_dpu64")
+
+[node name="CameraController" type="RemoteTransform3D" parent="." index="4"]
+transform = Transform3D(-0.941117, 0, 0.338081, 0, 1, 0, -0.338081, 0, -0.941117, -2.0245, 7.6782, 12.4231)
+script = ExtResource("4_en5wr")

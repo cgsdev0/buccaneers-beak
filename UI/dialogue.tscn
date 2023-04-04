@@ -1,8 +1,73 @@
-[gd_scene load_steps=3 format=3 uid="uid://ddo7ue3gqvu3a"]
+[gd_scene load_steps=11 format=3 uid="uid://ddo7ue3gqvu3a"]
 
 [ext_resource type="Script" path="res://UI/dialogue.gd" id="1_wnxmf"]
+[ext_resource type="Texture2D" uid="uid://pr3rwumwg1u" path="res://Characters/Portraits/captain_avery.png" id="2_7s0ty"]
+[ext_resource type="Texture2D" uid="uid://dbl5poln2tn1r" path="res://UI/left_click.png" id="3_fbyst"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_x5xfp"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pkde4"]
+atlas = ExtResource("2_7s0ty")
+region = Rect2(0, 0, 512, 512)
+
+[sub_resource type="Animation" id="Animation_cpvem"]
+resource_name = "flash"
+length = 1.3
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.282353), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7efpe"]
+_data = {
+"flash": SubResource("Animation_cpvem")
+}
+
+[sub_resource type="Animation" id="Animation_1x46k"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("NinePatchRect/MarginContainer/HBoxContainer/Portrait:texture:margin")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_dxpsg"]
+resource_name = "talk"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("NinePatchRect/MarginContainer/HBoxContainer/Portrait:texture:margin")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Rect2(0, 0, 0, 0), Rect2(0, -20, 0, 0), Rect2(0, 0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7utu7"]
+_data = {
+"RESET": SubResource("Animation_1x46k"),
+"talk": SubResource("Animation_dxpsg")
+}
 
 [node name="dialogue" type="Control"]
 layout_mode = 3
@@ -14,18 +79,67 @@ grow_vertical = 2
 script = ExtResource("1_wnxmf")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
-layout_mode = 0
-offset_right = 477.0
-offset_bottom = 177.0
-texture = SubResource("PlaceholderTexture2D_x5xfp")
-
-[node name="DialogueLabel" type="RichTextLabel" parent="NinePatchRect"]
-unique_name_in_owner = true
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = -1
+anchor_left = 0.06
+anchor_top = 0.683
+anchor_right = 0.94
+anchor_bottom = 0.94
+grow_horizontal = 2
+texture = SubResource("PlaceholderTexture2D_x5xfp")
+metadata/_edit_use_anchors_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="NinePatchRect"]
+layout_mode = 1
+anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = -16.0
+offset_bottom = -16.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="NinePatchRect/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Portrait" type="TextureRect" parent="NinePatchRect/MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+texture = SubResource("AtlasTexture_pkde4")
+expand_mode = 3
+flip_h = true
+
+[node name="DialogueLabel" type="RichTextLabel" parent="NinePatchRect/MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
 bbcode_enabled = true
 text = "awefawefawefawef hehe"
+
+[node name="ConfirmIcon" type="TextureRect" parent="NinePatchRect"]
+unique_name_in_owner = true
+visible = false
+modulate = Color(1, 1, 1, 0.518069)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.95
+anchor_top = 0.94
+anchor_right = 0.99
+anchor_bottom = 0.94
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("3_fbyst")
+expand_mode = 5
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="NinePatchRect/ConfirmIcon"]
+libraries = {
+"": SubResource("AnimationLibrary_7efpe")
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_7utu7")
+}

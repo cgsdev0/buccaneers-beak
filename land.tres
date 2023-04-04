@@ -5,3 +5,4 @@
 [resource]
 render_priority = 0
 shader = ExtResource("1_2vtp0")
+shader_parameter/road_color = null
