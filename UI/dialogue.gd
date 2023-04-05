@@ -38,6 +38,8 @@ var state = ""
 func on_dialogue(char, data):
 #	Game.block_interaction = true
 #	Tutorial.in_dialogue = true
+
+	$%Portrait.texture.atlas = Story.get_portrait(char)
 	if data.has("delay"):
 		await get_tree().create_timer(data.delay).timeout
 		

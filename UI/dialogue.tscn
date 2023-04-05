@@ -127,7 +127,6 @@ layout_mode = 2
 [node name="ConfirmIcon" type="TextureRect" parent="NinePatchRect"]
 unique_name_in_owner = true
 visible = false
-modulate = Color(1, 1, 1, 0.582878)
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.95

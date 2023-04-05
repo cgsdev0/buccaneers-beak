@@ -5,6 +5,13 @@ enum Character {
 	PARROT
 }
 
+func get_portrait(char: Character):
+	match char:
+		Character.CAPTAIN_AVERY:
+			return preload("res://Characters/Portraits/captain_avery.png")
+		Character.PARROT:
+			return preload("res://Characters/Portraits/parrot.png")
+			
 var lines = {
 	Character.CAPTAIN_AVERY: {
 		"ENTRY": { "text": ["hello :)"], "next": "continued" },
@@ -15,12 +22,11 @@ var lines = {
 		"fuck_you": { "text": [ "eat shit and die" ] }
 	},
 	Character.PARROT: {
-		"ENTRY": { "text": ["hello :)"], "next": "continued" },
+		"ENTRY": { "text": ["caw"], "next": "continued" },
 		"continued": { "input": [
-				{ "text": "hey!", "next": "fuck_you" },
-				{ "text": "I have to go." }
+				{ "text": "where we droppin", "next": "follow_me" },
 		] },
-		"fuck_you": { "text": [ "eat shit and die" ] }
+		"follow_me": { "text": [ "follow me!" ] }
 	}
 }
 

@@ -32,4 +32,5 @@ void fragment() {
 		ALBEDO = surface;
 	}
 	ALBEDO =  mix(ALBEDO, road_color, 1.0 - texture(roads, UV).g);
+	ROUGHNESS = 0.9;
 }

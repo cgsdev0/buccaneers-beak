@@ -1,0 +1,42 @@
+[gd_scene load_steps=11 format=3 uid="uid://sovwg5ni65bi"]
+
+[ext_resource type="PackedScene" uid="uid://b0mge7ll31ugv" path="res://Fantasy Pack/Market Stalls-OLd8vu6lPL.glb" id="1_1yv33"]
+[ext_resource type="Material" uid="uid://djof04lbore15" path="res://Materials/wood_top.tres" id="2_wflcs"]
+[ext_resource type="Material" uid="uid://d2lnagsoy00ao" path="res://Materials/wood.tres" id="3_wxlkv"]
+[ext_resource type="Material" uid="uid://34kuvqmoc83q" path="res://Materials/roof2.tres" id="4_bynjp"]
+[ext_resource type="Material" uid="uid://4fmovw1dv1nc" path="res://Materials/stone.tres" id="5_jpdgu"]
+[ext_resource type="Material" uid="uid://7ritbibnf6pp" path="res://Materials/roof3.tres" id="6_hgr7x"]
+[ext_resource type="Material" uid="uid://dvsrkrps8v52h" path="res://Materials/roof.tres" id="7_duo2k"]
+[ext_resource type="Material" uid="uid://cc56w7gd6r7un" path="res://Materials/canvas.tres" id="8_3eeqi"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ox1j7"]
+size = Vector3(0.00645963, 0.00577128, 0.00539141)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nt8k2"]
+size = Vector3(0.00587128, 0.00945683, 0.00539141)
+
+[node name="Market Stalls-OLd8vu6lPL" instance=ExtResource("1_1yv33")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
+
+[node name="Market_SecondAge_Level2" parent="RootNode" index="0"]
+surface_material_override/0 = ExtResource("2_wflcs")
+surface_material_override/1 = ExtResource("3_wxlkv")
+surface_material_override/3 = ExtResource("4_bynjp")
+surface_material_override/4 = ExtResource("5_jpdgu")
+surface_material_override/5 = ExtResource("6_hgr7x")
+surface_material_override/6 = ExtResource("7_duo2k")
+surface_material_override/7 = ExtResource("8_3eeqi")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="RootNode/Market_SecondAge_Level2" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RootNode/Market_SecondAge_Level2/StaticBody3D" index="0"]
+transform = Transform3D(0.999999, 0, 0, 0, 1, 0, 0, 0, 1, 0.00596395, -0.00601504, 0.00269503)
+shape = SubResource("BoxShape3D_ox1j7")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="RootNode/Market_SecondAge_Level2/StaticBody3D" index="1"]
+transform = Transform3D(-4.37113e-08, 1, 0, -0.999999, -4.37114e-08, 0, 1.42109e-14, 8.47033e-22, 1, -0.00702631, -6.25547e-05, 0.00269503)
+shape = SubResource("BoxShape3D_ox1j7")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="RootNode/Market_SecondAge_Level2/StaticBody3D" index="2"]
+transform = Transform3D(-4.37113e-08, 0.999999, 0, -0.999999, -4.37114e-08, 0, 6.39488e-14, 3.81165e-21, 1, -0.00500186, 0.00685248, 0.00269503)
+shape = SubResource("BoxShape3D_nt8k2")

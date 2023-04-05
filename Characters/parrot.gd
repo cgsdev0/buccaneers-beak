@@ -23,7 +23,9 @@ var actual_target = Vector3.ZERO
 var boost = false
 var landing = false
 func _process(delta):
-	if (boat_to_target() < 15.0 || landing) && !attached:
+	if attached:
+		return
+	if (boat_to_target() < 15.0 || landing):
 		target = boat.get_perch().global_transform.origin
 		land()
 		boost = false
@@ -68,7 +70,7 @@ func land():
 	landing = true
 	var tween = get_tree().create_tween()
 	tween.set_parallel()
-	tween.tween_property(self, "global_transform:origin:y", target.y, 4.0).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_CUBIC)
+	tween.tween_property(self, "global_transform:origin:y", target.y + 3.0, 2.9).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_CUBIC)
 	tween.tween_property(self, "rotation_speed", 0.0, 1.0).set_delay(3.0)
 	tween.tween_property(self, "speed", 0.0, 2.0).set_delay(2.0)
 	

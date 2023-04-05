@@ -1,19 +1,18 @@
-[gd_scene load_steps=17 format=3 uid="uid://cxd5mn1da31hf"]
+[gd_scene load_steps=16 format=3 uid="uid://cxd5mn1da31hf"]
 
 [ext_resource type="PackedScene" uid="uid://bsg1jxbbgn7gk" path="res://spawn.glb" id="1_pfc6m"]
 [ext_resource type="Shader" path="res://level.gdshader" id="2_a1hq8"]
 [ext_resource type="Texture2D" uid="uid://ciw2qqar4anic" path="res://spawn_roads.png" id="3_sow1c"]
 [ext_resource type="PackedScene" uid="uid://drpr3t4d377yw" path="res://Props/dock.tscn" id="5_aicdo"]
 [ext_resource type="PackedScene" uid="uid://hg1uo15xmfsc" path="res://Props/port.tscn" id="5_e7ctv"]
-[ext_resource type="PackedScene" uid="uid://p4c2b5om60ks" path="res://Fantasy Pack/Farm.glb" id="5_jw4uv"]
-[ext_resource type="PackedScene" uid="uid://b43vlpcwy0l2v" path="res://Fantasy Pack/Houses.glb" id="6_k8n0s"]
-[ext_resource type="PackedScene" uid="uid://b0mge7ll31ugv" path="res://Fantasy Pack/Market Stalls-OLd8vu6lPL.glb" id="7_g1evk"]
 [ext_resource type="PackedScene" uid="uid://bgwyeikcd2p83" path="res://Fantasy Pack/Storage House.glb" id="8_rtx0l"]
-[ext_resource type="PackedScene" uid="uid://5usro6krst0e" path="res://Fantasy Pack/Storage Hut.glb" id="9_b5e2t"]
-[ext_resource type="PackedScene" uid="uid://b4vefusg82myn" path="res://Fantasy Pack/Storage shed-fkTsDdpQAA.glb" id="10_r8kxj"]
 [ext_resource type="PackedScene" uid="uid://c423bxbmlfusl" path="res://Fantasy Pack/Storage Shed.glb" id="11_bupq4"]
 [ext_resource type="PackedScene" uid="uid://ojlautmm3wh" path="res://Props/shack.tscn" id="13_h2dsp"]
 [ext_resource type="PackedScene" uid="uid://c463elqruuo5v" path="res://Characters/captain_avery.tscn" id="14_0cue3"]
+[ext_resource type="PackedScene" uid="uid://cd3bwqgtk7jsh" path="res://Props/farm.tscn" id="14_3xuuw"]
+[ext_resource type="PackedScene" uid="uid://pmsvqrx4817f" path="res://Props/houses.tscn" id="14_kftr2"]
+[ext_resource type="PackedScene" uid="uid://sovwg5ni65bi" path="res://Props/market_stalls.tscn" id="15_andce"]
+[ext_resource type="PackedScene" uid="uid://dxw2lynqr5xdv" path="res://Props/mine.tscn" id="15_rcagl"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lao6a"]
 render_priority = 0
@@ -50,34 +49,37 @@ transform = Transform3D(-8.77353, 1.19374, 4.64759, 3.27487, 8.56884, 3.98125, -
 [node name="Dock3" parent="." index="5" instance=ExtResource("5_aicdo")]
 transform = Transform3D(-5, -0.182574, -8.65833, 1.3411e-07, 9.99778, -0.210819, 8.66025, -0.10541, -4.99889, 83.9687, 19.1588, 70.2795)
 
-[node name="Farm" parent="." index="6" instance=ExtResource("5_jw4uv")]
-transform = Transform3D(4.43243, 0, 8.96401, 0, 10, 0, -8.96401, 0, 4.43243, 39.3456, 20.3457, 54.0762)
-
-[node name="Houses" parent="." index="7" instance=ExtResource("6_k8n0s")]
-transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 52.62, 20.3457, 33.5874)
-
-[node name="Market Stalls-OLd8vu6lPL" parent="." index="8" instance=ExtResource("7_g1evk")]
-transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 51.5177, 20.3457, 76.1204)
-
-[node name="Storage House" parent="." index="9" instance=ExtResource("8_rtx0l")]
+[node name="Storage House" parent="." index="6" instance=ExtResource("8_rtx0l")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 89.2986, 20.3457, 48.9008)
 
-[node name="Storage Hut" parent="." index="10" instance=ExtResource("9_b5e2t")]
-transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 70.0553, 20.3457, 58.7767)
-
-[node name="Storage shed-fkTsDdpQAA" parent="." index="11" instance=ExtResource("10_r8kxj")]
-transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 72.7313, 20.3457, -7.84014)
-
-[node name="Storage Shed" parent="." index="12" instance=ExtResource("11_bupq4")]
+[node name="Storage Shed" parent="." index="7" instance=ExtResource("11_bupq4")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 75.7308, 20.3457, 26.543)
 
-[node name="Shack" parent="." index="13" instance=ExtResource("13_h2dsp")]
+[node name="Shack" parent="." index="8" instance=ExtResource("13_h2dsp")]
 transform = Transform3D(3.16313, 2.03389, 9.26595, 0.83646, 9.66963, -2.40804, -9.4496, 1.53676, 2.88851, 91.229, 7.23267, 94.6536)
 
-[node name="OmniLight3D" type="OmniLight3D" parent="." index="14"]
+[node name="OmniLight3D" type="OmniLight3D" parent="." index="9"]
 transform = Transform3D(-0.857953, 0.203389, 0.471751, 0.251639, 0.966963, 0.0407534, -0.447877, 0.153676, -0.88079, 94.7472, 12.6866, 89.0443)
 omni_range = 5.283
 omni_attenuation = 0.0743262
 
-[node name="captain_avery" parent="." index="15" instance=ExtResource("14_0cue3")]
+[node name="captain_avery" parent="." index="10" instance=ExtResource("14_0cue3")]
 transform = Transform3D(-0.326022, 0.0772878, 0.179265, 0.095623, 0.367446, 0.0154863, -0.170193, 0.0583967, -0.3347, 92.0391, 8.37007, 91.8068)
+
+[node name="Farm-91wMLb9kKo" parent="." index="11" instance=ExtResource("14_3xuuw")]
+transform = Transform3D(-2.69273, 0, 9.63064, 0, 10, 0, -9.63064, 0, -2.69273, 45.0406, 20.3457, 56.8491)
+
+[node name="Houses-vCoDG5hFyI" parent="." index="12" instance=ExtResource("14_kftr2")]
+transform = Transform3D(1.37514, 0, 9.905, 0, 10, 0, -9.905, 0, 1.37514, 53.4155, 20.3457, 24.0053)
+
+[node name="Mine" parent="." index="13" instance=ExtResource("15_rcagl")]
+transform = Transform3D(1.09977, 0, 9.93934, 0, 10, 0, -9.93934, 0, 1.09977, 20.2836, 20.3457, 38.9558)
+
+[node name="Market Stalls-OLd8vu6lPL" parent="." index="14" instance=ExtResource("15_andce")]
+transform = Transform3D(9.01138, 0, 4.33533, 0, 10, 0, -4.33533, 0, 9.01138, 62.8671, 20.3457, 73.5647)
+
+[node name="Farm-91wMLb9kKo2" parent="." index="15" instance=ExtResource("14_3xuuw")]
+transform = Transform3D(6.83949, 0, -7.2953, 0, 10, 0, 7.2953, 0, 6.83949, 75.4492, 20.3457, -7.58504)
+
+[node name="Houses-vCoDG5hFyI2" parent="." index="16" instance=ExtResource("14_kftr2")]
+transform = Transform3D(-9.98658, 0, -0.517956, 0, 10, 0, 0.517956, 0, -9.98658, 36.1077, 20.3457, 22.5262)
