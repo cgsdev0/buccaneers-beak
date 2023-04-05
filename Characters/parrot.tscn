@@ -15,6 +15,7 @@ script = ExtResource("2_a3tf6")
 
 [node name="Arrow" parent="." instance=ExtResource("2_kxpej")]
 transform = Transform3D(0.025, 0, 0, 0, 0.025, 0, 0, 0, 0.025, 0, 0.18148, 0)
+visible = false
 
 [node name="Area3D" type="Area3D" parent="."]
 collision_mask = 2

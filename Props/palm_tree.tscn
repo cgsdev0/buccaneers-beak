@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://dma11kbn4hxt1"]
+
+[ext_resource type="PackedScene" uid="uid://dhqtmbiej65dh" path="res://Models/Palm tree.glb" id="1_rgwqd"]
+
+[node name="Palm tree" instance=ExtResource("1_rgwqd")]
+
+[node name="Node" parent="." index="0"]
+visibility_range_end = 250.0
+visibility_range_end_margin = 10.0
+visibility_range_fade_mode = 1

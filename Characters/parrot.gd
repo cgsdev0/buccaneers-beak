@@ -13,8 +13,12 @@ func _ready():
 	$parrot/AnimationPlayer.play("breathe")
 	if owner:
 		boat = owner
+	GameState.acquire_map.connect(got_new_map)
 #	current_basis = global_transform.basis
 
+func got_new_map(i: int) -> void:
+	$Arrow.visible = true
+		
 var velocity = Vector3.ZERO
 var rotation_speed = 0.0
 var speed = 0.0
@@ -123,15 +127,22 @@ func _input(event):
 	if out || !interactable:
 		return
 	if event.is_action_pressed("interact"):
-		Story.enable_interaction.emit(false)
-		$CameraController.active = true
-		Story.trigger(Story.Character.PARROT)
-		interactable = false
-		$Arrow.visible = false
-		await Story.finish_dialogue
-		take_off()
-		await get_tree().create_timer(1.0).timeout
-		$CameraController.previous_camera()
+		match GameState.next_map():
+			0:
+				$CameraController.active = true
+				Story.trigger(Story.Character.PARROT, "get_map_0")
+				await Story.finish_dialogue
+				$CameraController.previous_camera()
+			1:
+				Story.enable_interaction.emit(false)
+				$CameraController.active = true
+				Story.trigger(Story.Character.PARROT, "join_forces")
+				interactable = false
+				$Arrow.visible = false
+				await Story.finish_dialogue
+				take_off()
+				await get_tree().create_timer(1.0).timeout
+				$CameraController.previous_camera()
 		
 
 func _on_area_3d_body_entered(body):

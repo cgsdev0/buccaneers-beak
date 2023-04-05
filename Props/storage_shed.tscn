@@ -1,0 +1,35 @@
+[gd_scene load_steps=7 format=3 uid="uid://b8y80hgqposvh"]
+
+[ext_resource type="PackedScene" uid="uid://c423bxbmlfusl" path="res://Fantasy Pack/Storage Shed.glb" id="1_olkq5"]
+[ext_resource type="Material" uid="uid://d2lnagsoy00ao" path="res://Materials/wood.tres" id="2_o1dom"]
+[ext_resource type="Material" uid="uid://djof04lbore15" path="res://Materials/wood_top.tres" id="3_6tvhw"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4lag6"]
+size = Vector3(0.0116585, 0.00578584, 0.012555)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_iug40"]
+size = Vector3(0.0138361, 0.012252, 0.00952919)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_m6shc"]
+size = Vector3(0.00436446, 0.012252, 0.00281792)
+
+[node name="Storage Shed" instance=ExtResource("1_olkq5")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
+
+[node name="Storage_FirstAge_Level2" parent="RootNode" index="0"]
+surface_material_override/0 = ExtResource("2_o1dom")
+surface_material_override/1 = ExtResource("3_6tvhw")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="RootNode/Storage_FirstAge_Level2" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RootNode/Storage_FirstAge_Level2/StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.000506245, -1.38778e-17)
+shape = SubResource("BoxShape3D_4lag6")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="RootNode/Storage_FirstAge_Level2/StaticBody3D" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.000384536, -0.00397614)
+shape = SubResource("BoxShape3D_iug40")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="RootNode/Storage_FirstAge_Level2/StaticBody3D" index="2"]
+transform = Transform3D(0.999999, 0, 0, 0, 0.940157, -0.340741, 0, 0.340741, 0.940157, 0, -0.0118024, -0.00264897)
+shape = SubResource("BoxShape3D_m6shc")

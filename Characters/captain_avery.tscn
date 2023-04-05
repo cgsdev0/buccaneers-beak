@@ -35,7 +35,7 @@ transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
 script = ExtResource("2_2rxov")
 
 [node name="SeaLion_Mesh" parent="." index="0"]
-transform = Transform3D(1.01676, 0, 0, 0, 0.983245, 0, 0, 0, 1.01676, 0, 0, 0)
+transform = Transform3D(1.0311, 0, 0, 0, 0.9689, 0, 0, 0, 1.0311, 0, 0, 0)
 
 [node name="Arrow" parent="." index="1" instance=ExtResource("3_4dqtx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.2522, 1.08482)
@@ -48,7 +48,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5.17952)
 shape = SubResource("SphereShape3D_dpu64")
 
 [node name="CameraController" type="RemoteTransform3D" parent="." index="3"]
-transform = Transform3D(0.922035, 0.0252791, -0.386279, 0.192143, 0.836378, 0.513374, 0.336053, -0.54757, 0.766312, -2.68829, 8.57824, 12.4231)
+transform = Transform3D(0.959805, 0.160582, -0.230189, 0, 0.820152, 0.572146, 0.280667, -0.549149, 0.787186, -2.68829, 8.57824, 12.4231)
 script = ExtResource("4_en5wr")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="4"]

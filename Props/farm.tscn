@@ -26,6 +26,7 @@ surface_material_override/5 = ExtResource("5_28oy4")
 surface_material_override/6 = ExtResource("5_cmgha")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="RootNode/Farm_SecondAge_Level3" index="0"]
+visible = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RootNode/Farm_SecondAge_Level3/StaticBody3D" index="0"]
 shape = SubResource("ConcavePolygonShape3D_gy8g8")

@@ -4,7 +4,20 @@
 [ext_resource type="Texture2D" uid="uid://pr3rwumwg1u" path="res://Characters/Portraits/captain_avery.png" id="2_7s0ty"]
 [ext_resource type="Texture2D" uid="uid://dbl5poln2tn1r" path="res://UI/left_click.png" id="3_fbyst"]
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_x5xfp"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hj16s"]
+bg_color = Color(0.270588, 0.427451, 0.458824, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.372549, 0.560784, 0.603922, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+shadow_color = Color(0, 0, 0, 0.0823529)
+shadow_size = 4
+shadow_offset = Vector2(4, 4)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pkde4"]
 atlas = ExtResource("2_7s0ty")
@@ -78,7 +91,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_wnxmf")
 
-[node name="NinePatchRect" type="NinePatchRect" parent="."]
+[node name="NinePatchRect" type="Panel" parent="."]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.06
@@ -86,20 +99,20 @@ anchor_top = 0.683
 anchor_right = 0.94
 anchor_bottom = 0.94
 grow_horizontal = 2
-texture = SubResource("PlaceholderTexture2D_x5xfp")
+theme_override_styles/panel = SubResource("StyleBoxFlat_hj16s")
 metadata/_edit_use_anchors_ = true
 
 [node name="MarginContainer" type="MarginContainer" parent="NinePatchRect"]
 layout_mode = 1
-anchors_preset = -1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 16.0
-offset_top = 16.0
-offset_right = -16.0
-offset_bottom = -16.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
 
 [node name="Character" type="HBoxContainer" parent="NinePatchRect/MarginContainer"]
 unique_name_in_owner = true
@@ -126,17 +139,17 @@ layout_mode = 2
 
 [node name="ConfirmIcon" type="TextureRect" parent="NinePatchRect"]
 unique_name_in_owner = true
-visible = false
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.95
-anchor_top = 0.94
-anchor_right = 0.99
-anchor_bottom = 0.94
+anchor_left = 0.944
+anchor_top = 0.621
+anchor_right = 0.989
+anchor_bottom = 0.92
 grow_horizontal = 0
 grow_vertical = 0
 texture = ExtResource("3_fbyst")
-expand_mode = 5
+expand_mode = 1
+stretch_mode = 4
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="NinePatchRect/ConfirmIcon"]
 libraries = {

@@ -1,8 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://cu5yw8s3rxl27"]
+[gd_scene load_steps=16 format=3 uid="uid://cu5yw8s3rxl27"]
 
 [ext_resource type="Script" path="res://Boat.gd" id="1_rwh0n"]
 [ext_resource type="Script" path="res://CameraController.gd" id="2_1cis3"]
+[ext_resource type="Material" uid="uid://d2lnagsoy00ao" path="res://Materials/wood.tres" id="2_jvlbm"]
 [ext_resource type="PackedScene" uid="uid://8n7afj40n5vy" path="res://Characters/parrot.tscn" id="3_6fn1d"]
+[ext_resource type="Material" uid="uid://cc56w7gd6r7un" path="res://Materials/canvas.tres" id="3_etsrp"]
+[ext_resource type="Material" uid="uid://djof04lbore15" path="res://Materials/wood_top.tres" id="4_ywx2l"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_06tfu"]
 resource_name = "DarkWood"
@@ -164,11 +167,15 @@ transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 0, 0, 0)
 transform = Transform3D(100, 0, 0, 0, -4.37114e-06, 100, 0, -100, -4.37114e-06, -0.0103357, 0.0402573, 0.141905)
 mesh = SubResource("ArrayMesh_7uen7")
 skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_jvlbm")
+surface_material_override/1 = ExtResource("3_etsrp")
 
 [node name="Boat" type="MeshInstance3D" parent="RootNode"]
 transform = Transform3D(100, 0, 0, 0, -1.19209e-05, 100, 0, -100, -1.19209e-05, -0.0103357, -0.00187775, -0.00354953)
 mesh = SubResource("ArrayMesh_po4d0")
 skeleton = NodePath("")
+surface_material_override/0 = ExtResource("2_jvlbm")
+surface_material_override/1 = ExtResource("4_ywx2l")
 
 [node name="Perch" type="Node3D" parent="RootNode"]
 unique_name_in_owner = true

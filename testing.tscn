@@ -69,7 +69,7 @@ material = SubResource("FogMaterial_0ckys")
 transform = Transform3D(-0.479534, 0, 0.877523, 0, 1, 0, -0.877523, 0, -0.479534, 264.653, 0.0534959, -237.654)
 
 [node name="CharacterBody3D" type="CharacterBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 224.056, 16.7029, -254.002)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 187.71, 13.9737, -266.778)
 collision_layer = 3
 script = ExtResource("5_qw6wc")
 
@@ -82,7 +82,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.89099, 0)
 script = ExtResource("5_yclud")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(-1, 4.44089e-16, -8.74228e-08, -7.2074e-09, 0.996596, 0.0824429, 8.71252e-08, 0.0824429, -0.996596, 0, 0.514453, -1.0096)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 187.71, 13.9737, -266.778)
 current = true
 far = 1000.0
 script = ExtResource("7_x4tpy")
