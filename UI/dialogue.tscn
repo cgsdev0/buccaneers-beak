@@ -37,7 +37,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("NinePatchRect/MarginContainer/HBoxContainer/Portrait:texture:margin")
+tracks/0/path = NodePath("NinePatchRect/MarginContainer/Character/Portrait:texture:margin")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -53,7 +53,7 @@ length = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("NinePatchRect/MarginContainer/HBoxContainer/Portrait:texture:margin")
+tracks/0/path = NodePath("NinePatchRect/MarginContainer/Character/Portrait:texture:margin")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -101,28 +101,33 @@ offset_bottom = -16.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="NinePatchRect/MarginContainer"]
+[node name="Character" type="HBoxContainer" parent="NinePatchRect/MarginContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/separation = 12
 
-[node name="Portrait" type="TextureRect" parent="NinePatchRect/MarginContainer/HBoxContainer"]
+[node name="Portrait" type="TextureRect" parent="NinePatchRect/MarginContainer/Character"]
 unique_name_in_owner = true
 layout_mode = 2
 texture = SubResource("AtlasTexture_pkde4")
 expand_mode = 3
 flip_h = true
 
-[node name="DialogueLabel" type="RichTextLabel" parent="NinePatchRect/MarginContainer/HBoxContainer"]
+[node name="DialogueLabel" type="RichTextLabel" parent="NinePatchRect/MarginContainer/Character"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 bbcode_enabled = true
 text = "awefawefawefawef hehe"
 
+[node name="Player" type="VBoxContainer" parent="NinePatchRect/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
 [node name="ConfirmIcon" type="TextureRect" parent="NinePatchRect"]
 unique_name_in_owner = true
 visible = false
-modulate = Color(1, 1, 1, 0.518069)
+modulate = Color(1, 1, 1, 0.582878)
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.95

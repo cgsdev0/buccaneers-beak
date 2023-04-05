@@ -6,13 +6,19 @@ var active = false : set = _set_active
 
 var lerpFrom = Transform3D()
 var lerpTimer = 1.0
+var prev = null
 
+func previous_camera():
+	if prev:
+		prev.active = true
+	
 func _set_active(new_active):
 	if !active && new_active:
 		lerpFrom = get_viewport().get_camera_3d().global_transform
 		lerpTimer = 0.0
 		if is_instance_of(get_viewport().get_camera_3d().controller, CameraController):
 			get_viewport().get_camera_3d().controller.active = false
+			prev = get_viewport().get_camera_3d().controller
 		get_viewport().get_camera_3d().controller = self
 	if !new_active && active:
 		remote_path = NodePath("")

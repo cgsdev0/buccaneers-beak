@@ -1,0 +1,335 @@
+[gd_scene load_steps=9 format=3 uid="uid://bmgrkp3w8gxsc"]
+
+[ext_resource type="PackedScene" uid="uid://bj1aqxcd2bsb" path="res://Characters/parrot.glb" id="1_rxjxo"]
+[ext_resource type="Material" uid="uid://rt5no44h43ba" path="res://Materials/wind.tres" id="2_4stra"]
+[ext_resource type="Script" path="res://trail.gd" id="3_t521y"]
+
+[sub_resource type="Animation" id="Animation_h4plb"]
+resource_name = "breathe"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2, 4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(1, 0.9, 1), Vector3(1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2, 4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -0.005, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_p876r"]
+resource_name = "take_off"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Wing1:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.6, 1, 1.4, 1.8, 2.2, 2.4, 3.4),
+"transitions": PackedFloat32Array(1, 1.86607, 0.0693482, 1.86607, 0.0693482, 1.86607, 0.0693482, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-0.124834, -0.0719419, 1.14287), Vector3(0.328299, -0.0738531, 2.45822), Vector3(-0.184835, -0.282468, 0.548483), Vector3(0.328299, -0.0738531, 2.45822), Vector3(-0.184835, -0.282468, 0.548483), Vector3(0.328299, -0.0738531, 2.45822), Vector3(-0.184835, -0.282468, 0.548483), Vector3(-0.565608, -0.753195, 1.69931)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Wing1:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.6, 1, 1.4, 1.8, 2.2, 2.4, 3.4),
+"transitions": PackedFloat32Array(1, 1.86607, 0.0693482, 1.86607, 0.0693482, 1.86607, 0.0693482, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0.0243645, -0.00963654, -0.0020754), Vector3(0.0366421, 0.0124524, -0.0020754), Vector3(0.0193236, -0.00884701, -0.0020754), Vector3(0.0366421, 0.0124524, -0.0020754), Vector3(0.0193236, -0.00884701, -0.0020754), Vector3(0.0366421, 0.0124524, -0.0020754), Vector3(0.0193236, -0.00884701, -0.0020754), Vector3(0.0338058, -0.018944, 0.0201628)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(2.4, 3.6),
+"transitions": PackedFloat32Array(0.366021, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0.769725, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Tail:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(2.4, 3.6),
+"transitions": PackedFloat32Array(0.366021, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-0.747193, 0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Tail:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(2.4, 3.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -0.00102929, -0.0247765)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Wing2:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.6, 1, 1.4, 1.8, 2.2, 2.4, 3.4),
+"transitions": PackedFloat32Array(1, 1.86607, 0.0693482, 1.86607, 0.0693482, 1.86607, 0.0693482, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-0.125664, 0.0715585, -1.14319), Vector3(0.328122, 0.0733038, -2.45742), Vector3(-0.185005, 0.282743, -0.548033), Vector3(0.328122, 0.0733038, -2.45742), Vector3(-0.185005, 0.282743, -0.548033), Vector3(0.328122, 0.0733038, -2.45742), Vector3(-0.185005, 0.282743, -0.548033), Vector3(-0.565487, 0.753982, -1.69995)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Wing2:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.6, 1, 1.4, 1.8, 2.2, 2.4, 3.4),
+"transitions": PackedFloat32Array(1, 1.86607, 0.0693482, 1.86607, 0.0693482, 1.86607, 0.0693482, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-0.024, -0.01, -0.002), Vector3(-0.037, 0.012, -0.002), Vector3(-0.019, -0.009, -0.002), Vector3(-0.037, 0.012, -0.002), Vector3(-0.019, -0.009, -0.002), Vector3(-0.037, 0.012, -0.002), Vector3(-0.019, -0.009, -0.002), Vector3(-0.034, -0.019, 0.02)]
+}
+
+[sub_resource type="Animation" id="Animation_gjyu8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Wing1:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Wing1:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Tail:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Tail:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Wing2:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Wing2:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_kjc1q"]
+resource_name = "land"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Wing1:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-0.565608, -0.753195, 1.69931), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Wing1:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.0338058, -0.018944, 0.0201628), Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.769725, 0, 0), Vector3(0, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Tail:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-0.747193, 0, 0), Vector3(0, 0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Tail:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, -0.00102929, -0.0247765), Vector3(0, 0, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Wing2:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-0.565487, 0.753982, -1.69995), Vector3(0, 0, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Wing2:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-0.034, -0.019, 0.02), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ae1fc"]
+_data = {
+"RESET": SubResource("Animation_gjyu8"),
+"breathe": SubResource("Animation_h4plb"),
+"land": SubResource("Animation_kjc1q"),
+"take_off": SubResource("Animation_p876r")
+}
+
+[node name="parrot" instance=ExtResource("1_rxjxo")]
+
+[node name="Node3D" type="Node3D" parent="Wing1" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.022, -0.05, -0.04)
+
+[node name="Trail3D" type="MeshInstance3D" parent="Wing1/Node3D" index="0"]
+transform = Transform3D(0.999999, 0, 0, 0, 0.999999, 0, 0, 0, 1, 0, 0, 0)
+material_override = ExtResource("2_4stra")
+skeleton = NodePath("../..")
+script = ExtResource("3_t521y")
+trailEnabled = false
+fromWidth = 0.01
+lifespan = 5.0
+
+[node name="Node3D" type="Node3D" parent="Wing2" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.022, -0.05, -0.04)
+
+[node name="Trail3D" type="MeshInstance3D" parent="Wing2/Node3D" index="0"]
+transform = Transform3D(0.999999, 0, 0, 0, 0.999999, 0, 0, 0, 1, 0, 0, 0)
+material_override = ExtResource("2_4stra")
+skeleton = NodePath("../../../Wing1")
+script = ExtResource("3_t521y")
+trailEnabled = false
+fromWidth = 0.01
+lifespan = 5.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="4"]
+libraries = {
+"": SubResource("AnimationLibrary_ae1fc")
+}

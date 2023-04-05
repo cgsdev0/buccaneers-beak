@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://8n7afj40n5vy"]
+
+[ext_resource type="Script" path="res://Characters/parrot.gd" id="2_a3tf6"]
+[ext_resource type="PackedScene" uid="uid://bj8f44agdkdp5" path="res://Models/arrow.tscn" id="2_kxpej"]
+[ext_resource type="PackedScene" uid="uid://bmgrkp3w8gxsc" path="res://Characters/parrot_animated.tscn" id="2_oaenx"]
+[ext_resource type="Script" path="res://CameraController.gd" id="3_aih4v"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_jh84w"]
+radius = 0.7
+
+[node name="parrot" type="Node3D"]
+script = ExtResource("2_a3tf6")
+
+[node name="parrot" parent="." instance=ExtResource("2_oaenx")]
+
+[node name="Arrow" parent="." instance=ExtResource("2_kxpej")]
+transform = Transform3D(0.025, 0, 0, 0, 0.025, 0, 0, 0, 0.025, 0, 0.18148, 0)
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_jh84w")
+
+[node name="CameraController" type="RemoteTransform3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.926699, 0.375803, 0, -0.375804, 0.926698, -0.134146, 0.0213194, 0.518321)
+script = ExtResource("3_aih4v")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered" flags=18]
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited" flags=18]

@@ -6,6 +6,9 @@ func _ready():
 	floor_max_angle = 0
 	pass # Replace with function body.
 
+func get_perch():
+	return $%Perch
+	
 func get_water_height(world_position: Vector2):
 	var water_time = Time.get_ticks_msec() / 1000.0
 	var wave1 = sin((world_position.x) / 20.0 + water_time / 2.0) * sin((world_position.y) / 20.0 + water_time / 2.0) * 2.0;
@@ -24,6 +27,8 @@ func _physics_process(delta):
 	if Input.is_key_pressed(KEY_ENTER):
 		$CameraController.active = true
 	var input = Input.get_vector("move_right", "move_left", "move_down", "move_up")
+	if !$CameraController.active:
+		input = Vector2.ZERO
 	
 	global_rotation.y += input.x * delta
 	

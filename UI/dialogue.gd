@@ -11,6 +11,7 @@ func _ready():
 	type_timer = Timer.new()
 	add_child(type_timer)
 	visible = false
+	Story.dialogue.connect(on_dialogue)
 	# on_dialogue("hi", { "text": ["hey how is it going this is a longer text"]})
 
 var i = 0
@@ -34,42 +35,65 @@ func strip_bbcode(source: String) -> String:
 	return regex.sub(source, "", true)
 	
 var state = ""
-func on_dialogue(line, data):
-	self.data = data.duplicate(true)
+func on_dialogue(char, data):
 #	Game.block_interaction = true
 #	Tutorial.in_dialogue = true
 	if data.has("delay"):
 		await get_tree().create_timer(data.delay).timeout
 		
 	self.visible = true
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	
-	while !data.text.is_empty():
+	if "input" in data:
 		$%ConfirmIcon.hide()
-		var next = data.text.pop_front()
-		if typeof(next) == TYPE_STRING || typeof(next) == TYPE_DICTIONARY && next.get("clear", true):
-			$%DialogueLabel.visible_characters = 0
-			$%DialogueLabel.clear()
-			state = ""
-		$%DialogueLabel.append_text(get_text(next))
-		state += get_text(next)
-		
-		$AnimationPlayer.play("talk")
-		call_deferred("type_message", next, i)
-		await self.done_typing_or_confirmed
-		$%DialogueLabel.visible_characters = $%DialogueLabel.get_total_character_count()
-		typing = false
-		# $"%Friend".bounce()
+		$%Character.hide()
+		for option in data.input:
+			var btn = Button.new()
+			btn.text = option.text
+			var onclick = func():
+				for child in $%Player.get_children():
+					child.queue_free()
+				go_next(char, option)
+			$%Player.add_child(btn)
+			btn.pressed.connect(onclick)
+		$%Player.get_child(0).grab_focus()
 
-		i += 1
+	elif "text" in data:
+		$%Character.show()
+		while !data.text.is_empty():
+			$%ConfirmIcon.hide()
+			var next = data.text.pop_front()
+			if typeof(next) == TYPE_STRING || typeof(next) == TYPE_DICTIONARY && next.get("clear", true):
+				$%DialogueLabel.visible_characters = 0
+				$%DialogueLabel.clear()
+				state = ""
+			$%DialogueLabel.append_text(get_text(next))
+			state += get_text(next)
+			
+			$AnimationPlayer.play("talk")
+			call_deferred("type_message", next, i)
+			await self.done_typing_or_confirmed
+			$%DialogueLabel.visible_characters = $%DialogueLabel.get_total_character_count()
+			typing = false
+			# $"%Friend".bounce()
 
-		$"%ConfirmIcon".show()
-		await self.confirm
+			i += 1
+
+			$"%ConfirmIcon".show()
+			await self.confirm
 		
-	self.visible = false
-#	Game.block_interaction = false
-#	Tutorial.in_dialogue = false
-#	Tutorial.emit_signal("dialogue_finished", line)
-		
+		go_next(char, data)
+
+func go_next(char, data):
+	if "next" in data:
+			Story.trigger(char, data.next)
+	else:
+		self.visible = false
+		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	#	Game.block_interaction = false
+	#	Tutorial.in_dialogue = false
+		Story.finish_dialogue.emit(char)
+			
 func _process(delta):
 	if Input.is_action_just_pressed("dialogue_confirm"):
 		if typing:

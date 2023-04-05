@@ -12,14 +12,26 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("SeaLion_Mesh:scale")
+tracks/0/path = NodePath("Geo_Parrot:scale")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 2, 4),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector3(1, 1, 1), Vector3(1.1, 0.9, 1.1), Vector3(1, 1, 1)]
+"values": [Vector3(1, 1, 1), Vector3(1, 0.9, 1), Vector3(1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Geo_Parrot:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2, 4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -5, 0), Vector3(0, 0, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ydvpj"]
@@ -53,5 +65,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5.17952)
 shape = SubResource("SphereShape3D_dpu64")
 
 [node name="CameraController" type="RemoteTransform3D" parent="." index="4"]
-transform = Transform3D(-0.941117, 0, 0.338081, 0, 1, 0, -0.338081, 0, -0.941117, -2.0245, 7.6782, 12.4231)
+transform = Transform3D(0.922035, 0.0252791, -0.386279, 0.192143, 0.836378, 0.513374, 0.336053, -0.54757, 0.766312, -2.68829, 8.57824, 12.4231)
 script = ExtResource("4_en5wr")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]

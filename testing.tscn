@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://ykpslhxurjo8"]
+[gd_scene load_steps=13 format=3 uid="uid://ykpslhxurjo8"]
 
 [ext_resource type="PackedScene" uid="uid://c133ejbc1i57c" path="res://level.tscn" id="1_fwxso"]
 [ext_resource type="PackedScene" uid="uid://b2kbc4yd0xtey" path="res://water.tscn" id="2_bevvh"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://MainCamera3D.gd" id="7_x4tpy"]
 [ext_resource type="Environment" uid="uid://747lwqmhioy3" path="res://environment.tres" id="8_xq8ue"]
 [ext_resource type="PackedScene" uid="uid://ddo7ue3gqvu3a" path="res://UI/dialogue.tscn" id="9_bjaa3"]
+[ext_resource type="Script" path="res://UI/interact_hint.gd" id="10_f5jdh"]
 [ext_resource type="PackedScene" uid="uid://cxd5mn1da31hf" path="res://spawn.tscn" id="10_s5ncu"]
 
 [sub_resource type="FogMaterial" id="FogMaterial_0ckys"]
@@ -20,7 +21,7 @@ height = 3.0
 [node name="Node3D" type="Node3D"]
 
 [node name="level" parent="." instance=ExtResource("1_fwxso")]
-transform = Transform3D(0.55, 0, 0, 0, 0.35, 0, 0, 0, 0.55, 0, -2.97457, 0)
+transform = Transform3D(0.55, 0, 0, 0, 0.35, 0, 0, 0, 0.55, 0, -2.97457, 134.508)
 
 [node name="FogVolume" type="FogVolume" parent="level"]
 transform = Transform3D(1.81818, 0, 0, 0, 2.85714, 0, 0, 0, 1.81818, 140.818, 4.89143, 11.0994)
@@ -31,7 +32,7 @@ material = SubResource("FogMaterial_0ckys")
 [node name="Water" parent="." instance=ExtResource("2_bevvh")]
 
 [node name="Sail Boat" parent="." instance=ExtResource("5_xeuv0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 293.324, 0, -212.409)
+transform = Transform3D(-0.479534, 0, 0.877523, 0, 1, 0, -0.877523, 0, -0.479534, 264.653, 0.0534959, -237.654)
 
 [node name="CharacterBody3D" type="CharacterBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 224.056, 16.7029, -254.002)
@@ -73,6 +74,19 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="dialogue" parent="Control" instance=ExtResource("9_bjaa3")]
+[node name="Dialogue" parent="Control" instance=ExtResource("9_bjaa3")]
 visible = false
 layout_mode = 1
+
+[node name="InteractionHint" type="Label" parent="Control"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "press E to interact"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("10_f5jdh")

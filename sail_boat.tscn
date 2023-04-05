@@ -1,7 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://cu5yw8s3rxl27"]
+[gd_scene load_steps=13 format=3 uid="uid://cu5yw8s3rxl27"]
 
 [ext_resource type="Script" path="res://Boat.gd" id="1_rwh0n"]
 [ext_resource type="Script" path="res://CameraController.gd" id="2_1cis3"]
+[ext_resource type="PackedScene" uid="uid://8n7afj40n5vy" path="res://Characters/parrot.tscn" id="3_6fn1d"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_06tfu"]
 resource_name = "DarkWood"
@@ -150,15 +151,14 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_accwp")
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_l5nns"]
-radius = 1.2
-height = 3.0
+[sub_resource type="BoxShape3D" id="BoxShape3D_xcw4j"]
+size = Vector3(5.55531, 2.07445, 11.9434)
 
 [node name="Sail Boat" type="CharacterBody3D"]
 script = ExtResource("1_rwh0n")
 
 [node name="RootNode" type="Node3D" parent="."]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 0, 0, 0)
 
 [node name="Sail" type="MeshInstance3D" parent="RootNode"]
 transform = Transform3D(100, 0, 0, 0, -4.37114e-06, 100, 0, -100, -4.37114e-06, -0.0103357, 0.0402573, 0.141905)
@@ -170,10 +170,17 @@ transform = Transform3D(100, 0, 0, 0, -1.19209e-05, 100, 0, -100, -1.19209e-05, 
 mesh = SubResource("ArrayMesh_po4d0")
 skeleton = NodePath("")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0.724267, 0)
-shape = SubResource("CapsuleShape3D_l5nns")
+[node name="Perch" type="Node3D" parent="RootNode"]
+unique_name_in_owner = true
+transform = Transform3D(-0.903717, 0, 0.428131, 0, 1, 0, -0.428131, 0, -0.903717, -0.155132, 0.193374, -0.391027)
+
+[node name="parrot" parent="RootNode/Perch" instance=ExtResource("3_6fn1d")]
+transform = Transform3D(1, 0, 2.98023e-08, 0, 1, 0, -2.98023e-08, 0, 1, 0, 0, 0)
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.257105, 0.441766, -0.0917311)
+shape = SubResource("BoxShape3D_xcw4j")
 
 [node name="CameraController" type="RemoteTransform3D" parent="."]
-transform = Transform3D(-0.0666667, -4.37186e-16, -5.82819e-09, -2.13519e-09, 0.0620317, 0.0244237, 5.42299e-09, 0.0244237, -0.0620317, 0, 5.60716, -11.861)
+transform = Transform3D(-0.0666667, -4.37186e-16, -5.82819e-09, -2.13519e-09, 0.0620317, 0.0244237, 5.42299e-09, 0.0244237, -0.0620317, 0, 8.21963, -21.1521)
 script = ExtResource("2_1cis3")

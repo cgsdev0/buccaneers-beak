@@ -1,7 +1,7 @@
 extends CharacterBody3D
 
 
-const SPEED = 15.0
+const SPEED = 12.0
 const JUMP_VELOCITY = 15.0
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
@@ -16,6 +16,12 @@ var _mouse_position = Vector2(0.0, 0.0)
 @export_range(0.0, 1.0) var sensitivity = 0.25
 var _total_pitch = 0.0
 
+func get_water_height(world_position: Vector2):
+	var water_time = Time.get_ticks_msec() / 1000.0
+	var wave1 = sin((world_position.x) / 20.0 + water_time / 2.0) * sin((world_position.y) / 20.0 + water_time / 2.0) * 2.0;
+	var wave2 = sin((world_position.x) / 20.0 - water_time / 2.0) * 2.0;
+	return (wave1 + wave2) / 2.0 - 3.0;
+	
 func _input(event):
 	# Receives mouse motion
 	if event is InputEventMouseMotion:
@@ -44,6 +50,15 @@ func _physics_process(delta):
 	if not is_on_floor():
 		velocity.y -= gravity * delta
 
+	var speed_modifier = 1.0
+	var wh = get_water_height(Vector2(global_transform.origin.x, global_transform.origin.z)) - 1.9
+	if wh >= global_transform.origin.y:
+		global_transform.origin.y = wh
+		velocity.y = max(0.0, velocity.y)
+	
+	if global_transform.origin.y <= 0.0 && !is_on_floor():
+		speed_modifier = 0.4
+		
 	# Handle Jump.
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
@@ -53,8 +68,8 @@ func _physics_process(delta):
 	var input_dir = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if direction:
-		velocity.x = direction.x * SPEED
-		velocity.z = direction.z * SPEED
+		velocity.x = direction.x * SPEED * speed_modifier
+		velocity.z = direction.z * SPEED * speed_modifier
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
