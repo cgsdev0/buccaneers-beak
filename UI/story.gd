@@ -2,7 +2,9 @@ extends Node
 
 enum Character {
 	CAPTAIN_AVERY,
-	PARROT
+	PARROT,
+	CRAB,
+	GOAT
 }
 
 func get_portrait(char: Character):
@@ -11,6 +13,10 @@ func get_portrait(char: Character):
 			return preload("res://Characters/Portraits/captain_avery.png")
 		Character.PARROT:
 			return preload("res://Characters/Portraits/parrot.png")
+		Character.CRAB:
+			return preload("res://Characters/Portraits/crab.png")
+		Character.GOAT:
+			return preload("res://Characters/Portraits/goat2.png")
 			
 var templates = {
 		"a": { "next": "", "text": [] },
@@ -53,6 +59,22 @@ var lines = {
 	},
 	Character.PARROT: {
 		"get_map_0": { "text": ["Squawk! Whaddya lookin' at? Keep movin'! Squawk!"] },
+		"join_forces": { "text": ["caw"], "next": "continued" },
+		"continued": { "input": [
+				{ "text": "where we droppin", "next": "follow_me" },
+		] },
+		"follow_me": { "text": [ "follow me!" ] }
+	},
+	Character.CRAB: {
+		"ENTRY": { "text": ["have you tried rewriting it in rust?"] },
+		"join_forces": { "text": ["caw"], "next": "continued" },
+		"continued": { "input": [
+				{ "text": "where we droppin", "next": "follow_me" },
+		] },
+		"follow_me": { "text": [ "follow me!" ] }
+	},
+	Character.GOAT: {
+		"ENTRY": { "text": ["have you tried rewriting it in rust?"] },
 		"join_forces": { "text": ["caw"], "next": "continued" },
 		"continued": { "input": [
 				{ "text": "where we droppin", "next": "follow_me" },

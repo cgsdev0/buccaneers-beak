@@ -146,8 +146,7 @@ func _input(event):
 		
 
 func _on_area_3d_body_entered(body):
-	if interactable:
-		Story.enable_interaction.emit(true)
+	Story.enable_interaction.emit(true)
 	out = false
 
 
