@@ -14,3 +14,6 @@ surface_material_override/1 = ExtResource("2_qsa6n")
 surface_material_override/2 = ExtResource("2_qsa6n")
 surface_material_override/3 = ExtResource("2_qsa6n")
 surface_material_override/4 = ExtResource("2_qsa6n")
+
+[node name="Rudder" parent="RootNode001" index="1"]
+visible = false

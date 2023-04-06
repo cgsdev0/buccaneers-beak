@@ -28,10 +28,13 @@ func _ready():
 var _mouse_position = Vector2(0.0, 0.0)
 var _total_pitch = 0.0
 
+func get_camera():
+	return $RemoteTransform3D
+	
 func get_water_height(world_position: Vector2):
 	var water_time = Time.get_ticks_msec() / 1000.0
-	var wave1 = sin((world_position.x) / 40.0 + water_time / 3.0) * sin((world_position.y) / 37.0 + water_time / 3.0) * 3.0;
-	var wave2 = sin((world_position.x) / 40.0 - water_time / 3.0) * 3.0;
+	var wave1 = sin((world_position.x) / 40.0 + water_time / 3.0) * sin((world_position.y) / 37.0 + water_time / 3.0) * 2.0;
+	var wave2 = sin((world_position.x) / 40.0 - water_time / 3.0) * 2.0;
 	return (wave1 + wave2) / 2.0 - 3.0;
 	
 func _input(event):

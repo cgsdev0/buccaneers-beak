@@ -190,9 +190,15 @@ var lines = {
 	}
 }
 
+var in_dialogue = false
 func trigger(char: Character, entry = "ENTRY"):
 	disable_interaction.emit()
+	var was_in_dialogue = in_dialogue
+	in_dialogue = true
 	self.dialogue.emit(char, lines[char][entry].duplicate(true))
+	if !was_in_dialogue:
+		await self.finish_dialogue
+		in_dialogue = false
 
 signal dialogue_event(trigger: Trigger)
 signal dialogue(char: Character, data)

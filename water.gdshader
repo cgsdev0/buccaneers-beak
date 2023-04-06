@@ -25,8 +25,8 @@ void fragment() {
 void vertex() {
 	// float water_time = TIME;
 	vec3 world_position = (MODEL_MATRIX * vec4(VERTEX, 1.0)).xyz;
-	float wave1 = sin((world_position.x) / 40.0 + water_time / 3.0) * sin((world_position.z) / 37.0 + water_time / 3.0) * 3.0;
-	float wave2 = sin((world_position.x) / 40.0 - water_time / 3.0) * 3.0;
+	float wave1 = sin((world_position.x) / 40.0 + water_time / 3.0) * sin((world_position.z) / 37.0 + water_time / 3.0) * 2.0;
+	float wave2 = sin((world_position.x) / 40.0 - water_time / 3.0) * 2.0;
 	VERTEX.y = (wave1 + wave2) / 2.0;
 	// VERTEX.y = VERTEX.x + VERTEX.z;
 	v_vertex.x = world_position.x;

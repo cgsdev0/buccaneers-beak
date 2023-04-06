@@ -21,9 +21,9 @@ func get_perch():
 	
 func get_water_height(world_position: Vector2):
 	var water_time = Time.get_ticks_msec() / 1000.0
-	var wave1 = sin((world_position.x) / 40.0 + water_time / 3.0) * sin((world_position.y) / 37.0 + water_time / 3.0) * 3.0;
-	var wave2 = sin((world_position.x) / 40.0 - water_time / 3.0) * 3.0;
-	return (wave1 + wave2) / 2.0 - 3.0;
+	var wave1 = sin((world_position.x) / 40.0 + water_time / 3.0) * sin((world_position.y) / 37.0 + water_time / 3.0) * 2.0;
+	var wave2 = sin((world_position.x) / 40.0 - water_time / 3.0) * 2.0;
+	return (wave1 + wave2) / 2.0 - 3.3;
 	
 func get_water_normal(pos: Vector2, forward: Vector3, right: Vector3):
 	var time = Time.get_ticks_msec() / 1000.0
@@ -35,7 +35,7 @@ func get_water_normal(pos: Vector2, forward: Vector3, right: Vector3):
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
 	if Input.is_action_just_pressed("enter_boat") && allowed:
-		if !$CameraController.active:
+		if !$CameraController.active && player.get_camera().active:
 			if !out:
 				player.disable_collider()
 				$CameraController.active = true
@@ -44,7 +44,7 @@ func _physics_process(delta):
 				player.global_transform.origin = global_transform.origin + Vector3(0.0, 1.0, 0.0)
 				Story.disable_boat_interaction.emit()
 				Story.enable_boat_exit_interaction.emit()
-		else:
+		elif $CameraController.active:
 			Story.disable_boat_exit_interaction.emit()
 			remove_child(player)
 			player_parent.add_child(player)

@@ -151,7 +151,7 @@ func take_off():
 var explained_maps = [true, false, false, false]
 	
 func _input(event):
-	if out || !attached:
+	if out || !attached || Story.in_dialogue:
 		return
 	if event.is_action_pressed("interact"):
 		match GameState.next_map():

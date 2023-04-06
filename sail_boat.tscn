@@ -192,7 +192,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.257105, 0.441766, -0.09173
 shape = SubResource("BoxShape3D_xcw4j")
 
 [node name="CameraController" type="RemoteTransform3D" parent="."]
-transform = Transform3D(-0.0666667, -4.37186e-16, -5.82819e-09, -2.13519e-09, 0.0620317, 0.0244237, 5.42299e-09, 0.0244237, -0.0620317, 0, 8.21963, -21.1521)
+transform = Transform3D(-0.0666667, -4.37186e-16, -5.82819e-09, -1.89045e-09, 0.0630622, 0.0216242, 5.51308e-09, 0.0216242, -0.0630622, 0, 8.21963, -25.6271)
 script = ExtResource("2_1cis3")
 
 [node name="Area3D" type="Area3D" parent="."]

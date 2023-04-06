@@ -16,7 +16,7 @@ func on_trigger(trigger: Story.Trigger):
 			GameState.delete_item(GameState.Pickup.APPLE, 5)
 
 func _input(event):
-	if out:
+	if out || Story.in_dialogue:
 		return
 	if event.is_action_pressed("interact"):
 		if !exposition:

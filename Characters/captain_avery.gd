@@ -8,7 +8,7 @@ func _ready():
 	$AnimationPlayer.play("breathe")
 
 func _input(event):
-	if out:
+	if out || Story.in_dialogue:
 		return
 	if event.is_action_pressed("interact"):
 		if interactable:
