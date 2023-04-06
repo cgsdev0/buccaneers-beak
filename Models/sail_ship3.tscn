@@ -1,0 +1,73 @@
+[gd_scene load_steps=8 format=3 uid="uid://fc51jdcfp0ar"]
+
+[ext_resource type="PackedScene" uid="uid://bls74xd6ltpph" path="res://Models/sail_ship2.tscn" id="1_6ie6l"]
+[ext_resource type="PackedScene" uid="uid://bisaoegsvgy3r" path="res://Models/sail_ship.tscn" id="2_bk4dv"]
+[ext_resource type="Material" uid="uid://djof04lbore15" path="res://Materials/wood_top.tres" id="3_ihvrv"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fkfjy"]
+size = Vector3(51.479, 1.169, 7.12)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1kdhn"]
+size = Vector3(10, 1, 45.9307)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_84rk1"]
+size = Vector3(8.93324, 1, 45.9307)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_aqsib"]
+size = Vector3(16.3094, 1, 27.9755)
+
+[node name="sail_ship3" type="Node3D"]
+
+[node name="Sail Ship" parent="." instance=ExtResource("1_6ie6l")]
+
+[node name="Sail Ship2" parent="." instance=ExtResource("2_bk4dv")]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.02273, 0)
+light_energy = 5.252
+light_volumetric_fog_energy = 0.0
+omni_range = 62.639
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 19.733, -44.8817)
+light_energy = 3.056
+light_volumetric_fog_energy = 0.0
+omni_range = 62.639
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(0.91373, 0.406322, 0, -0.406322, 0.91373, 0, 0, 0, 1, 36.0985, 9.66758, 0)
+size = Vector3(51.4787, 1.16937, 7.12044)
+material = ExtResource("3_ihvrv")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="CSGBox3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CSGBox3D/StaticBody3D"]
+shape = SubResource("BoxShape3D_fkfjy")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+collision_layer = 0
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.83407, 0)
+shape = SubResource("BoxShape3D_1kdhn")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(0.890364, 0.45525, 0, -0.45525, 0.890364, 0, 0, 0, 1, -8.55751, 0.150394, 0)
+shape = SubResource("BoxShape3D_84rk1")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(0.890213, -0.455545, 0, 0.455545, 0.890213, 0, 0, 0, 1, 8.558, 0.15, 0)
+shape = SubResource("BoxShape3D_84rk1")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(0.393862, -0.91917, 0, 0.91917, 0.393862, 0, 0, 0, 1, 13.248, 5.56244, 0)
+shape = SubResource("BoxShape3D_84rk1")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(0.393942, 0.919135, 0, -0.919135, 0.393942, 0, 0, 0, 1, -13.248, 5.562, 0)
+shape = SubResource("BoxShape3D_84rk1")
+
+[node name="CollisionShape3D6" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1.91069e-15, 4.37114e-08, 1, 1, -4.37114e-08, 0, 4.37114e-08, 1, -4.37114e-08, 0, 5.562, 23.4065)
+shape = SubResource("BoxShape3D_aqsib")

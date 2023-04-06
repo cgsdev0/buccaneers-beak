@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://c133ejbc1i57c"]
+[gd_scene load_steps=8 format=3 uid="uid://c133ejbc1i57c"]
 
 [ext_resource type="PackedScene" uid="uid://csqalgft6yu33" path="res://level.glb" id="1_uhr7p"]
 [ext_resource type="Material" uid="uid://daoxw5q6ey0gu" path="res://land.tres" id="2_glech"]
+[ext_resource type="PackedScene" uid="uid://fc51jdcfp0ar" path="res://Models/sail_ship3.tscn" id="3_jwf5f"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wbtcu"]
 
@@ -41,6 +42,7 @@ data = PackedVector3Array(-1, 0, -1, -1, 0, 1, 1, 0, 1, 0.711, -0.9179, 2.106, 1
 [node name="level" instance=ExtResource("1_uhr7p")]
 
 [node name="Cube001" parent="." index="0"]
+transform = Transform3D(6, 0, 0, 0, 4.345, 0, 0, 0, 6, 0, 47.5926, 0)
 mesh = SubResource("ArrayMesh_y5acl")
 surface_material_override/0 = ExtResource("2_glech")
 
@@ -52,3 +54,6 @@ shape = SubResource("ConcavePolygonShape3D_qgknn")
 [node name="CollisionPolygon3D" type="CollisionPolygon3D" parent="Cube001/StaticBody3D" index="1"]
 
 [node name="LightmapGI" type="LightmapGI" parent="." index="1"]
+
+[node name="sail_ship3" parent="." index="2" instance=ExtResource("3_jwf5f")]
+transform = Transform3D(0.989638, 0.0603487, 0.130286, -0.0713234, 0.994136, 0.0812787, -0.124617, -0.0897289, 0.988139, 169.025, -7.06414, -7.56256)

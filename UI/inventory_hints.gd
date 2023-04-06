@@ -15,6 +15,7 @@ func on_pickup(item: GameState.Pickup):
 func on_map(i: int):
 	var hint = InventoryHint.new()
 	hint.text = "+1 Map Piece"
+	hint.modulate = Color.DARK_RED
 	add_child(hint)
 
 func on_delete(item: GameState.Pickup, count: int):

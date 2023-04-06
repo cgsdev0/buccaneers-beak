@@ -5,7 +5,7 @@ extends CharacterBody3D
 @onready var player_parent = player.get_parent()
 
 var out = true
-var allowed = false
+@export var allowed = false
 
 func allow_driving():
 	allowed = true

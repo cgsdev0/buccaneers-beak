@@ -56,70 +56,64 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 98.3583, 10.8767, -222.474)
 [node name="BasePickup10" parent="." index="11" instance=ExtResource("4_hov21")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60.2395, 9.5202, -189.564)
 
-[node name="BasePickup11" parent="." index="12" instance=ExtResource("4_hov21")]
+[node name="BasePickup12" parent="." index="12" instance=ExtResource("4_hov21")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 70.9672, 10.96, -202.838)
+
+[node name="BasePickup14" parent="." index="13" instance=ExtResource("4_hov21")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 64.9577, 11.4702, -217.286)
+
+[node name="BasePickup11" parent="." index="14" instance=ExtResource("4_hov21")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 52.7073, 17.9951, -54.3241)
 
-[node name="BasePickup12" parent="." index="13" instance=ExtResource("4_hov21")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 114.031, 17.9951, -39.5607)
+[node name="BasePickup15" parent="." index="15" instance=ExtResource("4_hov21")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 103.4, 15.3594, 40.8897)
 
-[node name="BasePickup13" parent="." index="14" instance=ExtResource("4_hov21")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 114.031, 17.9951, -36.9051)
-
-[node name="BasePickup14" parent="." index="15" instance=ExtResource("4_hov21")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 114.031, 17.9951, -34.4601)
-
-[node name="BasePickup15" parent="." index="16" instance=ExtResource("4_hov21")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 114.031, 17.9951, -31.4514)
-
-[node name="BasePickup16" parent="." index="17" instance=ExtResource("4_hov21")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 114.031, 17.9951, -29.4261)
-
-[node name="Palm tree" parent="." index="18" instance=ExtResource("5_mlykj")]
+[node name="Palm tree" parent="." index="16" instance=ExtResource("5_mlykj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 103.852, 16.6628, 20.4454)
 
-[node name="Palm tree6" parent="." index="19" instance=ExtResource("5_mlykj")]
+[node name="Palm tree6" parent="." index="17" instance=ExtResource("5_mlykj")]
 transform = Transform3D(0.893222, 0, -0.449615, 0, 1, 0, 0.449615, 0, 0.893222, 82.237, 16.6628, -6.11318)
 
-[node name="Palm tree4" parent="." index="20" instance=ExtResource("5_mlykj")]
+[node name="Palm tree4" parent="." index="18" instance=ExtResource("5_mlykj")]
 transform = Transform3D(0.326099, 0, 1.07316, 0, 1, 0, -0.438134, 0, 0.798743, 89.1646, 15.3351, 20.4454)
 
-[node name="Palm tree5" parent="." index="21" instance=ExtResource("5_mlykj")]
+[node name="Palm tree5" parent="." index="19" instance=ExtResource("5_mlykj")]
 transform = Transform3D(0.906585, 0, 0.63369, 0, 1.23024, 0, -0.353299, 0, 1.62609, 81.6914, 16.6628, 6.74666)
 
-[node name="Palm tree2" parent="." index="22" instance=ExtResource("5_mlykj")]
+[node name="Palm tree2" parent="." index="20" instance=ExtResource("5_mlykj")]
 transform = Transform3D(0.772501, 0, -0.635014, 0, 1.20325, 0, 0.635014, 0, 0.772501, 103.852, 16.6628, -25.4496)
 
-[node name="Palm tree3" parent="." index="23" instance=ExtResource("5_mlykj")]
+[node name="Palm tree3" parent="." index="21" instance=ExtResource("5_mlykj")]
 transform = Transform3D(0.999626, 0, -0.0273634, 0, 1.20325, 0, 0.0273634, 0, 0.999626, 97.0122, 16.6628, -20.2752)
 
-[node name="Palm tree7" parent="." index="24" instance=ExtResource("5_mlykj")]
+[node name="Palm tree7" parent="." index="22" instance=ExtResource("5_mlykj")]
 transform = Transform3D(1.50166, 0, 0, 0, 1.54015, 0, 0, 0, 2.37753, 79.1952, 5.067, 222.752)
 
-[node name="Palm tree8" parent="." index="25" instance=ExtResource("5_mlykj")]
+[node name="Palm tree8" parent="." index="23" instance=ExtResource("5_mlykj")]
 transform = Transform3D(-0.378439, 0, -0.925626, 0, 1, 0, 0.925626, 0, -0.378439, 79.1952, 3.03424, 192.846)
 
-[node name="Palm tree9" parent="." index="26" instance=ExtResource("5_mlykj")]
+[node name="Palm tree9" parent="." index="24" instance=ExtResource("5_mlykj")]
 transform = Transform3D(0.778955, 0, 0.62708, 0, 1, 0, -0.62708, 0, 0.778955, -121.033, 4.92932, 160.971)
 
-[node name="Palm tree10" parent="." index="27" instance=ExtResource("5_mlykj")]
+[node name="Palm tree10" parent="." index="25" instance=ExtResource("5_mlykj")]
 transform = Transform3D(0.649329, 0, -0.760508, 0, 1, 0, 0.760508, 0, 0.649329, -134.462, 5.50987, 117.761)
 
-[node name="Palm tree11" parent="." index="28" instance=ExtResource("5_mlykj")]
+[node name="Palm tree11" parent="." index="26" instance=ExtResource("5_mlykj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -130.648, 10.812, -159.998)
 
-[node name="Palm tree12" parent="." index="29" instance=ExtResource("5_mlykj")]
+[node name="Palm tree12" parent="." index="27" instance=ExtResource("5_mlykj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -116.62, 8.77498, -118.348)
 
-[node name="Palm tree13" parent="." index="30" instance=ExtResource("5_mlykj")]
+[node name="Palm tree13" parent="." index="28" instance=ExtResource("5_mlykj")]
 transform = Transform3D(1, 0, 0, 0, 1.77647, 0, 0, 0, 1, 63.1873, 9.22795, -208.347)
 
-[node name="Storage Shed" parent="." index="31" instance=ExtResource("6_t2cmd")]
+[node name="Storage Shed" parent="." index="29" instance=ExtResource("6_t2cmd")]
 transform = Transform3D(-7.21146, -0.265031, 6.92276, 0.709404, 9.9119, 1.11846, -6.89142, 1.29767, -7.12912, 106.951, 14.5411, 36.8801)
 
-[node name="Shack" parent="." index="32" instance=ExtResource("7_euwa7")]
+[node name="Shack" parent="." index="30" instance=ExtResource("7_euwa7")]
 transform = Transform3D(6.82509, 0, -7.30877, 0, 10, 0, 7.30877, 0, 6.82509, 85.9175, 8.90289, -206.317)
 
-[node name="Waypoint" type="Marker3D" parent="." index="33"]
+[node name="Waypoint" type="Marker3D" parent="." index="31"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 275.509, 62.16, 0)
 script = ExtResource("8_bvfwe")
 map_id = 1

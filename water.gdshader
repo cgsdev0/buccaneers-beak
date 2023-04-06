@@ -5,9 +5,14 @@ global uniform float water_time;
 global uniform vec2 water_offset;
 
 uniform sampler2D noise;
+uniform sampler2D depth_texture : hint_depth_texture, repeat_disable, filter_nearest;
 
 void fragment() {
 //	float water_time = TIME;
+	float depth = textureLod(depth_texture, SCREEN_UV, 0.0).r;
+    vec4 upos = INV_PROJECTION_MATRIX * vec4(SCREEN_UV * 2.0 - 1.0, depth, 1.0);
+    vec3 pixel_position = upos.xyz / upos.w;
+	
 	vec4 n1 = texture(noise, vec2(v_vertex.x / 500.0 + water_time / 50.0, v_vertex.y / 50.0 - water_time / 50.0));
 	vec4 n2 = texture(noise, vec2(v_vertex.x / 500.0 - water_time / 30.0, v_vertex.y / 50.0 + water_time / 50.0));
 	float n3 =  clamp(n1.r - n2.r, 0.0, 1.0);

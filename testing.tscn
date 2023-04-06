@@ -92,7 +92,7 @@ visible = false
 layout_mode = 1
 
 [node name="level" parent="." instance=ExtResource("1_fwxso")]
-transform = Transform3D(1.17131, 0, 0, 0, 0.721176, 0, 0, 0, 1.15521, -188.796, -2.97457, 144.454)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -188.796, -2.97457, 144.454)
 
 [node name="FogVolume" type="FogVolume" parent="level"]
 transform = Transform3D(1.81818, 0, 0, 0, 2.85714, 0, 0, 0, 1.81818, 140.818, 4.89143, 11.0994)
@@ -104,6 +104,7 @@ material = SubResource("FogMaterial_0ckys")
 
 [node name="Sail Boat" parent="." instance=ExtResource("5_xeuv0")]
 transform = Transform3D(-0.479534, 0, 0.877523, 0, 1, 0, -0.877523, 0, -0.479534, 264.653, 0.0534959, -237.654)
+allowed = true
 
 [node name="Player" type="CharacterBody3D" parent="." groups=["player"]]
 unique_name_in_owner = true
