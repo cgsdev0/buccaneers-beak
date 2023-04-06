@@ -14,6 +14,9 @@ data = PackedVector3Array(0.0065, -0.0034, 0.0011, 0.0063, -0.0033, 0.0011, 0.00
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
 
 [node name="Storage_SecondAge_Level2" parent="RootNode" index="0"]
+visibility_range_end = 200.0
+visibility_range_end_margin = 10.0
+visibility_range_fade_mode = 1
 surface_material_override/0 = ExtResource("2_yfk0r")
 surface_material_override/1 = ExtResource("3_5oy21")
 surface_material_override/2 = ExtResource("4_cnu1j")

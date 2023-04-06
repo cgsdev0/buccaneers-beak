@@ -13,8 +13,8 @@
 [ext_resource type="Script" path="res://UI/FontScale.gd" id="10_rr74k"]
 [ext_resource type="PackedScene" uid="uid://dtmrhk6554e6d" path="res://spawn.tscn" id="10_s5ncu"]
 [ext_resource type="PackedScene" uid="uid://daaedgpnenvv1" path="res://UI/pause_menu.tscn" id="13_qc1rt"]
-[ext_resource type="PackedScene" uid="uid://duxefvqkae66b" path="res://Characters/crab.tscn" id="14_7n3ut"]
 [ext_resource type="PackedScene" uid="uid://c12ufhc6674fu" path="res://Characters/goat.tscn" id="15_xspii"]
+[ext_resource type="PackedScene" uid="uid://dr2sbfmlmsyxt" path="res://Islands/crab_land.tscn" id="16_d04h1"]
 
 [sub_resource type="FogMaterial" id="FogMaterial_0ckys"]
 density = 0.008
@@ -57,7 +57,7 @@ visible = false
 layout_mode = 1
 
 [node name="level" parent="." instance=ExtResource("1_fwxso")]
-transform = Transform3D(1.17131, 0, 0, 0, 0.721176, 0, 0, 0, 1.15521, 100.95, -2.97457, 144.454)
+transform = Transform3D(1.17131, 0, 0, 0, 0.721176, 0, 0, 0, 1.15521, -188.796, -2.97457, 144.454)
 
 [node name="FogVolume" type="FogVolume" parent="level"]
 transform = Transform3D(1.81818, 0, 0, 0, 2.85714, 0, 0, 0, 1.81818, 140.818, 4.89143, 11.0994)
@@ -70,16 +70,17 @@ material = SubResource("FogMaterial_0ckys")
 [node name="Sail Boat" parent="." instance=ExtResource("5_xeuv0")]
 transform = Transform3D(-0.479534, 0, 0.877523, 0, 1, 0, -0.877523, 0, -0.479534, 264.653, 0.0534959, -237.654)
 
-[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
+[node name="Player" type="CharacterBody3D" parent="." groups=["player"]]
+unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 187.71, 13.9737, -266.778)
 collision_layer = 3
 script = ExtResource("5_qw6wc")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4265, 0)
 shape = SubResource("CapsuleShape3D_yi6tk")
 
-[node name="RemoteTransform3D" type="RemoteTransform3D" parent="CharacterBody3D"]
+[node name="RemoteTransform3D" type="RemoteTransform3D" parent="Player"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.89099, 0)
 script = ExtResource("5_yclud")
 
@@ -102,8 +103,8 @@ environment = ExtResource("8_xq8ue")
 [node name="spawn" parent="." instance=ExtResource("10_s5ncu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 131.057, -7.48477, -308.535)
 
-[node name="crab" parent="." instance=ExtResource("14_7n3ut")]
-transform = Transform3D(0.995456, -0.0952203, 0, 0.0948129, 0.991197, -0.0924054, 0.00879887, 0.0919855, 0.995721, 223.652, 15.2793, -253.695)
-
 [node name="goat" parent="." instance=ExtResource("15_xspii")]
 transform = Transform3D(0.0122828, 0, 0.599874, 0, 0.6, 0, -0.599874, 0, 0.0122828, 174.165, 14.0074, -266.817)
+
+[node name="crab_land" parent="." instance=ExtResource("16_d04h1")]
+transform = Transform3D(-0.998042, 0, 0.0625466, 0, 1, 0, -0.0625466, 0, -0.998042, 849.428, -5.81049, -241)

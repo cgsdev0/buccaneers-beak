@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://wtscecyokhqd"]
+
+[ext_resource type="PackedScene" uid="uid://b18c2e2ktpeek" path="res://Models/Pipe.glb" id="1_xw54y"]
+
+[node name="Pipe" instance=ExtResource("1_xw54y")]
+
+[node name="Node" parent="." index="0"]
+visibility_range_end = 150.0
+visibility_range_end_margin = 10.0
+visibility_range_fade_mode = 1

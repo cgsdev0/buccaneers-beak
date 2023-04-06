@@ -24,6 +24,9 @@ size = Vector3(0.467654, 0.177208, 1.02216)
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
 
 [node name="Port_FirstAge_Level2" parent="RootNode" index="0"]
+visibility_range_end = 200.0
+visibility_range_end_margin = 10.0
+visibility_range_fade_mode = 1
 surface_material_override/0 = ExtResource("2_wx00b")
 surface_material_override/1 = ExtResource("3_yfg6w")
 surface_material_override/2 = ExtResource("4_r606d")

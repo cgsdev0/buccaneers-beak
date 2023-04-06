@@ -21,24 +21,25 @@ func _input(event):
 	if out:
 		return
 	if event.is_action_pressed("interact"):
-		if GameState.has_item(GameState.Pickup.PIPE):
-			Story.enable_interaction.emit(false)
-			$CameraController.active = true
-			Story.trigger(Story.Character.GOAT)
-			$Arrow.visible = false
-			await Story.finish_dialogue
-			$CameraController.previous_camera()
-		elif exposition:
-			Story.enable_interaction.emit(false)
-			$CameraController.active = true
-			Story.trigger(Story.Character.GOAT, "still_no_pipe")
-			await Story.finish_dialogue
-			$CameraController.previous_camera()
+		if exposition:
+			if GameState.has_item(GameState.Pickup.PIPE):
+				Story.enable_interaction.emit(false)
+				$CameraController.active = true
+				Story.trigger(Story.Character.GOAT)
+				$Arrow.visible = false
+				await Story.finish_dialogue
+				$CameraController.previous_camera()
+			else:
+				Story.enable_interaction.emit(false)
+				$CameraController.active = true
+				Story.trigger(Story.Character.GOAT, "no_pipe")
+				await Story.finish_dialogue
+				$CameraController.previous_camera()
 		else:
 			exposition = true
 			Story.enable_interaction.emit(false)
 			$CameraController.active = true
-			Story.trigger(Story.Character.GOAT, "no_pipe")
+			Story.trigger(Story.Character.GOAT, "exposition")
 			await Story.finish_dialogue
 			$CameraController.previous_camera()
 

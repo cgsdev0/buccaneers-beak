@@ -12,6 +12,9 @@ data = PackedVector3Array(0, -0.0042, -0.0001, 0, -0.0042, 0.0011, 0.0003, -0.00
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
 
 [node name="Mine" parent="RootNode" index="0"]
+visibility_range_end = 200.0
+visibility_range_end_margin = 10.0
+visibility_range_fade_mode = 1
 surface_material_override/0 = ExtResource("2_hsewr")
 surface_material_override/3 = ExtResource("3_wsbih")
 surface_material_override/4 = ExtResource("4_punjd")

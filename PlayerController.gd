@@ -7,6 +7,13 @@ const JUMP_VELOCITY = 15.0
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
+func disable_collider():
+	self.set_collision_layer_value(1, false)
+
+func enable_collider():
+	self.set_collision_layer_value(1, false)
+	$RemoteTransform3D.rotation = Vector3.ZERO
+	
 func _ready():
 	floor_snap_length = 1.0
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)

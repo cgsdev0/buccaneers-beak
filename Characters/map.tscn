@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://8dsa6pekj3qu"]
+
+[ext_resource type="PackedScene" uid="uid://djh2yiv1yw4yv" path="res://Characters/map.glb" id="1_st78b"]
+
+[node name="map" instance=ExtResource("1_st78b")]
+
+[node name="VR_Map_Cube029" parent="." index="0"]
+visibility_range_end = 150.0
+visibility_range_end_margin = 10.0
+visibility_range_fade_mode = 1

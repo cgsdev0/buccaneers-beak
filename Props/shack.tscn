@@ -10,6 +10,9 @@ size = Vector3(0.801464, 0.114008, 0.899819)
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
 
 [node name="Houses_FirstAge_2_Level1" parent="RootNode" index="0"]
+visibility_range_end = 200.0
+visibility_range_end_margin = 10.0
+visibility_range_fade_mode = 1
 surface_material_override/1 = ExtResource("2_7piut")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." index="1"]

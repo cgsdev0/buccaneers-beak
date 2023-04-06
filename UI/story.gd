@@ -78,7 +78,7 @@ var lines = {
 		"follow_me": { "text": [ "follow me!" ] }
 	},
 	Character.GOAT: {
-		"still_no_pipe": { "text": ["Look, I'm not giving up the map until you get me my pipe!"] },
+		"no_pipe": { "text": ["Look, I'm not giving up the map until you get me my pipe!"] },
 		"ENTRY": { "text": ["Did you find my pipe?"], "next": "ok" },
 		"ok": { "input": [
 				{ "text": "(give pipe)", "next": "nice" },
@@ -86,7 +86,7 @@ var lines = {
 		] },
 		"not_nice": { "text": ["Then I'm gonna keep munchin'!"] },
 		"nice": { "text": ["[i](puffs)[/i] Ahhh... thank you. Here, take your stupid map. It didn't taste good anyways."], "portrait": 1, "trigger": Trigger.GOAT_TRADE },
-		"no_pipe": { "next": "not_food", "text": [ 
+		"exposition": { "next": "not_food", "text": [ 
 			"[i](chewing loudly)[/i] Mmm, this is delicious! I've been searching for a good meal all day."
 		] },
 		"not_food": { "input": [

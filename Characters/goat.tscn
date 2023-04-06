@@ -1,11 +1,76 @@
 [gd_scene load_steps=16 format=3 uid="uid://c12ufhc6674fu"]
 
 [ext_resource type="Script" path="res://Characters/goat.gd" id="1_on57b"]
-[ext_resource type="PackedScene" uid="uid://cgkmpjxtyv5yt" path="res://Characters/goat.glb" id="2_auan6"]
-[ext_resource type="PackedScene" uid="uid://djh2yiv1yw4yv" path="res://Characters/map.glb" id="3_672gh"]
 [ext_resource type="PackedScene" uid="uid://bj8f44agdkdp5" path="res://Models/arrow.tscn" id="3_yqmdg"]
-[ext_resource type="PackedScene" uid="uid://b18c2e2ktpeek" path="res://Models/Pipe.glb" id="4_2l0n4"]
+[ext_resource type="PackedScene" uid="uid://de5mjad3squ7q" path="res://Characters/goat_model.tscn" id="4_572ab"]
 [ext_resource type="Script" path="res://CameraController.gd" id="4_p326s"]
+[ext_resource type="PackedScene" uid="uid://8dsa6pekj3qu" path="res://Characters/map.tscn" id="6_4mc2p"]
+[ext_resource type="PackedScene" uid="uid://wtscecyokhqd" path="res://Characters/pipe.tscn" id="6_kdyxy"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_jh84w"]
+radius = 10.0
+
+[sub_resource type="Animation" id="Animation_cqtuh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("goat:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("goat:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.6, 0.6, 0.6)]
+}
+
+[sub_resource type="Animation" id="Animation_vl3aq"]
+resource_name = "breathe"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("goat:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2, 4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0.2, 0), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("goat:scale")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2, 4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0.6, 0.6, 0.6), Vector3(0.549, 0.64, 0.6), Vector3(0.6, 0.6, 0.6)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0n5pw"]
+_data = {
+"RESET": SubResource("Animation_cqtuh"),
+"breathe": SubResource("Animation_vl3aq")
+}
 
 [sub_resource type="Gradient" id="Gradient_c6ht1"]
 colors = PackedColorArray(0.165657, 0.165656, 0.165656, 1, 0.641934, 0.641934, 0.641934, 0)
@@ -37,94 +102,8 @@ material = SubResource("StandardMaterial3D_bvlum")
 radial_segments = 8
 rings = 8
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_jh84w"]
-radius = 10.0
-
-[sub_resource type="Animation" id="Animation_cqtuh"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("goat:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0.6, 0.6, 0.6)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("goat:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_vl3aq"]
-resource_name = "breathe"
-length = 4.0
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("goat:scale")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 2, 4),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector3(0.6, 0.6, 0.6), Vector3(0.549, 0.64, 0.6), Vector3(0.6, 0.6, 0.6)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("goat:position")
-tracks/1/interp = 2
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 2, 4),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, 0.2, 0), Vector3(0, 0, 0)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_0n5pw"]
-_data = {
-"RESET": SubResource("Animation_cqtuh"),
-"breathe": SubResource("Animation_vl3aq")
-}
-
 [node name="goat" type="Node3D"]
 script = ExtResource("1_on57b")
-
-[node name="goat" parent="." instance=ExtResource("2_auan6")]
-transform = Transform3D(-2.62268e-08, 0, 0.6, 0, 0.6, 0, -0.6, 0, -2.62268e-08, 0, 0, 0)
-
-[node name="map" parent="goat" instance=ExtResource("3_672gh")]
-unique_name_in_owner = true
-transform = Transform3D(-0.0589103, 0.0654734, -0.147394, -0.149605, 0.0155636, 0.0748161, 0.0428719, 0.145454, 0.0592126, -4.72982, 1.24947, -0.621525)
-
-[node name="Pipe" parent="goat" instance=ExtResource("4_2l0n4")]
-unique_name_in_owner = true
-transform = Transform3D(-0.259413, -0.080277, -0.419834, 0.00684576, 0.49026, -0.0979731, 0.427385, -0.0565791, -0.25326, -5.048, 1.186, -0.76)
-visible = false
-
-[node name="GPUParticles3D" type="GPUParticles3D" parent="goat/Pipe"]
-transform = Transform3D(1, 7.45058e-09, 2.98023e-08, 1.49012e-08, 1, -1.49012e-08, -2.98023e-08, -2.98023e-08, 1, -7.15256e-07, 1.19234, 1.90735e-06)
-emitting = false
-amount = 10
-lifetime = 4.0
-explosiveness = 0.64
-process_material = SubResource("ParticleProcessMaterial_3b2ow")
-draw_pass_1 = SubResource("SphereMesh_vkfki")
 
 [node name="Arrow" parent="." instance=ExtResource("3_yqmdg")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 4.63786, 1.25867)
@@ -143,6 +122,27 @@ script = ExtResource("4_p326s")
 libraries = {
 "": SubResource("AnimationLibrary_0n5pw")
 }
+
+[node name="goat" parent="." instance=ExtResource("4_572ab")]
+transform = Transform3D(-2.62268e-08, 0, 0.6, 0, 0.6, 0, -0.6, 0, -2.62268e-08, 0, 0, 0)
+
+[node name="Pipe" parent="goat" instance=ExtResource("6_kdyxy")]
+unique_name_in_owner = true
+transform = Transform3D(-0.259413, -0.080277, -0.419834, 0.00684576, 0.49026, -0.0979731, 0.427385, -0.0565791, -0.25326, -5.048, 1.186, -0.76)
+visible = false
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="goat/Pipe"]
+transform = Transform3D(1, 1.49012e-08, 5.96046e-08, 2.23517e-08, 1, -2.98023e-08, -2.98023e-08, -4.47035e-08, 1, -9.53674e-07, 1.19234, 1.90735e-06)
+emitting = false
+amount = 10
+lifetime = 4.0
+explosiveness = 0.64
+process_material = SubResource("ParticleProcessMaterial_3b2ow")
+draw_pass_1 = SubResource("SphereMesh_vkfki")
+
+[node name="map" parent="goat" instance=ExtResource("6_4mc2p")]
+unique_name_in_owner = true
+transform = Transform3D(-0.0589103, 0.0654734, -0.147394, -0.149605, 0.0155636, 0.0748161, 0.0428719, 0.145454, 0.0592126, -4.72982, 1.24947, -0.621525)
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered" flags=18]
 [connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited" flags=18]

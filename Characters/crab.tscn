@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://duxefvqkae66b"]
+[gd_scene load_steps=10 format=3 uid="uid://duxefvqkae66b"]
 
 [ext_resource type="Script" path="res://Characters/crab.gd" id="1_2yvf1"]
-[ext_resource type="PackedScene" uid="uid://cl6ikerax3saf" path="res://Characters/crab.glb" id="1_koglg"]
+[ext_resource type="PackedScene" uid="uid://dwf4kotup1jxv" path="res://Characters/crab_model.tscn" id="2_er1kp"]
 [ext_resource type="PackedScene" uid="uid://bj8f44agdkdp5" path="res://Models/arrow.tscn" id="3_28wew"]
+[ext_resource type="PackedScene" uid="uid://8dsa6pekj3qu" path="res://Characters/map.tscn" id="3_n7x38"]
 [ext_resource type="Script" path="res://CameraController.gd" id="4_80ssi"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_jh84w"]
@@ -49,8 +50,12 @@ _data = {
 [node name="crab" type="Node3D"]
 script = ExtResource("1_2yvf1")
 
-[node name="crab" parent="." instance=ExtResource("1_koglg")]
+[node name="crab" parent="." instance=ExtResource("2_er1kp")]
 transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, 0, 0, 0)
+
+[node name="map" parent="crab" instance=ExtResource("3_n7x38")]
+unique_name_in_owner = true
+transform = Transform3D(0.01, 0, 0, 0, -0.00359345, 0.00933204, 0, -0.00933204, -0.00359345, 0.0340894, 0.0285046, 0.205283)
 
 [node name="Arrow" parent="." instance=ExtResource("3_28wew")]
 transform = Transform3D(0.896123, 0, 0.443806, 0, 1, 0, -0.443806, 0, 0.896123, -1.09278, 6.91511, -1.78034)

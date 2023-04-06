@@ -1,6 +1,8 @@
 extends CharacterBody3D
 
 
+@onready var player = get_tree().get_first_node_in_group("player")
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	floor_max_angle = 0
@@ -24,8 +26,16 @@ func get_water_normal(pos: Vector2, forward: Vector3, right: Vector3):
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
-	if Input.is_key_pressed(KEY_ENTER):
-		$CameraController.active = true
+	if Input.is_action_just_pressed("enter_boat"):
+		if !$CameraController.active:
+			player.disable_collider()
+			$CameraController.active = true
+		else:
+			player.global_transform.origin = global_transform.origin + Vector3(0.0, 1.0, 0.0)
+			player.global_rotation.y = global_rotation.y - PI / 2
+			player.enable_collider()
+			$CameraController.previous_camera()
+		
 	var input = Input.get_vector("move_right", "move_left", "move_down", "move_up")
 	if !$CameraController.active:
 		input = Vector2.ZERO

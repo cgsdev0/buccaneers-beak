@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://bemn6w2vy5arx"]
+
+[ext_resource type="PackedScene" uid="uid://csquldjti68i2" path="res://Models/Apple.glb" id="1_algg6"]
+
+[node name="Apple" instance=ExtResource("1_algg6")]
+
+[node name="Cube026_Cube" parent="." index="0"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+visibility_range_end = 150.0
+visibility_range_end_margin = 10.0
+visibility_range_fade_mode = 1

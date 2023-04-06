@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://cblsqumr6xr7o"]
+
+[ext_resource type="PackedScene" uid="uid://un48kes3ojwd" path="res://Characters/Pirate hat.glb" id="1_krogs"]
+
+[node name="Pirate hat" instance=ExtResource("1_krogs")]
+
+[node name="PirateHat" parent="." index="0"]
+visibility_range_end = 150.0
+visibility_range_end_margin = 10.0
+visibility_range_fade_mode = 1

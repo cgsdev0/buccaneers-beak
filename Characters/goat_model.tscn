@@ -1,0 +1,35 @@
+[gd_scene load_steps=2 format=3 uid="uid://de5mjad3squ7q"]
+
+[ext_resource type="PackedScene" uid="uid://cgkmpjxtyv5yt" path="res://Characters/goat.glb" id="1_7d2fl"]
+
+[node name="goat" instance=ExtResource("1_7d2fl")]
+
+[node name="Plane_0" parent="Sketchfab_model/Root/Plane" index="0"]
+visibility_range_end = 150.0
+visibility_range_end_margin = 10.0
+visibility_range_fade_mode = 1
+
+[node name="Plane_1" parent="Sketchfab_model/Root/Plane" index="1"]
+visibility_range_end = 150.0
+visibility_range_end_margin = 10.0
+visibility_range_fade_mode = 1
+
+[node name="Plane_2" parent="Sketchfab_model/Root/Plane" index="2"]
+visibility_range_end = 150.0
+visibility_range_end_margin = 10.0
+visibility_range_fade_mode = 1
+
+[node name="Plane_3" parent="Sketchfab_model/Root/Plane" index="3"]
+visibility_range_end = 150.0
+visibility_range_end_margin = 10.0
+visibility_range_fade_mode = 1
+
+[node name="Icosphere_0" parent="Sketchfab_model/Root/Plane/Icosphere" index="0"]
+visibility_range_end = 150.0
+visibility_range_end_margin = 10.0
+visibility_range_fade_mode = 1
+
+[node name="Icosphere001_0" parent="Sketchfab_model/Root/Plane/Icosphere001" index="0"]
+visibility_range_end = 150.0
+visibility_range_end_margin = 10.0
+visibility_range_fade_mode = 1

@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://i7tx4loku5ca"]
+
+[ext_resource type="PackedScene" uid="uid://v2kdg4y087xl" path="res://Pickups/base_pickup.tscn" id="1_hun7t"]
+[ext_resource type="PackedScene" uid="uid://bemn6w2vy5arx" path="res://Models/apple_model.tscn" id="2_nwn06"]
+
+[node name="BasePickup" instance=ExtResource("1_hun7t")]
+
+[node name="Apple" parent="Object" index="0" instance=ExtResource("2_nwn06")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.02953, 0)

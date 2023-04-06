@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://dwf4kotup1jxv"]
+
+[ext_resource type="PackedScene" uid="uid://cl6ikerax3saf" path="res://Characters/crab.glb" id="1_v2ki8"]
+
+[node name="crab" instance=ExtResource("1_v2ki8")]
+
+[node name="Node" parent="." index="0"]
+visibility_range_end = 150.0
+visibility_range_end_margin = 10.0
+visibility_range_fade_mode = 1

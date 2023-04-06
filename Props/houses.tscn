@@ -17,6 +17,9 @@ size = Vector3(0.00979316, 0.00546669, 0.0102336)
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
 
 [node name="Houses_SecondAge_3_Level3" parent="RootNode" index="0"]
+visibility_range_end = 200.0
+visibility_range_end_margin = 10.0
+visibility_range_fade_mode = 1
 surface_material_override/0 = ExtResource("2_3nh45")
 surface_material_override/1 = ExtResource("3_0wyk3")
 surface_material_override/2 = ExtResource("4_kwfmw")

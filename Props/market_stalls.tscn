@@ -19,6 +19,9 @@ size = Vector3(0.00587128, 0.00945683, 0.00539141)
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
 
 [node name="Market_SecondAge_Level2" parent="RootNode" index="0"]
+visibility_range_end = 200.0
+visibility_range_end_margin = 10.0
+visibility_range_fade_mode = 1
 surface_material_override/0 = ExtResource("2_wflcs")
 surface_material_override/1 = ExtResource("3_wxlkv")
 surface_material_override/3 = ExtResource("4_bynjp")

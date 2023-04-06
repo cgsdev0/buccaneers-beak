@@ -18,6 +18,7 @@ func _input(event):
 			interactable = false
 			$Arrow.visible = false
 			await Story.finish_dialogue
+			$%map.hide()
 			$CameraController.previous_camera()
 		else:
 			Story.enable_interaction.emit(false)

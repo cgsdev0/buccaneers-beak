@@ -17,6 +17,9 @@ transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0152503, 0)
 
 [node name="Farm_SecondAge_Level3" parent="RootNode" index="0"]
+visibility_range_end = 200.0
+visibility_range_end_margin = 10.0
+visibility_range_fade_mode = 1
 surface_material_override/0 = ExtResource("2_25mef")
 surface_material_override/1 = ExtResource("3_7u4fb")
 surface_material_override/2 = ExtResource("2_25mef")
