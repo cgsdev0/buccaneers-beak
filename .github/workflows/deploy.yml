@@ -8,7 +8,7 @@ on:
   
 jobs:
   export_web:
-    name: HTML5 Export
+    name: Export
     runs-on: ubuntu-latest
 
     steps:
@@ -47,7 +47,14 @@ jobs:
       - uses: KikimoraGames/itch-publish@v0.0.3
         with:
           butlerApiKey: ${{secrets.BUTLER_API_KEY}}
-          gameData: ./builds/html/html5.zip
+          gameData: ./builds/windows/windows.zip
           itchUsername: badcop
           itchGameId: treasure
-          buildChannel: html5
+          buildChannel: windows
+      - uses: KikimoraGames/itch-publish@v0.0.3
+        with:
+          butlerApiKey: ${{secrets.BUTLER_API_KEY}}
+          gameData: ./builds/linux/linux.zip
+          itchUsername: badcop
+          itchGameId: treasure
+          buildChannel: linux
