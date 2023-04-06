@@ -108,7 +108,7 @@ allowed = true
 
 [node name="Player" type="CharacterBody3D" parent="." groups=["player"]]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 187.71, 13.9737, -266.778)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.7583, 13.9737, 106.58)
 collision_layer = 3
 script = ExtResource("5_qw6wc")
 

@@ -6,6 +6,7 @@ const JUMP_VELOCITY = 15.0
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
+var inside = false
 
 func disable_collider():
 	self.set_collision_layer_value(1, false)
@@ -19,6 +20,8 @@ func activate_camera():
 	
 func _ready():
 	floor_snap_length = 1.0
+	floor_max_angle = 0.9 # 0.785398
+
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	activate_camera()
 
@@ -27,8 +30,8 @@ var _total_pitch = 0.0
 
 func get_water_height(world_position: Vector2):
 	var water_time = Time.get_ticks_msec() / 1000.0
-	var wave1 = sin((world_position.x) / 20.0 + water_time / 2.0) * sin((world_position.y) / 20.0 + water_time / 2.0) * 2.0;
-	var wave2 = sin((world_position.x) / 20.0 - water_time / 2.0) * 2.0;
+	var wave1 = sin((world_position.x) / 40.0 + water_time / 3.0) * sin((world_position.y) / 37.0 + water_time / 3.0) * 3.0;
+	var wave2 = sin((world_position.x) / 40.0 - water_time / 3.0) * 3.0;
 	return (wave1 + wave2) / 2.0 - 3.0;
 	
 func _input(event):
@@ -62,8 +65,8 @@ func _physics_process(delta):
 		velocity.y -= gravity * delta
 
 	var speed_modifier = 1.0
-	var wh = get_water_height(Vector2(global_transform.origin.x, global_transform.origin.z)) - 1.9
-	if wh >= global_transform.origin.y:
+	var wh = get_water_height(Vector2(global_transform.origin.x, global_transform.origin.z)) - 1.7
+	if wh >= global_transform.origin.y && !inside:
 		global_transform.origin.y = wh
 		velocity.y = max(0.0, velocity.y)
 	

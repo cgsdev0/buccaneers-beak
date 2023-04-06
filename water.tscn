@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://bummsrf2coi7n" path="res://noise.png" id="3_1dsiv"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qf8jr"]
-render_priority = 0
+render_priority = -1
 shader = ExtResource("2_b0m1c")
 shader_parameter/noise = ExtResource("3_1dsiv")
 
