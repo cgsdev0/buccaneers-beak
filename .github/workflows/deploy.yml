@@ -45,13 +45,6 @@ jobs:
       - uses: KikimoraGames/itch-publish@v0.0.3
         with:
           butlerApiKey: ${{secrets.BUTLER_API_KEY}}
-          gameData: ./builds/html/html5.zip
-          itchUsername: badcop
-          itchGameId: treasure
-          buildChannel: html5
-      - uses: KikimoraGames/itch-publish@v0.0.3
-        with:
-          butlerApiKey: ${{secrets.BUTLER_API_KEY}}
           gameData: ./builds/windows/windows.zip
           itchUsername: badcop
           itchGameId: treasure
