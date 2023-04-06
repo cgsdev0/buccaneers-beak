@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://c463elqruuo5v"]
+[gd_scene load_steps=9 format=3 uid="uid://c463elqruuo5v"]
 
 [ext_resource type="PackedScene" uid="uid://g5immh507xlx" path="res://Characters/captain_avery.glb" id="1_6h4cc"]
 [ext_resource type="Script" path="res://Characters/captain_avery.gd" id="2_2rxov"]
 [ext_resource type="PackedScene" uid="uid://bj8f44agdkdp5" path="res://Models/arrow.tscn" id="3_4dqtx"]
+[ext_resource type="PackedScene" uid="uid://un48kes3ojwd" path="res://Characters/Pirate hat.glb" id="3_nx5p5"]
 [ext_resource type="Script" path="res://CameraController.gd" id="4_en5wr"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_dpu64"]
@@ -36,6 +37,9 @@ script = ExtResource("2_2rxov")
 
 [node name="SeaLion_Mesh" parent="." index="0"]
 transform = Transform3D(1.0311, 0, 0, 0, 0.9689, 0, 0, 0, 1.0311, 0, 0, 0)
+
+[node name="Pirate hat" parent="SeaLion_Mesh" index="0" instance=ExtResource("3_nx5p5")]
+transform = Transform3D(0.241514, -0.0316806, 0.17512, -0.14766, 0.129103, 0.226999, -0.0993337, -0.268939, 0.0883411, -0.0854291, 6.50795, 2.39209)
 
 [node name="Arrow" parent="." index="1" instance=ExtResource("3_4dqtx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.2522, 1.08482)

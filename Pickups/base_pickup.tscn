@@ -1,11 +1,37 @@
-[gd_scene load_steps=7 format=3 uid="uid://dfltnsx8c06b1"]
+[gd_scene load_steps=6 format=3 uid="uid://v2kdg4y087xl"]
 
-[ext_resource type="PackedScene" uid="uid://b18c2e2ktpeek" path="res://Models/Pipe.glb" id="1_kd4b4"]
-[ext_resource type="Script" path="res://Pickups/pipe_pickup.gd" id="1_qnyf8"]
+[ext_resource type="Script" path="res://Pickups/pickup.gd" id="1_k755e"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_vfla0"]
 height = 2.6357
 radius = 1.0
+
+[sub_resource type="Animation" id="Animation_7w8t6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Object:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Object:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_lrea6"]
 resource_name = "spin"
@@ -36,33 +62,6 @@ tracks/1/keys = {
 "values": [Vector3(0, 0, 0), Vector3(0, 1.5708, 0), Vector3(0, 3.14159, 0), Vector3(0, 4.71239, 0), Vector3(0, 6.28319, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_7w8t6"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Object:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Object:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_hatmb"]
 _data = {
 "RESET": SubResource("Animation_7w8t6"),
@@ -70,12 +69,9 @@ _data = {
 }
 
 [node name="BasePickup" type="Node3D"]
-script = ExtResource("1_qnyf8")
+script = ExtResource("1_k755e")
 
 [node name="Object" type="Node3D" parent="."]
-
-[node name="Pipe" parent="Object" instance=ExtResource("1_kd4b4")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 1.76128, 0.873009)
 
 [node name="Area3D" type="Area3D" parent="."]
 collision_layer = 0

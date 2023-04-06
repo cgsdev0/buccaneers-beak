@@ -11,7 +11,7 @@
 [ext_resource type="Theme" uid="uid://wfvqaww73llt" path="res://UI/ui.theme" id="9_r33j7"]
 [ext_resource type="Script" path="res://UI/interact_hint.gd" id="10_f5jdh"]
 [ext_resource type="Script" path="res://UI/FontScale.gd" id="10_rr74k"]
-[ext_resource type="PackedScene" uid="uid://cxd5mn1da31hf" path="res://spawn.tscn" id="10_s5ncu"]
+[ext_resource type="PackedScene" uid="uid://dtmrhk6554e6d" path="res://spawn.tscn" id="10_s5ncu"]
 [ext_resource type="PackedScene" uid="uid://daaedgpnenvv1" path="res://UI/pause_menu.tscn" id="13_qc1rt"]
 [ext_resource type="PackedScene" uid="uid://duxefvqkae66b" path="res://Characters/crab.tscn" id="14_7n3ut"]
 [ext_resource type="PackedScene" uid="uid://c12ufhc6674fu" path="res://Characters/goat.tscn" id="15_xspii"]
