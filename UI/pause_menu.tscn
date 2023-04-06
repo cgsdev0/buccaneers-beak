@@ -1,8 +1,9 @@
-[gd_scene load_steps=20 format=3 uid="uid://daaedgpnenvv1"]
+[gd_scene load_steps=21 format=3 uid="uid://daaedgpnenvv1"]
 
 [ext_resource type="Theme" uid="uid://4s2i76go0wv0" path="res://UI/menu.theme" id="1_olc6f"]
 [ext_resource type="Script" path="res://UI/pause_menu.gd" id="2_bqjf3"]
 [ext_resource type="Script" path="res://UI/Quit.gd" id="3_ajuc3"]
+[ext_resource type="Script" path="res://UI/inventory.gd" id="3_b0nuj"]
 [ext_resource type="Script" path="res://UI/map.gd" id="4_3rhs4"]
 [ext_resource type="Material" uid="uid://v4v7bo4ibncj" path="res://Materials/map.tres" id="4_k8vcs"]
 [ext_resource type="Texture2D" uid="uid://bf0x7ipgu3fu1" path="res://Map/map01.png" id="5_f6l7r"]
@@ -229,6 +230,16 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
 text = "Inventory"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Inventory" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("3_b0nuj")
 
 [node name="PanelContainer2" type="PanelContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2

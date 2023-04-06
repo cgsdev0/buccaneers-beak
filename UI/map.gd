@@ -5,7 +5,7 @@ extends MarginContainer
 var timer = 0.0
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	GameState.acquire_map.connect(on_map)
+	GameState.on_acquire_map.connect(on_map)
 
 func on_map(i: int) -> void:
 	get_child(i).material = null

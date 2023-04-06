@@ -78,12 +78,37 @@ var lines = {
 		"follow_me": { "text": [ "follow me!" ] }
 	},
 	Character.GOAT: {
-		"ENTRY": { "text": ["trade for that pipe"], "next": "ok" },
+		"still_no_pipe": { "text": ["Look, I'm not giving up the map until you get me my pipe!"] },
+		"ENTRY": { "text": ["Did you find my pipe?"], "next": "ok" },
 		"ok": { "input": [
 				{ "text": "(give pipe)", "next": "nice" },
+				{ "text": "(lie) no", "next": "not_nice"}
 		] },
-		"nice": { "text": ["nice"], "portrait": 1, "trigger": Trigger.GOAT_TRADE },
-		"follow_me": { "text": [ "follow me!" ] }
+		"not_nice": { "text": ["Then I'm gonna keep munchin'!"] },
+		"nice": { "text": ["[i](puffs)[/i] Ahhh... thank you. Here, take your stupid map. It didn't taste good anyways."], "portrait": 1, "trigger": Trigger.GOAT_TRADE },
+		"no_pipe": { "next": "not_food", "text": [ 
+			"[i](chewing loudly)[/i] Mmm, this is delicious! I've been searching for a good meal all day."
+		] },
+		"not_food": { "input": [
+				{ "text": "Stop! That's not food!", "next": "yes_it_is" },
+		] },
+		"yes_it_is": { "next": "i_need", "text": [ 
+			"Oh, I know what it is. But I'm also pretty sure it's food. Everything's food if you're determined enough!"
+		] },
+		"i_need": { "input": [
+				{ "text": "Please, can I have the map?", "next": "no_interest" },
+				{ "text": "Hand it over!", "next": "no_interest" },
+		] },
+		"no_interest": { "next": "trade", "text": [ 
+			"Sorry, kid. This map piece is mine now. And I'm gonna eat every last crumb of it!"
+		] },
+		"trade": { "input": [
+				{ "text": "How about a trade?", "next": "find_my_pipe" },
+		] },
+		"find_my_pipe": { "text": [ 
+			"Hmm... [i]well....[/i]",
+			{ "text": "If you can find my pipe, I suppose I'd be willing to give up the paper. I lost it somewhere on the island.", "clear": false}
+		] }
 	}
 }
 

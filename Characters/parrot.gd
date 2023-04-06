@@ -13,7 +13,7 @@ func _ready():
 	$parrot/AnimationPlayer.play("breathe")
 	if owner:
 		boat = owner
-	GameState.acquire_map.connect(got_new_map)
+	GameState.on_acquire_map.connect(got_new_map)
 #	current_basis = global_transform.basis
 
 func got_new_map(i: int) -> void:

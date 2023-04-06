@@ -19,7 +19,7 @@ func _input(event):
 			$Arrow.visible = false
 			await Story.finish_dialogue
 			$CameraController.previous_camera()
-			GameState.acquire_map.emit(0)
+			GameState.acquire_map(0)
 		else:
 			Story.enable_interaction.emit(false)
 			$CameraController.active = true

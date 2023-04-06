@@ -1,7 +1,7 @@
 extends Node3D
 
 var out = true
-var interactable = true
+var exposition = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -14,23 +14,31 @@ func on_trigger(trigger: Story.Trigger):
 			$%map.hide()
 			$%Pipe.show()
 			$%Pipe/GPUParticles3D.emitting = true
+			GameState.acquire_map(3)
+			GameState.delete_item(GameState.Pickup.PIPE)
 			
 func _input(event):
 	if out:
 		return
 	if event.is_action_pressed("interact"):
-		if interactable:
+		if GameState.has_item(GameState.Pickup.PIPE):
 			Story.enable_interaction.emit(false)
 			$CameraController.active = true
 			Story.trigger(Story.Character.GOAT)
-			interactable = false
 			$Arrow.visible = false
 			await Story.finish_dialogue
 			$CameraController.previous_camera()
-		else:
+		elif exposition:
 			Story.enable_interaction.emit(false)
 			$CameraController.active = true
-			Story.trigger(Story.Character.GOAT)
+			Story.trigger(Story.Character.GOAT, "still_no_pipe")
+			await Story.finish_dialogue
+			$CameraController.previous_camera()
+		else:
+			exposition = true
+			Story.enable_interaction.emit(false)
+			$CameraController.active = true
+			Story.trigger(Story.Character.GOAT, "no_pipe")
 			await Story.finish_dialogue
 			$CameraController.previous_camera()
 

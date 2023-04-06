@@ -4,6 +4,10 @@ enum Pickup {
 	PIPE
 }
 
+var item_names = {
+	Pickup.PIPE: "Mysterious Pipe"
+}
+
 var map_pieces = [ false, false, false, false ]
 
 var inventory = {
@@ -20,13 +24,12 @@ func next_map() -> int:
 	return map_pieces.size()
 	
 func _ready():
-	acquire_map.connect(_acquire_map)
 	call_deferred("cheats")
 
 func cheats():
-	acquire_map.emit(1)
-	acquire_map.emit(2)
-	acquire_map.emit(3)
+	acquire_map(1)
+	acquire_map(2)
+	acquire_map(3)
 	
 func pickup(item: Pickup):
 	if inventory.has(item):
@@ -35,13 +38,17 @@ func pickup(item: Pickup):
 		inventory[item] = 1
 	on_pickup.emit(item)
 
+func has_item(item: Pickup, count = 1) -> bool:
+	return inventory.has(item) && inventory[item] >= count
+		
 func delete_item(item: Pickup):
 	inventory.erase(item)
 	on_delete_item.emit(item)
 	
-func _acquire_map(i: int) -> void:
+func acquire_map(i: int) -> void:
 	map_pieces[i] = true
+	on_acquire_map.emit(i)
 
-signal acquire_map(i: int)
+signal on_acquire_map(i: int)
 signal on_pickup(item: Pickup)
 signal on_delete_item(item: Pickup)
