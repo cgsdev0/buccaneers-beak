@@ -6,7 +6,15 @@ var interactable = true
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$AnimationPlayer.play("breathe")
+	Story.dialogue_event.connect(on_trigger)
 
+func on_trigger(trigger: Story.Trigger):
+	match trigger:
+		Story.Trigger.GOAT_TRADE:
+			$%map.hide()
+			$%Pipe.show()
+			$%Pipe/GPUParticles3D.emitting = true
+			
 func _input(event):
 	if out:
 		return

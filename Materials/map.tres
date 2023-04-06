@@ -1,0 +1,9 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://v4v7bo4ibncj"]
+
+[ext_resource type="Shader" path="res://map_outline.gdshader" id="1_vjxeg"]
+
+[resource]
+shader = ExtResource("1_vjxeg")
+shader_parameter/color = Color(0, 0, 0, 0.501961)
+shader_parameter/color2 = Color(0, 0, 0, 0.145098)
+shader_parameter/width = 5.0

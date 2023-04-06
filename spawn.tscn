@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cxd5mn1da31hf"]
+[gd_scene load_steps=19 format=3]
 
 [ext_resource type="PackedScene" uid="uid://bsg1jxbbgn7gk" path="res://spawn.glb" id="1_pfc6m"]
 [ext_resource type="Shader" path="res://level.gdshader" id="2_a1hq8"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://pmsvqrx4817f" path="res://Props/houses.tscn" id="14_kftr2"]
 [ext_resource type="PackedScene" uid="uid://dma11kbn4hxt1" path="res://Props/palm_tree.tscn" id="14_odxwh"]
 [ext_resource type="PackedScene" uid="uid://sovwg5ni65bi" path="res://Props/market_stalls.tscn" id="15_andce"]
+[ext_resource type="PackedScene" uid="uid://dfltnsx8c06b1" path="res://Pickups/pipe_pickup.tscn" id="15_gb84n"]
 [ext_resource type="PackedScene" uid="uid://dxw2lynqr5xdv" path="res://Props/mine.tscn" id="15_rcagl"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lao6a"]

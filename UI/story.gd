@@ -7,16 +7,20 @@ enum Character {
 	GOAT
 }
 
+enum Trigger {
+	GOAT_TRADE
+}
+
 func get_portrait(char: Character):
 	match char:
 		Character.CAPTAIN_AVERY:
-			return preload("res://Characters/Portraits/captain_avery.png")
+			return [preload("res://Characters/Portraits/captain_avery.png")]
 		Character.PARROT:
-			return preload("res://Characters/Portraits/parrot.png")
+			return [preload("res://Characters/Portraits/parrot.png")]
 		Character.CRAB:
-			return preload("res://Characters/Portraits/crab.png")
+			return [preload("res://Characters/Portraits/crab.png")]
 		Character.GOAT:
-			return preload("res://Characters/Portraits/goat2.png")
+			return [preload("res://Characters/Portraits/goat2.png"), preload("res://Characters/Portraits/goat3.png")]
 			
 var templates = {
 		"a": { "next": "", "text": [] },
@@ -74,11 +78,11 @@ var lines = {
 		"follow_me": { "text": [ "follow me!" ] }
 	},
 	Character.GOAT: {
-		"ENTRY": { "text": ["have you tried rewriting it in rust?"] },
-		"join_forces": { "text": ["caw"], "next": "continued" },
-		"continued": { "input": [
-				{ "text": "where we droppin", "next": "follow_me" },
+		"ENTRY": { "text": ["trade for that pipe"], "next": "ok" },
+		"ok": { "input": [
+				{ "text": "(give pipe)", "next": "nice" },
 		] },
+		"nice": { "text": ["nice"], "portrait": 1, "trigger": Trigger.GOAT_TRADE },
 		"follow_me": { "text": [ "follow me!" ] }
 	}
 }
@@ -87,6 +91,7 @@ func trigger(char: Character, entry = "ENTRY"):
 	enable_interaction.emit(false)
 	self.dialogue.emit(char, lines[char][entry].duplicate(true))
 
+signal dialogue_event(trigger: Trigger)
 signal dialogue(char: Character, data)
 signal finish_dialogue(char: Character)
 signal enable_interaction(e: bool)

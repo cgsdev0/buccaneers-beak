@@ -39,7 +39,14 @@ func on_dialogue(char, data):
 #	Game.block_interaction = true
 #	Tutorial.in_dialogue = true
 
-	$%Portrait.texture.atlas = Story.get_portrait(char)
+	if data.has("trigger"):
+		Story.dialogue_event.emit(data.trigger)
+		
+	if data.has("portrait"):
+		$%Portrait.texture.atlas = Story.get_portrait(char)[data.portrait]
+	else:
+		$%Portrait.texture.atlas = Story.get_portrait(char)[0]
+		
 	if data.has("delay"):
 		await get_tree().create_timer(data.delay).timeout
 		
