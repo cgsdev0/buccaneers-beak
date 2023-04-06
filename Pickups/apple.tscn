@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bemn6w2vy5arx" path="res://Models/apple_model.tscn" id="2_nwn06"]
 
 [node name="BasePickup" instance=ExtResource("1_hun7t")]
+pickup_type = 1
 
 [node name="Apple" parent="Object" index="0" instance=ExtResource("2_nwn06")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.02953, 0)

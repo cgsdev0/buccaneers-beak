@@ -124,7 +124,7 @@ func take_off():
 
 	
 func _input(event):
-	if out || !interactable:
+	if out || !interactable || !attached:
 		return
 	if event.is_action_pressed("interact"):
 		match GameState.next_map():
@@ -134,7 +134,6 @@ func _input(event):
 				await Story.finish_dialogue
 				$CameraController.previous_camera()
 			1:
-				Story.enable_interaction.emit(false)
 				$CameraController.active = true
 				Story.trigger(Story.Character.PARROT, "join_forces")
 				interactable = false
@@ -146,10 +145,14 @@ func _input(event):
 		
 
 func _on_area_3d_body_entered(body):
-	Story.enable_interaction.emit(true)
 	out = false
+	if !attached:
+		return
+	Story.enable_interaction.emit(Story.Character.PARROT)
 
 
 func _on_area_3d_body_exited(body):
-	Story.enable_interaction.emit(false)
 	out = true
+	if !attached:
+		return
+	Story.disable_interaction.emit()

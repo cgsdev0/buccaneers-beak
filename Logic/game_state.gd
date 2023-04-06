@@ -25,32 +25,38 @@ func next_map() -> int:
 			return i
 	return map_pieces.size()
 	
-func _ready():
-	call_deferred("cheats")
-
-func cheats():
-	acquire_map(1)
-	acquire_map(2)
-	acquire_map(3)
+#func _ready():
+#	call_deferred("cheats")
+#
+#func cheats():
+#	acquire_map(1)
+#	acquire_map(2)
+#	acquire_map(3)
 	
 func pickup(item: Pickup):
 	if inventory.has(item):
 		inventory[item] += 1
 	else:
 		inventory[item] = 1
+	on_inventory_update.emit()
 	on_pickup.emit(item)
 
 func has_item(item: Pickup, count = 1) -> bool:
 	return inventory.has(item) && inventory[item] >= count
 		
-func delete_item(item: Pickup):
-	inventory.erase(item)
-	on_delete_item.emit(item)
+func delete_item(item: Pickup, count = 1):
+	if inventory.has(item):
+		on_delete_item.emit(item, count)
+		inventory[item] -= count
+		if count <= 0:
+			inventory.erase(item)
+		on_inventory_update.emit()
 	
 func acquire_map(i: int) -> void:
 	map_pieces[i] = true
 	on_acquire_map.emit(i)
 
 signal on_acquire_map(i: int)
+signal on_inventory_update
 signal on_pickup(item: Pickup)
-signal on_delete_item(item: Pickup)
+signal on_delete_item(item: Pickup, count: int)

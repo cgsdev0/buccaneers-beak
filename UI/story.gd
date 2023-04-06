@@ -8,7 +8,8 @@ enum Character {
 }
 
 enum Trigger {
-	GOAT_TRADE
+	GOAT_TRADE,
+	CRAB_MAP
 }
 
 func get_portrait(char: Character):
@@ -29,6 +30,68 @@ var templates = {
 		] },
 }
 var lines = {
+	Character.CRAB: {
+		"exposition": { "next": "got_treasure", "text": ["What do you want? Can't you see I'm busy here?"] },
+		"got_treasure": { "input": [ 
+			{ "text": "I'm looking for a map piece.", "next": "oh_great" }
+		] },
+		"oh_great": { "next": "offer", "text": [ "Oh, great. Another human after my treasures. What makes you think I would just hand it over to you?"] },
+		"offer": { "input": [ 
+			{ "text": "Because... you're a great guy?", "next": "laugh" },
+			{ "text": "Maybe we can make a deal.", "next": "deal" }
+		] },
+		"offer2": { "input": [ 
+			{ "text": "Maybe we can make a deal.", "next": "deal" }
+		] },
+		"laugh": { "next": "offer2", "text": [ "Hah! You make me laugh.", "...I hate laughing." ] },
+		"deal": { "next": "negotiate", "text": ["Hmph. I suppose it's worth hearing what you have to offer. But don't expect me to just give it to you."] },
+		"negotiate": { "input": [ 
+			{ "text": "I know crabs like shiny things.", "next": "try_again" },
+			{ "text": "I could bring you some... fruit?", "next": "yes_please" },
+		] },
+		"negotiate2": { "input": [ 
+			{ "text": "I could bring you some... fruit?", "next": "yes_please" },
+		] },
+		"try_again": { "next": "negotiate2", "text": ["Shiny objects? Bah! I have enough of those. You'll have to come up with something better than that if you want my map piece."] },
+		"yes_please": { "text": [
+			"Now you're talking. I do love a good meal. Bring me a feast fit for a king, and we'll talk more about that map piece. But don't try to trick me, human. I have a keen eye for deceit.",
+			"Gather at least [b][color=yellow]5 apples[/color][/b] from the surrounding islands, and bring them to me."
+			] },
+		"not_enough_apples": {
+			"next": "q1", "text": [
+				"Back so soon? Do you have my apples?"
+			],
+		},
+		"go_away": {
+			"text": [
+				"Then we have nothing to discuss."
+			],
+		},
+		"enough_apples": {
+			"next": "q2", "text": [
+				"Back so soon? Do you have my apples?"
+			],
+		},
+		"q1": { "input": [ 
+			{ "text": "No", "next": "go_away" }
+		] },
+		"q2": { "input": [ 
+			{ "text": "(give apples)", "next": "trade_for_map" },
+			{ "text": "No", "next": "go_away" },
+		] },
+		"trade_for_map": {
+			"trigger": Trigger.CRAB_MAP, "next": "thanks", "text": [
+				"Hmm, not bad. I suppose this will suffice.",
+				"Very well, I'll give it to you as promised. But remember, this is just the beginning of your journey. If you wish to find the treasure of Captain Blackbeard, you'll need to keep your wits about you and be prepared for any challenges that come your way."
+			],
+		},
+		"thanks": { "input": [ 
+			{ "text": "Thank you!", "next": "dont_mention_it" },
+			{ "text": "Goodbye." },
+		] },
+		"dont_mention_it": { "text": ["Don't mention it. Now be off with you, before I change my mind. And don't forget to bring me more apples next time you visit!"] },
+		"safe_travels": { "text": ["Safe travels, friend."]}
+	},
 	Character.CAPTAIN_AVERY: {
 		"find_it_yet": { "text": [ "You find that treasure yet?" ]},
 		"ENTRY": { "next": "2", "text": [ "Ahoy there, matey! Ye be lookin' for the treasure of [wave]Captain Blackbeard[/wave], I reckon?" ] },
@@ -63,14 +126,6 @@ var lines = {
 	},
 	Character.PARROT: {
 		"get_map_0": { "text": ["Squawk! Whaddya lookin' at? Keep movin'! Squawk!"] },
-		"join_forces": { "text": ["caw"], "next": "continued" },
-		"continued": { "input": [
-				{ "text": "where we droppin", "next": "follow_me" },
-		] },
-		"follow_me": { "text": [ "follow me!" ] }
-	},
-	Character.CRAB: {
-		"ENTRY": { "text": ["have you tried rewriting it in rust?"] },
 		"join_forces": { "text": ["caw"], "next": "continued" },
 		"continued": { "input": [
 				{ "text": "where we droppin", "next": "follow_me" },
@@ -113,10 +168,13 @@ var lines = {
 }
 
 func trigger(char: Character, entry = "ENTRY"):
-	enable_interaction.emit(false)
+	disable_interaction.emit()
 	self.dialogue.emit(char, lines[char][entry].duplicate(true))
 
 signal dialogue_event(trigger: Trigger)
 signal dialogue(char: Character, data)
 signal finish_dialogue(char: Character)
-signal enable_interaction(e: bool)
+signal enable_interaction(char: Character)
+signal disable_interaction()
+signal enable_boat_interaction()
+signal disable_boat_interaction()

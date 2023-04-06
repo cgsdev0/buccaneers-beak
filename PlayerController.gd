@@ -14,10 +14,13 @@ func enable_collider():
 	self.set_collision_layer_value(1, false)
 	$RemoteTransform3D.rotation = Vector3.ZERO
 	
+func activate_camera():
+	$RemoteTransform3D.active = true
+	
 func _ready():
 	floor_snap_length = 1.0
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	$RemoteTransform3D.active = true
+	activate_camera()
 
 var _mouse_position = Vector2(0.0, 0.0)
 @export_range(0.0, 1.0) var sensitivity = 0.25
@@ -53,6 +56,8 @@ func _process(delta):
 	_update_mouselook()
 	
 func _physics_process(delta):
+	if !$RemoteTransform3D.active:
+		return
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y -= gravity * delta

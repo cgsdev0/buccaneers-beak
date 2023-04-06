@@ -1,6 +1,6 @@
 extends Node3D
 
-@export var pickup_type: GameState.Pickup = GameState.Pickup.PIPE
+@export var pickup_type: GameState.Pickup
 
 var consumed = false
 # Called when the node enters the scene tree for the first time.

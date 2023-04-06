@@ -12,7 +12,6 @@ func _input(event):
 		return
 	if event.is_action_pressed("interact"):
 		if interactable:
-			Story.enable_interaction.emit(false)
 			$CameraController.active = true
 			Story.trigger(Story.Character.CAPTAIN_AVERY)
 			interactable = false
@@ -21,17 +20,16 @@ func _input(event):
 			$CameraController.previous_camera()
 			GameState.acquire_map(0)
 		else:
-			Story.enable_interaction.emit(false)
 			$CameraController.active = true
 			Story.trigger(Story.Character.CAPTAIN_AVERY, "find_it_yet")
 			await Story.finish_dialogue
 			$CameraController.previous_camera()
 
 func _on_area_3d_body_entered(body):
-	Story.enable_interaction.emit(true)
+	Story.enable_interaction.emit(Story.Character.CAPTAIN_AVERY)
 	out = false
 
 
 func _on_area_3d_body_exited(body):
-	Story.enable_interaction.emit(false)
+	Story.disable_interaction.emit()
 	out = true

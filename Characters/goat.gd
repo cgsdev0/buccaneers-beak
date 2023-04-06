@@ -23,31 +23,28 @@ func _input(event):
 	if event.is_action_pressed("interact"):
 		if exposition:
 			if GameState.has_item(GameState.Pickup.PIPE):
-				Story.enable_interaction.emit(false)
 				$CameraController.active = true
 				Story.trigger(Story.Character.GOAT)
 				$Arrow.visible = false
 				await Story.finish_dialogue
 				$CameraController.previous_camera()
 			else:
-				Story.enable_interaction.emit(false)
 				$CameraController.active = true
 				Story.trigger(Story.Character.GOAT, "no_pipe")
 				await Story.finish_dialogue
 				$CameraController.previous_camera()
 		else:
 			exposition = true
-			Story.enable_interaction.emit(false)
 			$CameraController.active = true
 			Story.trigger(Story.Character.GOAT, "exposition")
 			await Story.finish_dialogue
 			$CameraController.previous_camera()
 
 func _on_area_3d_body_entered(body):
-	Story.enable_interaction.emit(true)
+	Story.enable_interaction.emit(Story.Character.GOAT)
 	out = false
 
 
 func _on_area_3d_body_exited(body):
-	Story.enable_interaction.emit(false)
+	Story.disable_interaction.emit()
 	out = true

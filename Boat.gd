@@ -2,7 +2,9 @@ extends CharacterBody3D
 
 
 @onready var player = get_tree().get_first_node_in_group("player")
+@onready var player_parent = player.get_parent()
 
+var out = true
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	floor_max_angle = 0
@@ -28,13 +30,22 @@ func get_water_normal(pos: Vector2, forward: Vector3, right: Vector3):
 func _physics_process(delta):
 	if Input.is_action_just_pressed("enter_boat"):
 		if !$CameraController.active:
-			player.disable_collider()
-			$CameraController.active = true
+			if !out:
+				player.disable_collider()
+				$CameraController.active = true
+				player_parent.remove_child(player)
+				add_child(player)
+				player.global_transform.origin = global_transform.origin + Vector3(0.0, 1.0, 0.0)
+				Story.disable_boat_interaction.emit()
 		else:
+			remove_child(player)
+			player_parent.add_child(player)
 			player.global_transform.origin = global_transform.origin + Vector3(0.0, 1.0, 0.0)
 			player.global_rotation.y = global_rotation.y - PI / 2
 			player.enable_collider()
-			$CameraController.previous_camera()
+			player.activate_camera()
+			Story.enable_boat_interaction.emit()
+			out = false
 		
 	var input = Input.get_vector("move_right", "move_left", "move_down", "move_up")
 	if !$CameraController.active:
@@ -85,3 +96,14 @@ func _physics_process(delta):
 	move_and_slide()
 	if global_transform.origin.y < water_height - 0.5:
 		global_transform.origin.y = water_height - 0.5
+
+
+func _on_area_3d_body_entered(body):
+	if $CameraController.active:
+		return
+	out = false
+	Story.enable_boat_interaction.emit()
+
+func _on_area_3d_body_exited(body):
+	out = true
+	Story.disable_boat_interaction.emit()
