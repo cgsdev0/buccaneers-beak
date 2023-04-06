@@ -1,7 +1,6 @@
 extends Node3D
 
 var out = true
-var interactable = true
 
 var boat = null
 var attached = true
@@ -24,15 +23,21 @@ var rotation_speed = 0.0
 var speed = 0.0
 var target = Vector3.ZERO
 var actual_target = Vector3.ZERO
+var waypoint_list = []
 var boost = false
 var landing = false
 func _process(delta):
 	if attached:
 		return
 	if (boat_to_target() < 15.0 || landing):
-		target = boat.get_perch().global_transform.origin
-		land()
-		boost = false
+		if waypoint_list.is_empty():
+			target = boat.get_perch().global_transform.origin
+			land()
+			boost = false
+		else:
+			actual_target = waypoint_list[0]
+			target = actual_target
+			waypoint_list.pop_front()
 	elif dist_to_boat() > 80.0:
 		target = boat.global_transform.origin
 		boost = true
@@ -101,9 +106,30 @@ func toggle_trails(val):
 	$parrot/Wing1/Node3D/Trail3D.trailEnabled = val
 	$parrot/Wing2/Node3D/Trail3D.trailEnabled = val
 	
+func update_waypoints():
+	var waypoints = []
+	var next_map = GameState.next_map()
+	for waypoint in get_tree().get_nodes_in_group("waypoints"):
+		if waypoint.map_id == next_map:
+			waypoints.push_back(waypoint)
+	waypoints.sort_custom(func(a, b): return a.sequence_id < b.sequence_id)
+	self.waypoint_list = []
+	for waypoint in waypoints:
+		self.waypoint_list.push_back(waypoint.global_transform.origin)
+	if self.waypoint_list.size() == 0:
+		return false
+	target = self.waypoint_list.pop_front()
+	actual_target = target
+	return true
+		
 func take_off():
+	if !update_waypoints():
+		return
+		
 	$parrot/AnimationPlayer.play("take_off")
+	
 	if boat && attached:
+		boat.allow_driving()
 		velocity = owner.velocity
 		var t = global_transform
 		get_parent().remove_child(self)
@@ -122,9 +148,10 @@ func take_off():
 	tween.tween_property(self, "speed", 15.0, 5.0).set_delay(1.0)
 	tween.tween_callback(toggle_trails.bind(true)).set_delay(2.0)
 
+var explained_maps = [true, false, false, false]
 	
 func _input(event):
-	if out || !interactable || !attached:
+	if out || !attached:
 		return
 	if event.is_action_pressed("interact"):
 		match GameState.next_map():
@@ -135,12 +162,29 @@ func _input(event):
 				$CameraController.previous_camera()
 			1:
 				$CameraController.active = true
-				Story.trigger(Story.Character.PARROT, "join_forces")
-				interactable = false
-				$Arrow.visible = false
-				await Story.finish_dialogue
-				take_off()
-				await get_tree().create_timer(1.0).timeout
+				if !explained_maps[1]:
+					Story.trigger(Story.Character.PARROT, "explain_map_1")
+					$Arrow.visible = false
+					await Story.finish_dialogue
+					explained_maps[1] = true
+					take_off()
+					await get_tree().create_timer(1.0).timeout
+				else:
+					Story.trigger(Story.Character.PARROT, "get_map_1")
+					await Story.finish_dialogue
+				$CameraController.previous_camera()
+			2:
+				$CameraController.active = true
+				if !explained_maps[2]:
+					Story.trigger(Story.Character.PARROT, "explain_map_2")
+					$Arrow.visible = false
+					await Story.finish_dialogue
+					explained_maps[2] = true
+					take_off()
+					await get_tree().create_timer(1.0).timeout
+				else:
+					Story.trigger(Story.Character.PARROT, "get_map_2")
+					await Story.finish_dialogue
 				$CameraController.previous_camera()
 		
 

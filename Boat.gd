@@ -5,10 +5,16 @@ extends CharacterBody3D
 @onready var player_parent = player.get_parent()
 
 var out = true
+var allowed = false
+
+func allow_driving():
+	allowed = true
+	if !out:
+		Story.enable_boat_interaction.emit()
+		
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	floor_max_angle = 0
-	pass # Replace with function body.
 
 func get_perch():
 	return $%Perch
@@ -28,7 +34,7 @@ func get_water_normal(pos: Vector2, forward: Vector3, right: Vector3):
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
-	if Input.is_action_just_pressed("enter_boat"):
+	if Input.is_action_just_pressed("enter_boat") && allowed:
 		if !$CameraController.active:
 			if !out:
 				player.disable_collider()
@@ -37,7 +43,9 @@ func _physics_process(delta):
 				add_child(player)
 				player.global_transform.origin = global_transform.origin + Vector3(0.0, 1.0, 0.0)
 				Story.disable_boat_interaction.emit()
+				Story.enable_boat_exit_interaction.emit()
 		else:
+			Story.disable_boat_exit_interaction.emit()
 			remove_child(player)
 			player_parent.add_child(player)
 			player.global_transform.origin = global_transform.origin + Vector3(0.0, 1.0, 0.0)
@@ -102,7 +110,8 @@ func _on_area_3d_body_entered(body):
 	if $CameraController.active:
 		return
 	out = false
-	Story.enable_boat_interaction.emit()
+	if allowed:
+		Story.enable_boat_interaction.emit()
 
 func _on_area_3d_body_exited(body):
 	out = true

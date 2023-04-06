@@ -16,6 +16,8 @@ var inventory = {
 	
 }
 
+var sensitivity = 0.25
+
 func is_map_complete():
 	return next_map() == map_pieces.size()
 	
@@ -48,7 +50,7 @@ func delete_item(item: Pickup, count = 1):
 	if inventory.has(item):
 		on_delete_item.emit(item, count)
 		inventory[item] -= count
-		if count <= 0:
+		if inventory[item] <= 0:
 			inventory.erase(item)
 		on_inventory_update.emit()
 	

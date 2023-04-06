@@ -28,3 +28,7 @@ func check_map():
 		$AnimationPlayer.play("map_complete")
 		await $AnimationPlayer.animation_finished
 		animating_map = false
+
+# sensitivity
+func _on_h_slider_value_changed(value):
+	GameState.sensitivity = value / 2.0

@@ -23,7 +23,6 @@ func _ready():
 	activate_camera()
 
 var _mouse_position = Vector2(0.0, 0.0)
-@export_range(0.0, 1.0) var sensitivity = 0.25
 var _total_pitch = 0.0
 
 func get_water_height(world_position: Vector2):
@@ -40,7 +39,7 @@ func _input(event):
 func _update_mouselook():
 	if Input.get_mouse_mode() != Input.MOUSE_MODE_CAPTURED:
 		return
-	_mouse_position *= sensitivity
+	_mouse_position *= GameState.sensitivity
 	var yaw = _mouse_position.x
 	var pitch = _mouse_position.y
 	_mouse_position = Vector2(0, 0)

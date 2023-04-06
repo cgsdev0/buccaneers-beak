@@ -126,11 +126,34 @@ var lines = {
 	},
 	Character.PARROT: {
 		"get_map_0": { "text": ["Squawk! Whaddya lookin' at? Keep movin'! Squawk!"] },
-		"join_forces": { "text": ["caw"], "next": "continued" },
+		"explain_map_1": { "text": ["Squawk! Where'd you get that map, hey?"], "next": "continued" },
 		"continued": { "input": [
-				{ "text": "where we droppin", "next": "follow_me" },
+				{ "text": "I got it from Captain Avery.", "next": "not_the_first" },
 		] },
-		"follow_me": { "text": [ "follow me!" ] }
+		"not_the_first": { "next": "who", "text": [
+			"A treasure hunter, eh? You're not the first, you know. My old captain had to deal with [i]dozens[/i] of you lot back in the day.",
+			"Always poking around, trying to get your grubby hands on his treasure."
+		]},
+		"who": { "input": [
+				{ "text": "Your old captain?", "next": "blackbeard" },
+				{ "text": "Can you help me find the treasure?", "next": "treasure" },
+		] },
+		"who2": { "input": [
+				{ "text": "Can you help me find the treasure?", "next": "treasure" },
+		] },
+		"blackbeard": { "next": "who2", "text": [
+			"Captain Blackbeard. Y'know, the one who [i]wrote that map you're holding?[/i]"
+		]},
+		"treasure": { "next": "next_map", "text": [
+			"Oh, I suppose I could. After all, I know more about treasure than you do. But let's get one thing straight: I'm not doing this for you. I'm doing it because it's what my captain would have wanted."
+		]},
+		"next_map": { "input": [
+				{ "text": "Do you know where the other map pieces are?", "next": "rough_idea" },
+		] },
+		"rough_idea": { "text": [ "I have a rough idea. Hop in that boat and follow me. Or don't, what do I care?" ] },
+		"get_map_1": { "text": ["Go talk to the ol' crab hermit. I think he has one of the map pieces."] },
+		"explain_map_2": { "text": ["this is the end of the demo"] },
+		"get_map_2": { "text": ["this is the end of the demo"] },
 	},
 	Character.GOAT: {
 		"no_pipe": { "text": ["Look, I'm not giving up the map until you get me my pipe!"] },
@@ -178,3 +201,5 @@ signal enable_interaction(char: Character)
 signal disable_interaction()
 signal enable_boat_interaction()
 signal disable_boat_interaction()
+signal enable_boat_exit_interaction()
+signal disable_boat_exit_interaction()

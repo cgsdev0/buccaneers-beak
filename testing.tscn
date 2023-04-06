@@ -1,11 +1,13 @@
-[gd_scene load_steps=19 format=3 uid="uid://cjqpal7cd40ga"]
+[gd_scene load_steps=21 format=3 uid="uid://cjqpal7cd40ga"]
 
 [ext_resource type="PackedScene" uid="uid://c133ejbc1i57c" path="res://level.tscn" id="1_fwxso"]
 [ext_resource type="PackedScene" uid="uid://b2kbc4yd0xtey" path="res://water.tscn" id="2_bevvh"]
 [ext_resource type="Script" path="res://PlayerController.gd" id="5_qw6wc"]
+[ext_resource type="Script" path="res://UI/boat_hint2.gd" id="5_uc48u"]
 [ext_resource type="PackedScene" uid="uid://cu5yw8s3rxl27" path="res://sail_boat.tscn" id="5_xeuv0"]
 [ext_resource type="Script" path="res://CameraController.gd" id="5_yclud"]
 [ext_resource type="Script" path="res://UI/boat_hint.gd" id="6_4evp4"]
+[ext_resource type="Script" path="res://UI/inventory_hints.gd" id="6_tm5ef"]
 [ext_resource type="Script" path="res://MainCamera3D.gd" id="7_x4tpy"]
 [ext_resource type="Environment" uid="uid://747lwqmhioy3" path="res://environment.tres" id="8_xq8ue"]
 [ext_resource type="PackedScene" uid="uid://ddo7ue3gqvu3a" path="res://UI/dialogue.tscn" id="9_bjaa3"]
@@ -36,14 +38,6 @@ grow_vertical = 2
 theme = ExtResource("9_r33j7")
 script = ExtResource("10_rr74k")
 
-[node name="Dialogue" parent="Control" instance=ExtResource("9_bjaa3")]
-visible = false
-layout_mode = 1
-
-[node name="PauseMenu" parent="Control" instance=ExtResource("13_qc1rt")]
-visible = false
-layout_mode = 1
-
 [node name="VBoxContainer" type="VBoxContainer" parent="Control"]
 layout_mode = 1
 anchors_preset = -1
@@ -69,6 +63,33 @@ text = "F = get in boat"
 horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("6_4evp4")
+
+[node name="BoatHint2" type="Label" parent="Control/VBoxContainer"]
+visible = false
+layout_mode = 2
+text = "F = exit boat"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("5_uc48u")
+
+[node name="InventoryHints" type="VBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.988
+anchor_top = 0.023
+anchor_right = 0.988
+anchor_bottom = 0.977
+grow_horizontal = 0
+grow_vertical = 0
+script = ExtResource("6_tm5ef")
+
+[node name="Dialogue" parent="Control" instance=ExtResource("9_bjaa3")]
+visible = false
+layout_mode = 1
+
+[node name="PauseMenu" parent="Control" instance=ExtResource("13_qc1rt")]
+visible = false
+layout_mode = 1
 
 [node name="level" parent="." instance=ExtResource("1_fwxso")]
 transform = Transform3D(1.17131, 0, 0, 0, 0.721176, 0, 0, 0, 1.15521, -188.796, -2.97457, 144.454)
@@ -119,10 +140,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 131.057, -7.48477, -308.535)
 
 [node name="goat" parent="." instance=ExtResource("15_xspii")]
 transform = Transform3D(0.0122828, 0, 0.599874, 0, 0.6, 0, -0.599874, 0, 0.0122828, 174.165, -10.9285, -266.817)
-
-[node name="Waypoints" type="Node3D" parent="."]
-unique_name_in_owner = true
-transform = Transform3D(-0.998042, 0, 0.0625466, 0, 1, 0, -0.0625466, 0, -0.998042, 849.428, -5.81049, -241)
 
 [node name="crab_land" parent="." instance=ExtResource("16_d04h1")]
 transform = Transform3D(-0.998042, 0, 0.0625466, 0, 1, 0, -0.0625466, 0, -0.998042, 849.428, -5.81049, -241)
