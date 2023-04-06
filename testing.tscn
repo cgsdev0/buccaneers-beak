@@ -1,7 +1,8 @@
-[gd_scene load_steps=21 format=3 uid="uid://cjqpal7cd40ga"]
+[gd_scene load_steps=25 format=3 uid="uid://cjqpal7cd40ga"]
 
 [ext_resource type="PackedScene" uid="uid://c133ejbc1i57c" path="res://level.tscn" id="1_fwxso"]
 [ext_resource type="PackedScene" uid="uid://b2kbc4yd0xtey" path="res://water.tscn" id="2_bevvh"]
+[ext_resource type="Texture2D" uid="uid://t8rs01gw8ayf" path="res://UI/Keyboard Letters and Symbols.png" id="3_yciay"]
 [ext_resource type="Script" path="res://PlayerController.gd" id="5_qw6wc"]
 [ext_resource type="Script" path="res://UI/boat_hint2.gd" id="5_uc48u"]
 [ext_resource type="PackedScene" uid="uid://cu5yw8s3rxl27" path="res://sail_boat.tscn" id="5_xeuv0"]
@@ -18,6 +19,18 @@
 [ext_resource type="PackedScene" uid="uid://daaedgpnenvv1" path="res://UI/pause_menu.tscn" id="13_qc1rt"]
 [ext_resource type="PackedScene" uid="uid://c12ufhc6674fu" path="res://Characters/goat.tscn" id="15_xspii"]
 [ext_resource type="PackedScene" uid="uid://dr2sbfmlmsyxt" path="res://Islands/crab_land.tscn" id="16_d04h1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_81a06"]
+atlas = ExtResource("3_yciay")
+region = Rect2(512, 256, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lc14w"]
+atlas = ExtResource("3_yciay")
+region = Rect2(640, 256, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3xh5g"]
+atlas = ExtResource("3_yciay")
+region = Rect2(640, 256, 128, 128)
 
 [sub_resource type="FogMaterial" id="FogMaterial_0ckys"]
 density = 0.008
@@ -48,29 +61,53 @@ anchor_bottom = 0.977
 grow_horizontal = 0
 grow_vertical = 0
 
-[node name="InteractionHint" type="Label" parent="Control/VBoxContainer"]
+[node name="InteractHint" type="HBoxContainer" parent="Control/VBoxContainer"]
 visible = false
 layout_mode = 2
-text = "E = speak"
-horizontal_alignment = 2
-vertical_alignment = 1
 script = ExtResource("10_f5jdh")
 
-[node name="BoatHint" type="Label" parent="Control/VBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="Control/VBoxContainer/InteractHint"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_81a06")
+expand_mode = 3
+
+[node name="Label" type="Label" parent="Control/VBoxContainer/InteractHint"]
+layout_mode = 2
+text = "Speak"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Control/VBoxContainer"]
 visible = false
 layout_mode = 2
-text = "F = get in boat"
-horizontal_alignment = 1
-vertical_alignment = 1
 script = ExtResource("6_4evp4")
 
-[node name="BoatHint2" type="Label" parent="Control/VBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="Control/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_lc14w")
+expand_mode = 3
+
+[node name="Label" type="Label" parent="Control/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "Drive Boat"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="Control/VBoxContainer"]
 visible = false
 layout_mode = 2
-text = "F = exit boat"
-horizontal_alignment = 1
-vertical_alignment = 1
 script = ExtResource("5_uc48u")
+
+[node name="TextureRect" type="TextureRect" parent="Control/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_3xh5g")
+expand_mode = 3
+
+[node name="Label" type="Label" parent="Control/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+text = "Exit Boat"
+horizontal_alignment = 2
+vertical_alignment = 1
 
 [node name="InventoryHints" type="VBoxContainer" parent="Control"]
 layout_mode = 1
