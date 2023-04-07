@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://cjqpal7cd40ga"]
+[gd_scene load_steps=45 format=3 uid="uid://cjqpal7cd40ga"]
 
 [ext_resource type="PackedScene" uid="uid://c133ejbc1i57c" path="res://level.tscn" id="1_fwxso"]
 [ext_resource type="PackedScene" uid="uid://b2kbc4yd0xtey" path="res://water.tscn" id="2_bevvh"]
@@ -14,15 +14,40 @@
 [ext_resource type="PackedScene" uid="uid://ddo7ue3gqvu3a" path="res://UI/dialogue.tscn" id="9_bjaa3"]
 [ext_resource type="Theme" uid="uid://wfvqaww73llt" path="res://UI/ui.theme" id="9_r33j7"]
 [ext_resource type="Script" path="res://UI/interact_hint.gd" id="10_f5jdh"]
+[ext_resource type="Script" path="res://Islands/cove.gd" id="10_hnhhl"]
 [ext_resource type="Script" path="res://UI/FontScale.gd" id="10_rr74k"]
 [ext_resource type="PackedScene" uid="uid://dtmrhk6554e6d" path="res://spawn.tscn" id="10_s5ncu"]
 [ext_resource type="PackedScene" uid="uid://daaedgpnenvv1" path="res://UI/pause_menu.tscn" id="13_qc1rt"]
 [ext_resource type="PackedScene" uid="uid://c12ufhc6674fu" path="res://Characters/goat.tscn" id="15_xspii"]
 [ext_resource type="PackedScene" uid="uid://dr2sbfmlmsyxt" path="res://Islands/crab_land.tscn" id="16_d04h1"]
+[ext_resource type="PackedScene" uid="uid://b5nimbw4bu2r6" path="res://island_3.tscn" id="20_8hkeb"]
+[ext_resource type="PackedScene" uid="uid://0f5dyuyfw1nf" path="res://chest.tscn" id="21_y20wc"]
+[ext_resource type="Script" path="res://Logic/waypoint.gd" id="22_b8uov"]
+[ext_resource type="Script" path="res://start_emit.gd" id="22_sop3d"]
+[ext_resource type="PackedScene" uid="uid://4j346qu3t7bf" path="res://Islands/goat_land.tscn" id="25_10r6p"]
+[ext_resource type="PackedScene" uid="uid://cyvey7xrm2qix" path="res://Models/chest_open.tscn" id="26_o5miw"]
+[ext_resource type="PackedScene" uid="uid://drpr3t4d377yw" path="res://Props/dock.tscn" id="27_6krst"]
+[ext_resource type="PackedScene" uid="uid://b8y80hgqposvh" path="res://Props/storage_shed.tscn" id="28_1n0yn"]
+[ext_resource type="Texture2D" uid="uid://bau5xp3n7lvi7" path="res://Characters/goat_tracks.png" id="28_x47lg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_81a06"]
 atlas = ExtResource("3_yciay")
 region = Rect2(512, 256, 128, 128)
+
+[sub_resource type="Animation" id="Animation_lviwn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:texture:region")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(512, 256, 128, 128)]
+}
 
 [sub_resource type="Animation" id="Animation_18yak"]
 resource_name = "button_down"
@@ -38,21 +63,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [Rect2(512, 256, 128, 128), Rect2(512, 1152, 128, 128)]
-}
-
-[sub_resource type="Animation" id="Animation_lviwn"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("TextureRect:texture:region")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Rect2(512, 256, 128, 128)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7tiwk"]
@@ -72,9 +82,76 @@ region = Rect2(640, 256, 128, 128)
 [sub_resource type="FogMaterial" id="FogMaterial_0ckys"]
 density = 0.008
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_3edeu"]
+height = 17.8338
+radius = 2.35268
+
+[sub_resource type="Animation" id="Animation_uq4og"]
+resource_name = "rise"
+length = 16.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("level:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5, 16),
+"transitions": PackedFloat32Array(0.378929, 0.378929, 1),
+"update": 0,
+"values": [Vector3(-105.234, -141.929, 684.23), Vector3(-105.234, -141.929, 684.23), Vector3(-105.234, -2.97457, 684.23)]
+}
+
+[sub_resource type="Animation" id="Animation_wd80p"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("level:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-105.234, -141.929, 684.23)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3fpyk"]
+_data = {
+"RESET": SubResource("Animation_wd80p"),
+"rise": SubResource("Animation_uq4og")
+}
+
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_yi6tk"]
 radius = 1.0
 height = 3.0
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_qy4k6"]
+lifetime_randomness = 0.33
+emission_shape = 3
+emission_box_extents = Vector3(0.1, 0.1, 2.3)
+direction = Vector3(0, 1, 0)
+spread = 20.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 1.0
+initial_velocity_max = 2.0
+damping_min = 0.2
+damping_max = 0.2
+scale_min = 0.15
+scale_max = 0.3
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_txe1j"]
+shading_mode = 0
+vertex_color_use_as_albedo = true
+grow_amount = 2.635
+
+[sub_resource type="SphereMesh" id="SphereMesh_71tnr"]
+material = SubResource("StandardMaterial3D_txe1j")
+radius = 20.0
+height = 40.0
+radial_segments = 8
+rings = 8
 
 [node name="Node3D" type="Node3D"]
 
@@ -173,19 +250,51 @@ layout_mode = 1
 visible = false
 layout_mode = 1
 
-[node name="level" parent="." instance=ExtResource("1_fwxso")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -188.796, -2.97457, 144.454)
+[node name="Cove" type="Node3D" parent="."]
+transform = Transform3D(0.136563, 0, -0.990631, 0, 1, 0, 0.990631, 0, 0.136563, -372.958, 0, 0)
+script = ExtResource("10_hnhhl")
 
-[node name="FogVolume" type="FogVolume" parent="level"]
+[node name="level" parent="Cove" instance=ExtResource("1_fwxso")]
+transform = Transform3D(0.152986, 0, -0.988228, 0, 1, 0, 0.988228, 0, 0.152986, -105.234, -141.929, 684.23)
+
+[node name="FogVolume" type="FogVolume" parent="Cove/level"]
 transform = Transform3D(1.81818, 0, 0, 0, 2.85714, 0, 0, 0, 1.81818, 140.818, 4.89143, 11.0994)
 size = Vector3(74.2691, 58.9221, 74.0968)
 shape = 2
 material = SubResource("FogMaterial_0ckys")
 
+[node name="CameraController" type="RemoteTransform3D" parent="Cove"]
+transform = Transform3D(-1, -1.53342e-08, 8.57793e-08, 0, 0.994759, 0.173012, -8.74228e-08, 0.175403, -0.981201, -112.706, 48.8787, 494.369)
+script = ExtResource("5_yclud")
+
+[node name="Waypoint7" type="Marker3D" parent="Cove"]
+transform = Transform3D(15, 0, 2.14577e-06, 0, 12, 0, 2.6226e-06, 0, 20, -112.706, 48.8787, 494.369)
+script = ExtResource("22_b8uov")
+map_id = 4
+sequence_id = 1
+
+[node name="Area3D" type="Area3D" parent="Cove/Waypoint7"]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Cove/Waypoint7/Area3D"]
+shape = SubResource("CylinderShape3D_3edeu")
+
+[node name="Waypoint8" type="Marker3D" parent="Cove"]
+transform = Transform3D(15, 0, 2.38419e-06, 0, 12, 0, 3.09944e-06, 0, 20, -239.081, 48.8787, -144.295)
+script = ExtResource("22_b8uov")
+map_id = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Cove"]
+libraries = {
+"": SubResource("AnimationLibrary_3fpyk")
+}
+
 [node name="Water" parent="." instance=ExtResource("2_bevvh")]
 
 [node name="Sail Boat" parent="." instance=ExtResource("5_xeuv0")]
 transform = Transform3D(-0.479534, 0, 0.877523, 0, 1, 0, -0.877523, 0, -0.479534, 264.653, 0.0534959, -237.654)
+allowed = true
 
 [node name="Player" type="CharacterBody3D" parent="." groups=["player"]]
 unique_name_in_owner = true
@@ -220,8 +329,109 @@ environment = ExtResource("8_xq8ue")
 [node name="spawn" parent="." instance=ExtResource("10_s5ncu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 131.057, -7.48477, -308.535)
 
-[node name="goat" parent="." instance=ExtResource("15_xspii")]
-transform = Transform3D(0.0122828, 0, 0.599874, 0, 0.6, 0, -0.599874, 0, 0.0122828, 174.165, -10.9285, -266.817)
-
 [node name="crab_land" parent="." instance=ExtResource("16_d04h1")]
 transform = Transform3D(-0.998042, 0, 0.0625466, 0, 1, 0, -0.0625466, 0, -0.998042, 849.428, -5.81049, -241)
+
+[node name="island_3" parent="." instance=ExtResource("20_8hkeb")]
+transform = Transform3D(15, 0, 0, 0, 12, 0, 0, 0, 20, 430.876, 21.8661, -1214.76)
+
+[node name="chest" parent="island_3" instance=ExtResource("21_y20wc")]
+transform = Transform3D(-0.524518, 0, -0.412031, 0, 0.667, 0, 0.412031, 0, -0.524518, -6.9621, -1.3321, 6.80231)
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="island_3"]
+transform = Transform3D(-0.00656565, 0, -0.0663426, 0, 0.0833333, 0, 0.0497569, 0, -0.00492424, -8.22614, -0.667099, 6.58503)
+light_color = Color(0.752941, 0.823529, 1, 1)
+light_energy = 0.5
+omni_range = 38.402
+omni_attenuation = 0.353553
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="island_3"]
+transform = Transform3D(0.913069, 1.49012e-08, 0.407805, 5.41678e-09, 1, -3.97652e-08, -0.407805, -4.47035e-08, 0.913069, -6.45744, -2.96106, 4.07717)
+gi_mode = 0
+visibility_range_end = 300.0
+amount = 200
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_qy4k6")
+draw_pass_1 = SubResource("SphereMesh_71tnr")
+script = ExtResource("22_sop3d")
+
+[node name="Waypoint" type="Marker3D" parent="island_3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.50765, 2.45439, 0)
+script = ExtResource("22_b8uov")
+map_id = 2
+sequence_id = 2
+
+[node name="Waypoint4" type="Marker3D" parent="island_3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.50765, 2.45439, 0)
+script = ExtResource("22_b8uov")
+map_id = 3
+
+[node name="Waypoint2" type="Marker3D" parent="island_3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.48167, 2.25105, 14.09)
+script = ExtResource("22_b8uov")
+map_id = 2
+sequence_id = 1
+
+[node name="Waypoint5" type="Marker3D" parent="island_3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.48167, 2.25105, 14.09)
+script = ExtResource("22_b8uov")
+map_id = 3
+sequence_id = 1
+
+[node name="Waypoint3" type="Marker3D" parent="island_3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.48167, 2.25105, 23.4275)
+script = ExtResource("22_b8uov")
+map_id = 2
+
+[node name="Waypoint6" type="Marker3D" parent="island_3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.48167, 2.25105, 23.4275)
+script = ExtResource("22_b8uov")
+map_id = 3
+sequence_id = 2
+
+[node name="goat_land" parent="." instance=ExtResource("25_10r6p")]
+transform = Transform3D(0.977552, 0, -0.210694, 0, 1, 0, 0.210694, 0, 0.977552, -449.029, 28.2378, -537.758)
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="goat_land"]
+transform = Transform3D(0.113395, 0, -0.99355, 0, 1, 0, 0.99355, 0, 0.113395, 16.4423, -0.960606, 4.23483)
+light_energy = 0.5
+omni_range = 38.402
+omni_attenuation = 0.353553
+
+[node name="Chest" parent="goat_land" instance=ExtResource("26_o5miw")]
+transform = Transform3D(-2.45956, 0, 3.15445, 0, 4, 0, -3.15445, 0, -2.45956, 14.822, -9.85289, 6.9693)
+
+[node name="Dock" parent="goat_land" instance=ExtResource("27_6krst")]
+transform = Transform3D(5.50248, 0, 8.35002, 0, 10, 0, -8.35002, 0, 5.50248, 59.9059, -30.5692, -27.0612)
+
+[node name="Dock2" parent="goat_land" instance=ExtResource("27_6krst")]
+transform = Transform3D(5.50248, 0, 8.35002, 0, 10, 0, -8.35002, 0, 5.50248, 69.6273, -30.5692, -20.6551)
+
+[node name="Dock3" parent="goat_land" instance=ExtResource("27_6krst")]
+transform = Transform3D(5.50248, 0, 8.35002, 0, 10, 0, -8.35002, 0, 5.50248, 37.7393, -30.5692, -41.6685)
+
+[node name="Dock4" parent="goat_land" instance=ExtResource("27_6krst")]
+transform = Transform3D(5.50248, 0, 8.35002, 0, 10, 0, -8.35002, 0, 5.50248, 28.0682, -30.5692, -48.0415)
+
+[node name="goat" parent="goat_land" instance=ExtResource("15_xspii")]
+transform = Transform3D(-0.40252, 0, 0.444947, 0, 0.6, 0, -0.444947, 0, -0.40252, -0.960754, 62.5387, 9.47168)
+
+[node name="Decal" type="Decal" parent="goat_land"]
+transform = Transform3D(-0.370428, 0, 0.928863, 0, 1, 0, -0.928863, 0, -0.370428, 16.9577, -19.3882, -6.27707)
+size = Vector3(24.675, 30, 20)
+texture_albedo = ExtResource("28_x47lg")
+modulate = Color(0.121569, 0.054902, 0, 0.615686)
+
+[node name="Storage Shed" parent="goat_land" instance=ExtResource("28_1n0yn")]
+transform = Transform3D(-7.19316, 0, 6.94683, 0, 10, 0, -6.94683, 0, -7.19316, -7.1286, 60.769, 24.2296)
+
+[node name="Storage Shed2" parent="goat_land" instance=ExtResource("28_1n0yn")]
+transform = Transform3D(4.4221, 0.196756, 8.96695, 7.45058e-09, 9.99759, -0.21937, -8.96911, 0.0970078, 4.42104, -15.1096, 61.1539, 0.181824)
+
+[node name="Waypoint7" type="Marker3D" parent="goat_land"]
+transform = Transform3D(14.6633, 0, 4.21388, 0, 12, 0, -3.1604, 0, 19.551, 101.094, -18.7541, -84.4108)
+script = ExtResource("22_b8uov")
+map_id = 3
+sequence_id = 3
+
+[connection signal="body_entered" from="Cove/Waypoint7/Area3D" to="Cove" method="_on_area_3d_body_entered"]

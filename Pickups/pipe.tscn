@@ -72,8 +72,6 @@ shadow_mesh = SubResource("ArrayMesh_t6ioq")
 
 [node name="Object@Pipe@Node" type="MeshInstance3D" parent="Object" index="0"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 1.22339, 0.664661)
-visibility_range_end = 150.0
-visibility_range_end_margin = 10.0
 visibility_range_fade_mode = 1
 mesh = SubResource("ArrayMesh_2td2g")
 skeleton = NodePath("")

@@ -150,8 +150,8 @@ func take_off():
 	tween.tween_property(self, "speed", 15.0, 5.0).set_delay(1.0)
 	tween.tween_callback(toggle_trails.bind(true)).set_delay(2.0)
 
-var explained_maps = [false, false, false, false]
-var explained_twice = [false, false, false, false]
+var explained_maps = [false, false, false, false, false]
+var explained_twice = [false, false, false, false, false]
 	
 func _input(event):
 	if out || !attached || Story.in_dialogue:
@@ -190,6 +190,20 @@ func _input(event):
 					Story.trigger(Story.Character.PARROT, "get_map_2")
 					await Story.finish_dialogue
 					explained_twice[2] = true
+				$CameraController.previous_camera()
+			4:
+				$CameraController.active = true
+				if !explained_maps[4]:
+					Story.trigger(Story.Character.PARROT, "explain_map_4")
+					$Arrow.visible = false
+					await Story.finish_dialogue
+					explained_maps[4] = true
+					take_off()
+					await get_tree().create_timer(1.0).timeout
+				else:
+					Story.trigger(Story.Character.PARROT, "get_map_4")
+					await Story.finish_dialogue
+					explained_twice[4] = true
 				$CameraController.previous_camera()
 		
 

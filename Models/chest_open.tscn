@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cyvey7xrm2qix"]
+
+[ext_resource type="PackedScene" uid="uid://uh8y7efhoco0" path="res://Characters/chest_model.tscn" id="1_bq565"]
+
+[node name="Chest" instance=ExtResource("1_bq565")]
+
+[node name="Chest_Top" parent="RootNode" index="1"]
+transform = Transform3D(100, 0, 0, 0, -86.6025, -50, 0, 50, -86.6025, -0.000608439, 0.524912, -0.353019)

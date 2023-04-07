@@ -4,7 +4,8 @@ enum Character {
 	CAPTAIN_AVERY,
 	PARROT,
 	CRAB,
-	GOAT
+	GOAT,
+	MIMIC
 }
 
 enum Trigger {
@@ -22,6 +23,8 @@ func get_portrait(char: Character):
 			return [preload("res://Characters/Portraits/crab.png")]
 		Character.GOAT:
 			return [preload("res://Characters/Portraits/goat2.png"), preload("res://Characters/Portraits/goat3.png")]
+		Character.MIMIC:
+			return [preload('res://Characters/Portraits/mimic.png')]
 			
 var templates = {
 		"a": { "next": "", "text": [] },
@@ -30,6 +33,9 @@ var templates = {
 		] },
 }
 var lines = {
+	Character.MIMIC: {
+		"exposition": { "text": ["rawr xd"] },
+	},
 	Character.CRAB: {
 		"exposition": { "next": "got_treasure", "text": ["What do you want? Can't you see I'm busy here?"] },
 		"got_treasure": { "input": [ 
@@ -154,6 +160,8 @@ var lines = {
 		"get_map_1": { "text": ["Go talk to the ol' crab hermit. I think he has one of the map pieces."] },
 		"explain_map_2": { "text": ["this is the end of the demo"] },
 		"get_map_2": { "text": ["this is the end of the demo"] },
+		"explain_map_4": { "text": ["this is the end of the demo"] },
+		"get_map_4": { "text": ["this is the end of the demo"] },
 	},
 	Character.GOAT: {
 		"no_pipe": { "text": ["Look, I'm not giving up the map until you get me my pipe!"] },

@@ -75,7 +75,7 @@ _data = {
 [sub_resource type="Gradient" id="Gradient_c6ht1"]
 colors = PackedColorArray(0.165657, 0.165656, 0.165656, 1, 0.641934, 0.641934, 0.641934, 0)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_2du8l"]
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_bhg77"]
 gradient = SubResource("Gradient_c6ht1")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_3b2ow"]
@@ -89,16 +89,16 @@ damping_min = 0.2
 damping_max = 0.2
 scale_min = 0.15
 scale_max = 0.3
-color_ramp = SubResource("GradientTexture1D_2du8l")
+color_ramp = SubResource("GradientTexture1D_bhg77")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bvlum"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bl2y0"]
 transparency = 1
 shading_mode = 0
 vertex_color_use_as_albedo = true
 grow_amount = 2.635
 
 [sub_resource type="SphereMesh" id="SphereMesh_vkfki"]
-material = SubResource("StandardMaterial3D_bvlum")
+material = SubResource("StandardMaterial3D_bl2y0")
 radial_segments = 8
 rings = 8
 

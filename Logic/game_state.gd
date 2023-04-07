@@ -30,10 +30,17 @@ func next_map() -> int:
 #func _ready():
 #	call_deferred("cheats")
 #
-#func cheats():
-#	acquire_map(1)
-#	acquire_map(2)
-#	acquire_map(3)
+func _process(delta):
+	if !OS.is_debug_build():
+		return
+	if Input.is_key_pressed(KEY_1):
+		acquire_map(0)
+	if Input.is_key_pressed(KEY_2):
+		acquire_map(1)
+	if Input.is_key_pressed(KEY_3):
+		acquire_map(2)
+	if Input.is_key_pressed(KEY_4):
+		acquire_map(3)
 	
 func pickup(item: Pickup):
 	if inventory.has(item):
@@ -55,6 +62,8 @@ func delete_item(item: Pickup, count = 1):
 		on_inventory_update.emit()
 	
 func acquire_map(i: int) -> void:
+	if map_pieces[i]:
+		return
 	map_pieces[i] = true
 	on_acquire_map.emit(i)
 

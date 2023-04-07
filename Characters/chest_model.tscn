@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://uh8y7efhoco0"]
+
+[ext_resource type="PackedScene" uid="uid://bnisbl86pclu0" path="res://Characters/Chest.glb" id="1_oly1o"]
+[ext_resource type="Material" uid="uid://d2lnagsoy00ao" path="res://Materials/wood.tres" id="2_ppyod"]
+[ext_resource type="Material" uid="uid://djof04lbore15" path="res://Materials/wood_top.tres" id="3_aa3bb"]
+
+[node name="Chest" instance=ExtResource("1_oly1o")]
+
+[node name="RootNode" parent="." index="0"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+
+[node name="Chest_Base" parent="RootNode" index="0"]
+surface_material_override/0 = ExtResource("2_ppyod")
+surface_material_override/1 = ExtResource("3_aa3bb")
+
+[node name="Chest_Top" parent="RootNode" index="1"]
+surface_material_override/0 = ExtResource("2_ppyod")
+surface_material_override/1 = ExtResource("3_aa3bb")

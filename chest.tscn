@@ -1,0 +1,105 @@
+[gd_scene load_steps=9 format=3 uid="uid://0f5dyuyfw1nf"]
+
+[ext_resource type="Script" path="res://Characters/chest.gd" id="1_6mhwg"]
+[ext_resource type="PackedScene" uid="uid://uh8y7efhoco0" path="res://Characters/chest_model.tscn" id="1_pf1qe"]
+[ext_resource type="Script" path="res://CameraController.gd" id="3_c4xol"]
+[ext_resource type="PackedScene" uid="uid://bj8f44agdkdp5" path="res://Models/arrow.tscn" id="3_clb5f"]
+
+[sub_resource type="Animation" id="Animation_biadj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Chest:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Chest:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ns4qs"]
+resource_name = "shake"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Chest:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, -0.3025), Vector3(0, 0, 0.301942), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Chest:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0.0179373, 0.0788046, 0), Vector3(-0.018, 0.079, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_81e0p"]
+_data = {
+"RESET": SubResource("Animation_biadj"),
+"shake": SubResource("Animation_ns4qs")
+}
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_k78m0"]
+radius = 0.824409
+
+[node name="chest" type="Node3D"]
+script = ExtResource("1_6mhwg")
+
+[node name="Chest" parent="." instance=ExtResource("1_pf1qe")]
+
+[node name="Arrow" parent="." instance=ExtResource("3_clb5f")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 1.12037, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_81e0p")
+}
+
+[node name="Marker3D" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.256619, 0, 0)
+
+[node name="Marker3D2" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.257, 0, 0)
+
+[node name="CameraController" type="RemoteTransform3D" parent="."]
+transform = Transform3D(0.273763, -0.141022, 0.951402, 0.0389963, 0.990006, 0.135523, -0.961006, 0, 0.276526, 1.18128, 0.551415, 0.518746)
+script = ExtResource("3_c4xol")
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.330707, 0.3498)
+shape = SubResource("SphereShape3D_k78m0")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]

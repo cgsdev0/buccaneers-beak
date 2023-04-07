@@ -3,7 +3,7 @@ render_mode specular_toon;
 
 
 uniform sampler2D roads;
-uniform vec3 road_color: source_color;
+uniform vec4 road_color: source_color;
 uniform float extra_shading = 0.0;
 
 void fragment() {
@@ -33,7 +33,7 @@ void fragment() {
 	{
 		ALBEDO = surface;
 	}
-	ALBEDO =  mix(ALBEDO, road_color, 1.0 - texture(roads, UV).g);
+	ALBEDO =  mix(ALBEDO, road_color.rgb, (1.0 - texture(roads, UV).g) * road_color.a);
 	ROUGHNESS = 0.9;
 	ALBEDO.rgb = mix(ALBEDO.rgb, vec3(0.0), clamp((1.0 - abs(dot((INV_VIEW_MATRIX * vec4(NORMAL, 0.0)).rgb, vec3(0.0, 1.0, 0.0)))) * extra_shading, 0.0, 0.25));
 }
