@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://csxvmxee6q5pr"]
+
+[ext_resource type="PackedScene" uid="uid://cfdoxmamyw3ja" path="res://Sail Boat Hull.glb" id="1_erdgq"]
+[ext_resource type="Material" uid="uid://dhkdgaltgednn" path="res://Models/clear_water.tres" id="2_dn6by"]
+
+[node name="Sail Boat Hull" instance=ExtResource("1_erdgq")]
+
+[node name="RootNode002" parent="." index="0"]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 0, 0, 0)
+
+[node name="Boat002" parent="RootNode002" index="0"]
+surface_material_override/0 = ExtResource("2_dn6by")

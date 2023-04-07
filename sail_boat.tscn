@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cu5yw8s3rxl27"]
+[gd_scene load_steps=18 format=3 uid="uid://cu5yw8s3rxl27"]
 
 [ext_resource type="Script" path="res://Boat.gd" id="1_rwh0n"]
 [ext_resource type="Script" path="res://CameraController.gd" id="2_1cis3"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://8n7afj40n5vy" path="res://Characters/parrot.tscn" id="3_6fn1d"]
 [ext_resource type="Material" uid="uid://cc56w7gd6r7un" path="res://Materials/canvas.tres" id="3_etsrp"]
 [ext_resource type="Material" uid="uid://djof04lbore15" path="res://Materials/wood_top.tres" id="4_ywx2l"]
+[ext_resource type="PackedScene" uid="uid://csxvmxee6q5pr" path="res://sail_boat_hull.tscn" id="7_7tml4"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_06tfu"]
 resource_name = "DarkWood"
@@ -186,6 +187,9 @@ transform = Transform3D(-0.903717, 0, 0.428131, 0, 1, 0, -0.428131, 0, -0.903717
 
 [node name="parrot" parent="RootNode/Perch" instance=ExtResource("3_6fn1d")]
 transform = Transform3D(1, 0, 2.98023e-08, 0, 1, 0, -2.98023e-08, 0, 1, 0, 0, 0)
+
+[node name="Sail Boat Hull" parent="RootNode" instance=ExtResource("7_7tml4")]
+transform = Transform3D(0.0666667, 0, 0, 0, 0.0666667, 0, 0, 0, 0.0666667, 0, 0, 0)
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.257105, 0.441766, -0.0917311)

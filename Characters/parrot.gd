@@ -17,6 +17,8 @@ func _ready():
 
 func got_new_map(i: int) -> void:
 	$Arrow.visible = true
+	if !out:
+		Story.enable_interaction.emit(Story.Character.PARROT)
 		
 var velocity = Vector3.ZERO
 var rotation_speed = 0.0
@@ -148,7 +150,8 @@ func take_off():
 	tween.tween_property(self, "speed", 15.0, 5.0).set_delay(1.0)
 	tween.tween_callback(toggle_trails.bind(true)).set_delay(2.0)
 
-var explained_maps = [true, false, false, false]
+var explained_maps = [false, false, false, false]
+var explained_twice = [false, false, false, false]
 	
 func _input(event):
 	if out || !attached || Story.in_dialogue:
@@ -172,6 +175,7 @@ func _input(event):
 				else:
 					Story.trigger(Story.Character.PARROT, "get_map_1")
 					await Story.finish_dialogue
+					explained_twice[1] = true
 				$CameraController.previous_camera()
 			2:
 				$CameraController.active = true
@@ -185,12 +189,13 @@ func _input(event):
 				else:
 					Story.trigger(Story.Character.PARROT, "get_map_2")
 					await Story.finish_dialogue
+					explained_twice[2] = true
 				$CameraController.previous_camera()
 		
 
 func _on_area_3d_body_entered(body):
 	out = false
-	if !attached:
+	if !attached || explained_twice[GameState.next_map()]:
 		return
 	Story.enable_interaction.emit(Story.Character.PARROT)
 

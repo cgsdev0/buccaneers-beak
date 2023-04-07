@@ -100,49 +100,49 @@ gi_mode = 2
 mesh = SubResource("QuadMesh_aim3w")
 
 [node name="Water13" type="CSGMesh3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -600)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, -600)
 cast_shadow = 0
 gi_mode = 2
 mesh = SubResource("QuadMesh_etvlu")
 
 [node name="Water14" type="CSGMesh3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 600)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 600)
 cast_shadow = 0
 gi_mode = 2
 mesh = SubResource("QuadMesh_etvlu")
 
 [node name="Water15" type="CSGMesh3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -600, 0, -600)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -600, -1, -600)
 cast_shadow = 0
 gi_mode = 2
 mesh = SubResource("QuadMesh_etvlu")
 
 [node name="Water16" type="CSGMesh3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -600, 0, 600)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -600, -1, 600)
 cast_shadow = 0
 gi_mode = 2
 mesh = SubResource("QuadMesh_etvlu")
 
 [node name="Water19" type="CSGMesh3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -600, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -600, -1, 0)
 cast_shadow = 0
 gi_mode = 2
 mesh = SubResource("QuadMesh_etvlu")
 
 [node name="Water17" type="CSGMesh3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 600, 0, -600)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 600, -1, -600)
 cast_shadow = 0
 gi_mode = 2
 mesh = SubResource("QuadMesh_etvlu")
 
 [node name="Water20" type="CSGMesh3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 600, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 600, -1, 0)
 cast_shadow = 0
 gi_mode = 2
 mesh = SubResource("QuadMesh_etvlu")
 
 [node name="Water18" type="CSGMesh3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 600, 0, 600)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 600, -1, 600)
 cast_shadow = 0
 gi_mode = 2
 mesh = SubResource("QuadMesh_etvlu")

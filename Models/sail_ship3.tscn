@@ -16,6 +16,7 @@ size = Vector3(29.0662, 30.0529, 87.8486)
 [node name="Sail Ship" parent="." instance=ExtResource("1_6ie6l")]
 
 [node name="Sail Ship2" parent="." instance=ExtResource("2_bk4dv")]
+visible = false
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.02273, 0)

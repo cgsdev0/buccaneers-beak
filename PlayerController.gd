@@ -33,9 +33,9 @@ func get_camera():
 	
 func get_water_height(world_position: Vector2):
 	var water_time = Time.get_ticks_msec() / 1000.0
-	var wave1 = sin((world_position.x) / 40.0 + water_time / 3.0) * sin((world_position.y) / 37.0 + water_time / 3.0) * 2.0;
-	var wave2 = sin((world_position.x) / 40.0 - water_time / 3.0) * 2.0;
-	return (wave1 + wave2) / 2.0 - 3.0;
+	var w1 = sin(world_position.x / 10.0 + water_time / 1.0) * sin(world_position.y / 10.0 + water_time / 5.0) * 2.0;
+	var w2 = sin(world_position.x / 18.0 - water_time / 20.0) * sin(world_position.y / 10.0 - water_time / 20.0) * 2.0;
+	return (w1 + w2) / 2.0 - 3.0;
 	
 func _input(event):
 	# Receives mouse motion
@@ -63,8 +63,11 @@ func _process(delta):
 func _physics_process(delta):
 	if !$RemoteTransform3D.active:
 		return
+		
+	var fly_hack = OS.is_debug_build() && Input.is_key_pressed(KEY_SHIFT)
+	
 	# Add the gravity.
-	if not is_on_floor():
+	if not is_on_floor()  && !fly_hack:
 		velocity.y -= gravity * delta
 
 	var speed_modifier = 1.0
@@ -75,6 +78,9 @@ func _physics_process(delta):
 	
 	if global_transform.origin.y <= 0.0 && !is_on_floor():
 		speed_modifier = 0.4
+	
+	if fly_hack:
+		speed_modifier = 10.0
 		
 	# Handle Jump.
 	if Input.is_action_just_pressed("jump") and is_on_floor():

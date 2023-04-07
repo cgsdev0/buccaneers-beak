@@ -3,5 +3,5 @@
 [ext_resource type="Shader" path="res://Models/sail_ship.gdshader" id="1_tollj"]
 
 [resource]
-render_priority = 0
+render_priority = 1
 shader = ExtResource("1_tollj")

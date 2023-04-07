@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://cjqpal7cd40ga"]
+[gd_scene load_steps=28 format=3 uid="uid://cjqpal7cd40ga"]
 
 [ext_resource type="PackedScene" uid="uid://c133ejbc1i57c" path="res://level.tscn" id="1_fwxso"]
 [ext_resource type="PackedScene" uid="uid://b2kbc4yd0xtey" path="res://water.tscn" id="2_bevvh"]
@@ -23,6 +23,43 @@
 [sub_resource type="AtlasTexture" id="AtlasTexture_81a06"]
 atlas = ExtResource("3_yciay")
 region = Rect2(512, 256, 128, 128)
+
+[sub_resource type="Animation" id="Animation_18yak"]
+resource_name = "button_down"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:texture:region")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Rect2(512, 256, 128, 128), Rect2(512, 1152, 128, 128)]
+}
+
+[sub_resource type="Animation" id="Animation_lviwn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:texture:region")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(512, 256, 128, 128)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7tiwk"]
+_data = {
+"RESET": SubResource("Animation_lviwn"),
+"button_down": SubResource("Animation_18yak")
+}
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lc14w"]
 atlas = ExtResource("3_yciay")
@@ -62,7 +99,6 @@ grow_horizontal = 0
 grow_vertical = 0
 
 [node name="InteractHint" type="HBoxContainer" parent="Control/VBoxContainer"]
-visible = false
 layout_mode = 2
 script = ExtResource("10_f5jdh")
 
@@ -73,38 +109,47 @@ expand_mode = 3
 
 [node name="Label" type="Label" parent="Control/VBoxContainer/InteractHint"]
 layout_mode = 2
+theme_override_colors/font_outline_color = Color(0.156863, 0.156863, 0.156863, 1)
+theme_override_constants/outline_size = 8
 text = "Speak"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="Control/VBoxContainer"]
-visible = false
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Control/VBoxContainer/InteractHint"]
+libraries = {
+"": SubResource("AnimationLibrary_7tiwk")
+}
+
+[node name="BoatHint" type="HBoxContainer" parent="Control/VBoxContainer"]
 layout_mode = 2
 script = ExtResource("6_4evp4")
 
-[node name="TextureRect" type="TextureRect" parent="Control/VBoxContainer/HBoxContainer2"]
+[node name="TextureRect" type="TextureRect" parent="Control/VBoxContainer/BoatHint"]
 layout_mode = 2
 texture = SubResource("AtlasTexture_lc14w")
 expand_mode = 3
 
-[node name="Label" type="Label" parent="Control/VBoxContainer/HBoxContainer2"]
+[node name="Label2" type="Label" parent="Control/VBoxContainer/BoatHint"]
 layout_mode = 2
+theme_override_colors/font_outline_color = Color(0.156863, 0.156863, 0.156863, 1)
+theme_override_constants/outline_size = 8
 text = "Drive Boat"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="Control/VBoxContainer"]
-visible = false
+[node name="BoatHint2" type="HBoxContainer" parent="Control/VBoxContainer"]
 layout_mode = 2
 script = ExtResource("5_uc48u")
 
-[node name="TextureRect" type="TextureRect" parent="Control/VBoxContainer/HBoxContainer3"]
+[node name="TextureRect" type="TextureRect" parent="Control/VBoxContainer/BoatHint2"]
 layout_mode = 2
 texture = SubResource("AtlasTexture_3xh5g")
 expand_mode = 3
 
-[node name="Label" type="Label" parent="Control/VBoxContainer/HBoxContainer3"]
+[node name="Label2" type="Label" parent="Control/VBoxContainer/BoatHint2"]
 layout_mode = 2
+theme_override_colors/font_outline_color = Color(0.156863, 0.156863, 0.156863, 1)
+theme_override_constants/outline_size = 8
 text = "Exit Boat"
 horizontal_alignment = 2
 vertical_alignment = 1
@@ -141,7 +186,6 @@ material = SubResource("FogMaterial_0ckys")
 
 [node name="Sail Boat" parent="." instance=ExtResource("5_xeuv0")]
 transform = Transform3D(-0.479534, 0, 0.877523, 0, 1, 0, -0.877523, 0, -0.479534, 264.653, 0.0534959, -237.654)
-allowed = true
 
 [node name="Player" type="CharacterBody3D" parent="." groups=["player"]]
 unique_name_in_owner = true

@@ -21,9 +21,9 @@ func get_perch():
 	
 func get_water_height(world_position: Vector2):
 	var water_time = Time.get_ticks_msec() / 1000.0
-	var wave1 = sin((world_position.x) / 40.0 + water_time / 3.0) * sin((world_position.y) / 37.0 + water_time / 3.0) * 2.0;
-	var wave2 = sin((world_position.x) / 40.0 - water_time / 3.0) * 2.0;
-	return (wave1 + wave2) / 2.0 - 3.3;
+	var w1 = sin(world_position.x / 10.0 + water_time / 1.0) * sin(world_position.y / 10.0 + water_time / 5.0) * 2.0;
+	var w2 = sin(world_position.x / 18.0 - water_time / 20.0) * sin(world_position.y / 10.0 - water_time / 20.0) * 2.0;
+	return (w1 + w2) / 2.0 - 3.2;
 	
 func get_water_normal(pos: Vector2, forward: Vector3, right: Vector3):
 	var time = Time.get_ticks_msec() / 1000.0
