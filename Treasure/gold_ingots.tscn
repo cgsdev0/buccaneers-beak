@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://b740dq11msm8m"]
+
+[ext_resource type="PackedScene" uid="uid://bsdxiopo2aeeh" path="res://Treasure/Gold Ingots.glb" id="1_v6giy"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5jq34"]
+size = Vector3(0.007, 0.007, 0.007)
+
+[node name="Gold Ingots" instance=ExtResource("1_v6giy")]
+
+[node name="Gold_Ingots" parent="RootNode" index="0"]
+transform = Transform3D(50, 0, 0, 0, -2.18557e-06, 50, 0, -50, -2.18557e-06, 0, 0, 0)
+visibility_range_end = 200.0
+
+[node name="StaticBody3D" type="StaticBody3D" parent="RootNode/Gold_Ingots" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RootNode/Gold_Ingots/StaticBody3D" index="0"]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -0.000872059, 1.73472e-18, 0.000107033)
+shape = SubResource("BoxShape3D_5jq34")

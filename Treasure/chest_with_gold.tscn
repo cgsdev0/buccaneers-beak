@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://bedm8qn1q30pa"]
+
+[ext_resource type="PackedScene" uid="uid://ba7mdpnifggd7" path="res://Treasure/Chest with Gold.glb" id="1_i42aw"]
+[ext_resource type="Material" uid="uid://d2lnagsoy00ao" path="res://Materials/wood.tres" id="2_31e1t"]
+[ext_resource type="Material" uid="uid://djof04lbore15" path="res://Materials/wood_top.tres" id="3_6h523"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lm7p1"]
+size = Vector3(0.0112026, 0.00791505, 0.00565468)
+
+[node name="Chest with Gold" instance=ExtResource("1_i42aw")]
+
+[node name="RootNode" parent="." index="0"]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
+
+[node name="Chest_Base" parent="RootNode" index="0"]
+visibility_range_end = 200.0
+surface_material_override/0 = ExtResource("2_31e1t")
+surface_material_override/1 = ExtResource("3_6h523")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="RootNode/Chest_Base" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RootNode/Chest_Base/StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.06408e-10, 0.00257033)
+shape = SubResource("BoxShape3D_lm7p1")
+
+[node name="Chest_Top" parent="RootNode" index="1"]
+visibility_range_end = 200.0
+surface_material_override/0 = ExtResource("2_31e1t")
+surface_material_override/1 = ExtResource("3_6h523")

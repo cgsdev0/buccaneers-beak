@@ -13,8 +13,9 @@ func _process(delta):
 
 
 func _on_area_3d_body_entered(body):
-	if !played:
-		played = true
+	if GameState.next_map() != 4 || played:
+		return
+	played = true
 	$CameraController.active = true
 	$AnimationPlayer.play("rise")
 	await $AnimationPlayer.animation_finished
