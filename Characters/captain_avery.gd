@@ -12,6 +12,7 @@ func _input(event):
 		return
 	if event.is_action_pressed("interact"):
 		if interactable:
+			Music.start_track(Music.Track.TALKING)
 			$CameraController.active = true
 			Story.trigger(Story.Character.CAPTAIN_AVERY)
 			interactable = false
@@ -19,6 +20,7 @@ func _input(event):
 			await Story.finish_dialogue
 			$CameraController.previous_camera()
 			GameState.acquire_map(0)
+			Music.stop_looping()
 		else:
 			$CameraController.active = true
 			Story.trigger(Story.Character.CAPTAIN_AVERY, "find_it_yet")

@@ -30,11 +30,13 @@ func _input(event):
 				await Story.finish_dialogue
 				$CameraController.previous_camera()
 			elif GameState.has_item(GameState.Pickup.PIPE):
+				Music.start_track(Music.Track.TALKING)
 				$CameraController.active = true
 				$Arrow.visible = false
 				Story.trigger(Story.Character.GOAT)
 				await Story.finish_dialogue
 				$CameraController.previous_camera()
+				Music.stop_looping()
 			else:
 				$CameraController.active = true
 				$Arrow.visible = false
@@ -43,11 +45,13 @@ func _input(event):
 				$CameraController.previous_camera()
 				$Arrow.visible = true
 		else:
+			Music.start_track(Music.Track.TALKING)
 			exposition = true
 			$CameraController.active = true
 			Story.trigger(Story.Character.GOAT, "exposition")
 			await Story.finish_dialogue
 			$CameraController.previous_camera()
+			Music.stop_looping()
 
 func _on_area_3d_body_entered(body):
 	Story.enable_interaction.emit(Story.Character.GOAT)

@@ -17,9 +17,9 @@ func _ready():
 	if !OS.is_debug_build():
 		allowed = false
 	floor_max_angle = 0
-	Music.start_track(Music.Track.SAILING)
-	await get_tree().create_timer(2.0).timeout
-	Music.start_track(Music.Track.MIMIC)
+#	Music.start_track(Music.Track.SAILING)
+#	await get_tree().create_timer(2.0).timeout
+#	Music.start_track(Music.Track.MIMIC)
 
 func get_perch():
 	return $%Perch
@@ -85,6 +85,8 @@ func _physics_process(delta):
 	# apply max speed
 	if vh.length() > 15.0:
 		Music.start_track(Music.Track.SAILING)
+	if vh.length() < 5.0:
+		Music.stop_looping_if_playing(Music.Track.SAILING)
 		
 	vh = vh.limit_length(20.0)
 	if input.y < 0.0:

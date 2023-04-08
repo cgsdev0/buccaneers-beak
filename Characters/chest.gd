@@ -14,11 +14,13 @@ func _input(event):
 		if interactable:
 			$CameraController.active = true
 			Story.trigger(Story.Character.MIMIC, "exposition")
+			Music.play_track(Music.Track.MIMIC)
 			interactable = false
 			$Arrow.visible = false
 			await Story.finish_dialogue
 			$CameraController.previous_camera()
 			GameState.acquire_map(2)
+			Music.fade_out(5.0)
 		else:
 			$CameraController.active = true
 			Story.trigger(Story.Character.MIMIC, "closer")

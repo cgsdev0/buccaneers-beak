@@ -20,6 +20,7 @@ func _input(event):
 		return
 	if event.is_action_pressed("interact"):
 		if !exposition:
+			Music.start_track(Music.Track.TALKING)
 			$CameraController.active = true
 			Story.trigger(Story.Character.CRAB, "exposition")
 			$Arrow.visible = false
@@ -27,13 +28,16 @@ func _input(event):
 			$CameraController.previous_camera()
 			$Arrow.visible = true
 			exposition = true
+			Music.stop_looping()
 		elif !GameState.map_pieces[1]:
 			if GameState.has_item(GameState.Pickup.APPLE, 5):
+				Music.start_track(Music.Track.TALKING)
 				$CameraController.active = true
 				Story.trigger(Story.Character.CRAB, "enough_apples")
 				$Arrow.visible = false
 				await Story.finish_dialogue
 				$CameraController.previous_camera()
+				Music.stop_looping()
 			else:
 				$CameraController.active = true
 				Story.trigger(Story.Character.CRAB, "not_enough_apples")
