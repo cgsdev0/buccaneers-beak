@@ -93,6 +93,14 @@ shape = SubResource("BoxShape3D_txrg8")
 transform = Transform3D(-1, -7.6194e-09, 8.70901e-08, 0, 0.996195, 0.0871557, -8.74228e-08, 0.0871557, -0.996195, -1.32646, 12.6853, -35.0685)
 script = ExtResource("8_b3sew")
 
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -4.44944e-09, 11.9926, -51.1895)
+visibility_range_end = 20.0
+text = "brainoid was here
+
+also, you are stuck now"
+font_size = 64
+
 [connection signal="body_entered" from="Area3D2" to="." method="_on_area_3d_2_body_entered"]
 [connection signal="body_exited" from="Area3D2" to="." method="_on_area_3d_2_body_exited"]
 [connection signal="body_entered" from="Area3D" to="Area3D" method="_on_body_entered"]

@@ -27,3 +27,8 @@ func on_win():
 	$%EndSequence/AnimationPlayer.play("ending")
 	waiting = true
 	await $%EndSequence/AnimationPlayer.animation_finished
+	waiting = false
+	for node in get_tree().get_nodes_in_group("camera_controllers"):
+		if node.active:
+			node.previous_camera()
+			break

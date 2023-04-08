@@ -15,7 +15,7 @@ void fragment() {
 	if (distance(world_position, hole_punch) < 13.0) {
 		discard;
 	}
-	if (distance(world_position, hole_punch) < 13.1) {
+	if (distance(world_position, hole_punch) < 13.4) {
 		ALBEDO = vec3(1.0);
 	}
 	else {		

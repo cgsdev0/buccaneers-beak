@@ -26,6 +26,7 @@ func _set_active(new_active):
 	
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	self.add_to_group("camera_controllers")
 	pass # Replace with function body.
 
 
