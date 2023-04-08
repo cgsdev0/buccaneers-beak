@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://cjqpal7cd40ga"]
+[gd_scene load_steps=46 format=3 uid="uid://cjqpal7cd40ga"]
 
 [ext_resource type="PackedScene" uid="uid://c133ejbc1i57c" path="res://level.tscn" id="1_fwxso"]
 [ext_resource type="PackedScene" uid="uid://b2kbc4yd0xtey" path="res://water.tscn" id="2_bevvh"]
@@ -29,6 +29,7 @@
 [ext_resource type="PackedScene" uid="uid://drpr3t4d377yw" path="res://Props/dock.tscn" id="27_6krst"]
 [ext_resource type="PackedScene" uid="uid://b8y80hgqposvh" path="res://Props/storage_shed.tscn" id="28_1n0yn"]
 [ext_resource type="Texture2D" uid="uid://bau5xp3n7lvi7" path="res://Characters/goat_tracks.png" id="28_x47lg"]
+[ext_resource type="PackedScene" uid="uid://v0oknpcc8te1" path="res://Pickups/pipe.tscn" id="30_l4qfa"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_81a06"]
 atlas = ExtResource("3_yciay")
@@ -130,26 +131,28 @@ height = 3.0
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_qy4k6"]
 lifetime_randomness = 0.33
 emission_shape = 3
-emission_box_extents = Vector3(0.1, 0.1, 2.3)
+emission_box_extents = Vector3(0.1, 0.1, 45)
+particle_flag_rotate_y = true
 direction = Vector3(0, 1, 0)
 spread = 20.0
 gravity = Vector3(0, 0, 0)
-initial_velocity_min = 1.0
-initial_velocity_max = 2.0
+initial_velocity_min = 8.0
+initial_velocity_max = 12.0
 damping_min = 0.2
 damping_max = 0.2
-scale_min = 0.15
-scale_max = 0.3
+scale_min = 0.05
+scale_max = 0.25
+attractor_interaction_enabled = false
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_txe1j"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kmpee"]
 shading_mode = 0
 vertex_color_use_as_albedo = true
 grow_amount = 2.635
 
-[sub_resource type="SphereMesh" id="SphereMesh_71tnr"]
-material = SubResource("StandardMaterial3D_txe1j")
-radius = 20.0
-height = 40.0
+[sub_resource type="SphereMesh" id="SphereMesh_722jy"]
+material = SubResource("StandardMaterial3D_kmpee")
+radius = 30.0
+height = 60.0
 radial_segments = 8
 rings = 8
 
@@ -332,63 +335,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 131.057, -7.48477, -308.535)
 [node name="crab_land" parent="." instance=ExtResource("16_d04h1")]
 transform = Transform3D(-0.998042, 0, 0.0625466, 0, 1, 0, -0.0625466, 0, -0.998042, 849.428, -5.81049, -241)
 
-[node name="island_3" parent="." instance=ExtResource("20_8hkeb")]
-transform = Transform3D(15, 0, 0, 0, 12, 0, 0, 0, 20, 430.876, 21.8661, -1214.76)
-
-[node name="chest" parent="island_3" instance=ExtResource("21_y20wc")]
-transform = Transform3D(-0.524518, 0, -0.412031, 0, 0.667, 0, 0.412031, 0, -0.524518, -6.9621, -1.3321, 6.80231)
-
-[node name="OmniLight3D2" type="OmniLight3D" parent="island_3"]
-transform = Transform3D(-0.00656565, 0, -0.0663426, 0, 0.0833333, 0, 0.0497569, 0, -0.00492424, -8.22614, -0.667099, 6.58503)
-light_color = Color(0.752941, 0.823529, 1, 1)
-light_energy = 0.5
-omni_range = 38.402
-omni_attenuation = 0.353553
-
-[node name="GPUParticles3D" type="GPUParticles3D" parent="island_3"]
-transform = Transform3D(0.913069, 1.49012e-08, 0.407805, 5.41678e-09, 1, -3.97652e-08, -0.407805, -4.47035e-08, 0.913069, -6.45744, -2.96106, 4.07717)
-gi_mode = 0
-visibility_range_end = 300.0
-amount = 200
-fixed_fps = 60
-process_material = SubResource("ParticleProcessMaterial_qy4k6")
-draw_pass_1 = SubResource("SphereMesh_71tnr")
-script = ExtResource("22_sop3d")
-
-[node name="Waypoint" type="Marker3D" parent="island_3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.50765, 2.45439, 0)
-script = ExtResource("22_b8uov")
-map_id = 2
-sequence_id = 2
-
-[node name="Waypoint4" type="Marker3D" parent="island_3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.50765, 2.45439, 0)
-script = ExtResource("22_b8uov")
-map_id = 3
-
-[node name="Waypoint2" type="Marker3D" parent="island_3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.48167, 2.25105, 14.09)
-script = ExtResource("22_b8uov")
-map_id = 2
-sequence_id = 1
-
-[node name="Waypoint5" type="Marker3D" parent="island_3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.48167, 2.25105, 14.09)
-script = ExtResource("22_b8uov")
-map_id = 3
-sequence_id = 1
-
-[node name="Waypoint3" type="Marker3D" parent="island_3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.48167, 2.25105, 23.4275)
-script = ExtResource("22_b8uov")
-map_id = 2
-
-[node name="Waypoint6" type="Marker3D" parent="island_3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.48167, 2.25105, 23.4275)
-script = ExtResource("22_b8uov")
-map_id = 3
-sequence_id = 2
-
 [node name="goat_land" parent="." instance=ExtResource("25_10r6p")]
 transform = Transform3D(0.977552, 0, -0.210694, 0, 1, 0, 0.210694, 0, 0.977552, -449.029, 28.2378, -537.758)
 
@@ -433,5 +379,68 @@ transform = Transform3D(14.6633, 0, 4.21388, 0, 12, 0, -3.1604, 0, 19.551, 101.0
 script = ExtResource("22_b8uov")
 map_id = 3
 sequence_id = 3
+
+[node name="BasePickup" parent="goat_land" instance=ExtResource("30_l4qfa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.3759, 61.8353, 34.288)
+
+[node name="island_mimic" type="Node3D" parent="."]
+
+[node name="island_3" parent="island_mimic" instance=ExtResource("20_8hkeb")]
+transform = Transform3D(0.993935, 0, 0.109966, 0, 1, 0, -0.109966, 0, 0.993935, 426.749, 21.8661, -1211.49)
+
+[node name="chest" parent="island_mimic" instance=ExtResource("21_y20wc")]
+transform = Transform3D(-4.14333, 0, -4.33968, 0, 6, 0, 4.33968, 0, -4.14333, 319.73, 4.97908, -1076.66)
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="island_mimic"]
+transform = Transform3D(0.0446589, 0, -0.999002, 0, 1, 0, 0.999002, 0, 0.0446589, 303.737, 13.8609, -1080.09)
+light_color = Color(0.752941, 0.823529, 1, 1)
+light_energy = 0.5
+omni_range = 38.402
+omni_attenuation = 0.353553
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="island_mimic"]
+transform = Transform3D(0.859574, -3.05912e-08, 0.511011, 4.32748e-09, 1, 5.25848e-08, -0.511011, -4.29891e-08, 0.859574, 322.388, -8.90928, -1124.45)
+gi_mode = 0
+visibility_range_end = 300.0
+amount = 200
+fixed_fps = 60
+visibility_aabb = AABB(-15.1578, -18.7849, -55.6932, 30.3156, 37.5698, 111.386)
+process_material = SubResource("ParticleProcessMaterial_qy4k6")
+draw_pass_1 = SubResource("SphereMesh_722jy")
+script = ExtResource("22_sop3d")
+
+[node name="Waypoint" type="Marker3D" parent="island_mimic"]
+transform = Transform3D(17.432, 0, 3.09592, 0, 12, 0, -1.92863, 0, 17.5449, 453.03, 51.3188, -1214.39)
+script = ExtResource("22_b8uov")
+map_id = 2
+sequence_id = 2
+
+[node name="Waypoint4" type="Marker3D" parent="island_mimic"]
+transform = Transform3D(17.432, 0, 3.09592, 0, 12, 0, -1.92863, 0, 17.5449, 453.03, 51.3188, -1214.39)
+script = ExtResource("22_b8uov")
+map_id = 3
+
+[node name="Waypoint2" type="Marker3D" parent="island_mimic"]
+transform = Transform3D(17.432, 0, 3.09592, 0, 12, 0, -1.92863, 0, 17.5449, 600.79, 48.8787, -978.709)
+script = ExtResource("22_b8uov")
+map_id = 2
+sequence_id = 1
+
+[node name="Waypoint5" type="Marker3D" parent="island_mimic"]
+transform = Transform3D(17.432, 0, 3.09592, 0, 12, 0, -1.92863, 0, 17.5449, 600.79, 48.8787, -978.709)
+script = ExtResource("22_b8uov")
+map_id = 3
+sequence_id = 1
+
+[node name="Waypoint3" type="Marker3D" parent="island_mimic"]
+transform = Transform3D(17.432, 0, 3.09592, 0, 12, 0, -1.92863, 0, 17.5449, 629.698, 48.8787, -814.884)
+script = ExtResource("22_b8uov")
+map_id = 2
+
+[node name="Waypoint6" type="Marker3D" parent="island_mimic"]
+transform = Transform3D(17.432, 0, 3.09592, 0, 12, 0, -1.92863, 0, 17.5449, 629.698, 48.8787, -814.884)
+script = ExtResource("22_b8uov")
+map_id = 3
+sequence_id = 2
 
 [connection signal="body_entered" from="Cove/Waypoint7/Area3D" to="Cove" method="_on_area_3d_body_entered"]
