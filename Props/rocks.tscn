@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://qd6jv5qstixf"]
+
+[ext_resource type="PackedScene" uid="uid://cp72lneoeib7b" path="res://Fantasy Pack/Rocks.glb" id="1_y8buw"]
+[ext_resource type="Material" uid="uid://4fmovw1dv1nc" path="res://Materials/stone.tres" id="2_87iq8"]
+
+[node name="Rocks" instance=ExtResource("1_y8buw")]
+
+[node name="Resource_Rock_3" parent="RootNode" index="0"]
+surface_material_override/0 = ExtResource("2_87iq8")

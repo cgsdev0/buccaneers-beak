@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://cjqpal7cd40ga"]
+[gd_scene load_steps=47 format=3 uid="uid://cjqpal7cd40ga"]
 
 [ext_resource type="PackedScene" uid="uid://c133ejbc1i57c" path="res://level.tscn" id="1_fwxso"]
 [ext_resource type="PackedScene" uid="uid://b2kbc4yd0xtey" path="res://water.tscn" id="2_bevvh"]
@@ -30,6 +30,7 @@
 [ext_resource type="PackedScene" uid="uid://b8y80hgqposvh" path="res://Props/storage_shed.tscn" id="28_1n0yn"]
 [ext_resource type="Texture2D" uid="uid://bau5xp3n7lvi7" path="res://Characters/goat_tracks.png" id="28_x47lg"]
 [ext_resource type="PackedScene" uid="uid://v0oknpcc8te1" path="res://Pickups/pipe.tscn" id="30_l4qfa"]
+[ext_resource type="PackedScene" uid="uid://behxiei3wkc36" path="res://Props/rock.tscn" id="31_ubask"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_81a06"]
 atlas = ExtResource("3_yciay")
@@ -369,10 +370,10 @@ texture_albedo = ExtResource("28_x47lg")
 modulate = Color(0.121569, 0.054902, 0, 0.615686)
 
 [node name="Storage Shed" parent="goat_land" instance=ExtResource("28_1n0yn")]
-transform = Transform3D(-7.19316, 0, 6.94683, 0, 10, 0, -6.94683, 0, -7.19316, -7.1286, 60.769, 24.2296)
+transform = Transform3D(-7.19316, 0, 6.94683, 0, 10, 0, -6.94683, 0, -7.19316, -2.56213, 60.769, 28.6396)
 
 [node name="Storage Shed2" parent="goat_land" instance=ExtResource("28_1n0yn")]
-transform = Transform3D(4.4221, 0.196756, 8.96695, 7.45058e-09, 9.99759, -0.21937, -8.96911, 0.0970078, 4.42104, -15.1096, 61.1539, 0.181824)
+transform = Transform3D(-1.80425, 0.196756, 9.83392, 0.130939, 9.99759, -0.176007, -9.83501, 0.0970078, -1.80639, -14.8301, 61.0796, 7.26797)
 
 [node name="Waypoint7" type="Marker3D" parent="goat_land"]
 transform = Transform3D(14.6633, 0, 4.21388, 0, 12, 0, -3.1604, 0, 19.551, 101.094, -18.7541, -84.4108)
@@ -381,7 +382,7 @@ map_id = 3
 sequence_id = 3
 
 [node name="BasePickup" parent="goat_land" instance=ExtResource("30_l4qfa")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.3759, 61.8353, 34.288)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.14349, 69.516, 29.1903)
 
 [node name="island_mimic" type="Node3D" parent="."]
 
@@ -442,5 +443,11 @@ transform = Transform3D(17.432, 0, 3.09592, 0, 12, 0, -1.92863, 0, 17.5449, 629.
 script = ExtResource("22_b8uov")
 map_id = 3
 sequence_id = 2
+
+[node name="Rock" parent="." instance=ExtResource("31_ubask")]
+transform = Transform3D(-10.979, -0.0568948, -16.717, 1.86265e-09, 19.9999, -0.0680677, 16.7171, -0.0373658, -10.9789, -469.647, 88.0701, -523.164)
+
+[node name="Rock2" parent="." instance=ExtResource("31_ubask")]
+transform = Transform3D(-23.2043, 0, -19.0148, 0, 30, 0, 19.0148, 0, -23.2043, -465.059, 88.3385, -518.183)
 
 [connection signal="body_entered" from="Cove/Waypoint7/Area3D" to="Cove" method="_on_area_3d_body_entered"]
