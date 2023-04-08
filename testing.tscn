@@ -382,7 +382,7 @@ map_id = 3
 sequence_id = 3
 
 [node name="BasePickup" parent="goat_land" instance=ExtResource("30_l4qfa")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.14349, 69.516, 29.1903)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.470215, 69.516, 31.2097)
 
 [node name="island_mimic" type="Node3D" parent="."]
 

@@ -2,6 +2,7 @@ extends Node3D
 
 var out = true
 var exposition = false
+var complete = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -22,7 +23,13 @@ func _input(event):
 		return
 	if event.is_action_pressed("interact"):
 		if exposition:
-			if GameState.has_item(GameState.Pickup.PIPE):
+			if complete:
+				$CameraController.active = true
+				Story.trigger(Story.Character.GOAT, "tell_your_friends")
+				await Story.finish_dialogue
+				$CameraController.previous_camera()
+			elif GameState.has_item(GameState.Pickup.PIPE):
+				complete = true
 				$CameraController.active = true
 				Story.trigger(Story.Character.GOAT)
 				$Arrow.visible = false
