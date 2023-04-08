@@ -38,21 +38,21 @@ var lines = {
 		"dont": { "input": [
 			{ "text": "Wait! Don't eat me!", "next": "why_not" }
 		] },
-		"why_not": { "next": "because", "text": ["[i](laughs)[/i] I'm sorry deary, but I'm afraid I must. I haven't eaten an adventurer in weeks!"] },
+		"why_not": { "next": "because", "text": ["[i](laughs)[/i] I'm sorry deary, but I'm afraid I must. I haven't eaten an adventurer in weeks! Why, you'd think I was on a diet it's been so long!"] },
 		"because": { "input": [
 			{ "text": "(lie) I'm poisonous.", "next": "poison" },
 			{ "text": "(lie) But I'm famous!", "next": "fame" },
 			{ "text": "I could... tell you a story?", "next": "story" },
 		] },
-		"fame": { "next": "because", "text": ["That doesn't mean much to me, I'm afraid. In fact, I've eaten lots of famous folks. Pirates, actors... if anything, that makes you tastier!"] },
-		"poison": { "next": "not_poison", "text": ["...interesting. You don't [i]look[/i] poisonous. Why should I trust you?"] },
+		"fame": { "next": "because", "text": ["Bless your heart, I'm afraid that just makes you more scrumptious! In fact, I've eaten lots of famous folks. Pirates, actors... sometimes I [i]do[/i] wonder if it's too rich, you know what I mean?"] },
+		"poison": { "next": "not_poison", "text": ["...that's funny. You don't [i]look[/i] poisonous. Now how do I know you're not just pullin' the wool over my peepers?"] },
 		"not_poison": { "input": [
 			{ "text": "Because... well, uh...", "next": "stumble" },
 			{ "text": "(lie) I bathe in snake venom.", "next": "immune" },
 		] },
-		"stumble": { "next": "because", "text": ["You're so adorable when you lie. Anyways, if that's all, I suppose we should get on with it..."] },
+		"stumble": { "next": "because", "text": ["Aren't you just the most [i]adorable[/i] liar. Anyways, if that's all, I suppose we should get on with it..."] },
 		"immune": { "next": "because", "text": ["Oh, what a relief! I've eaten plenty of snakes before. I think I've built up something of an immunity to the venom.", "Now be a dear and come over here, I'll make it quick and painless!"] },
-		"story": { "next": "continue", "text": ["Well, I suppose I could wait a little longer. Dinner [i]and[/i] a story? Such a treat!"] },
+		"story": { "next": "continue", "text": ["Well, I suppose I could wait a little longer. Dinner [i]and[/i] a story? You're such a little darling!"] },
 		"continue": { "input": [
 			{ "text": "I met a talking parrot", "next": "storyA" },
 			{ "text": "I'm on a quest for Blackbeard's treaure", "next": "storyB" },
@@ -60,7 +60,7 @@ var lines = {
 		"continue2": { "input": [
 			{ "text": "I'm on a quest for Blackbeard's treaure", "next": "storyB" },
 		] },
-		"storyA": { "next": "A2", "text": ["Not much of a story, but I'm happy for you!", "You'll have to excuse me, I don't meet many parrots; is it unusual for them to speak?"] },
+		"storyA": { "next": "A2", "text": ["Not much of a story, but I'm happy for you!", "Now pardon me but, I don't meet many parrots - as you can imagine; but is that something special?"] },
 		"A2": { "input": [
 			{ "text": "Well... it's complicated", "next": "A3" }
 		] },
@@ -69,7 +69,7 @@ var lines = {
 		"B2": { "input": [
 			{ "text": "Really? What did they say?", "next": "B3" }
 		] },
-		"B3": { "next": "B4", "text": ["Treasure this, treasure that... something about a map? Hard to remember. They were truly boring.", "Not like you! I've enjoyed your company. I have to admit, I'll be a little sad to eat you. Oh well!"] },
+		"B3": { "next": "B4", "text": ["Treasure this, treasure that... something about a map? I'm sorry dear but things like that are hard to remember. They were SO boring.", "Not like you! I've enjoyed your company. I have to admit, I'll be a little sad to eat you. Oh well!"] },
 		"B4": { "input": [
 			{ "text": "A map? Like this one? (show map)", "next": "B5A" },
 			{ "text": "You have a map? Can I see it?", "next": "B5B" },
@@ -77,12 +77,12 @@ var lines = {
 		"B4_2": { "input": [
 			{ "text": "A map? Like this one? (show map)", "next": "B5A" },
 		] },
-		"B5B": { "next": "B4_2", "text": ["Sure, why don't you just come a little closer... that's it... [i](licks lips)[/i]"] },
+		"B5B": { "next": "B4_2", "text": ["Sure, why don't you just come a little closer dearie... that's it just a teeny bit more... [i](licks lips)[/i]"] },
 		"B5A": { "next": "funny", "text": ["Huh. Exactly like that one! I still have it. Where do you adventurers get all these maps, anyways?"] },
 		"funny": { "input": [
 			{ "text": "I got it from Captain Avery.", "next": "eureka" }
 		] },
-		"eureka": { "next": "map_pls", "text": ["[shake]CAPTAIN AVERY?![/shake] Why didn't you say so! I used to live on his ship!!!",
+		"eureka": { "next": "map_pls", "text": ["[shake]CAPTAIN AVERY?![/shake] Why didn't you say so! I used to live on his ship!!! Doesn't he just have the most adorable smile?",
 	"Oh, well if you're Avery's friend, then it really would be such a shame to eat you. Okay, I think I'll let you live."
 	] },
 		"map_pls": { "input": [
