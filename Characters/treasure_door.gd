@@ -13,6 +13,7 @@ func _input(event):
 			interactable = false
 
 func _on_area_3d_2_body_entered(body):
+	print("OH GOD WHY")
 	Story.enable_door_interaction.emit()
 	out = false
 

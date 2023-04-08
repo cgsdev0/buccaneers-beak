@@ -45,7 +45,7 @@ var lines = {
 			{ "text": "I could... tell you a story?", "next": "story" },
 		] },
 		"fame": { "next": "because", "text": ["That doesn't mean much to me, I'm afraid. In fact, I've eaten lots of famous folks. Pirates, actors... if anything, that makes you tastier!"] },
-		"poison": { "next": "because", "text": ["...interesting. You don't [i]look[/i] poisonous. Why should I trust you?"] },
+		"poison": { "next": "not_poison", "text": ["...interesting. You don't [i]look[/i] poisonous. Why should I trust you?"] },
 		"not_poison": { "input": [
 			{ "text": "Because... well, uh...", "next": "stumble" },
 			{ "text": "(lie) I bathe in snake venom.", "next": "immune" },
@@ -217,7 +217,7 @@ var lines = {
 	"There's a cave nearby that has a... chest, which.. well, [i]contains[/i] the next piece of the map. Hopefully. I think.",
 	"This one's not going to be such a walk in the park. Good luck, you'll need all the wit and charm you can muster.",
 	"Anyway... follow me!"] },
-		"get_map_2": { "text": ["Squawk! Alright, we're here. Keep your eyes peeled for anything suspicious. Who knows what kind of obstacles we might encounter behind that waterfall.", "[i](sheepishly)[/i] [shake]...I'll wait here. Somebody's gotta watch the boat, right?[/shake]",] },
+		"get_map_2": { "next": "follow_up_map_2", "text": ["Squawk! Alright, we're here. Keep your eyes peeled for anything suspicious. Who knows what kind of obstacles we might encounter behind that waterfall.", "[i](sheepishly)[/i] [shake]...I'll wait here. Somebody's gotta watch the boat, right?[/shake]",] },
 		"follow_up_map_2": { "input": [
 			{ "text": "Why are you acting so suspicious?", "next": "feathers" },
 			{ "text": "Makes sense to me." },

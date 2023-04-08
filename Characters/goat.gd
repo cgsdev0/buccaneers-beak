@@ -31,15 +31,17 @@ func _input(event):
 				$CameraController.previous_camera()
 			elif GameState.has_item(GameState.Pickup.PIPE):
 				$CameraController.active = true
-				Story.trigger(Story.Character.GOAT)
 				$Arrow.visible = false
+				Story.trigger(Story.Character.GOAT)
 				await Story.finish_dialogue
 				$CameraController.previous_camera()
 			else:
 				$CameraController.active = true
+				$Arrow.visible = false
 				Story.trigger(Story.Character.GOAT, "no_pipe")
 				await Story.finish_dialogue
 				$CameraController.previous_camera()
+				$Arrow.visible = true
 		else:
 			exposition = true
 			$CameraController.active = true

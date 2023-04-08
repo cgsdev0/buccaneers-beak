@@ -77,7 +77,7 @@ func _physics_process(delta):
 		velocity.y = max(0.0, velocity.y)
 	
 	if global_transform.origin.y <= 0.0 && !is_on_floor():
-		speed_modifier = 0.4
+		speed_modifier = 0.5
 	
 	if fly_hack:
 		speed_modifier = 10.0

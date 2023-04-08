@@ -1,30 +1,14 @@
-[gd_scene load_steps=15 format=3 uid="uid://fc51jdcfp0ar"]
+[gd_scene load_steps=9 format=3 uid="uid://fc51jdcfp0ar"]
 
 [ext_resource type="PackedScene" uid="uid://bls74xd6ltpph" path="res://Models/sail_ship2.tscn" id="1_6ie6l"]
 [ext_resource type="Script" path="res://Characters/treasure_door.gd" id="1_vxuin"]
 [ext_resource type="PackedScene" uid="uid://bisaoegsvgy3r" path="res://Models/sail_ship.tscn" id="2_bk4dv"]
 [ext_resource type="Material" uid="uid://djof04lbore15" path="res://Materials/wood_top.tres" id="3_ihvrv"]
-[ext_resource type="Script" path="res://Logic/inside.gd" id="4_hj6ds"]
 [ext_resource type="PackedScene" uid="uid://uh8y7efhoco0" path="res://Characters/chest_model.tscn" id="6_2u0g0"]
 [ext_resource type="PackedScene" uid="uid://jbe57tkjganp" path="res://Models/house_door.tscn" id="6_g2ego"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fkfjy"]
 size = Vector3(51.479, 1.169, 7.12)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_q4d5u"]
-size = Vector3(29.0662, 18.2163, 21.9737)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_v3m65"]
-size = Vector3(25.054, 17.7116, 19.9702)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_srdlw"]
-size = Vector3(23.1695, 19.8931, 23.7835)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_jq5bv"]
-size = Vector3(23.1695, 16.9527, 18.7281)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_inbvf"]
-size = Vector3(23.1695, 14.9093, 18.434)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kp4s0"]
 size = Vector3(5, 4.98359, 4.90393)
@@ -54,31 +38,6 @@ material = ExtResource("3_ihvrv")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CSGBox3D/StaticBody3D"]
 shape = SubResource("BoxShape3D_fkfjy")
 
-[node name="Area3D" type="Area3D" parent="."]
-collision_layer = 0
-collision_mask = 2
-script = ExtResource("4_hj6ds")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.88641, 0)
-shape = SubResource("BoxShape3D_q4d5u")
-
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D(1, 0, 0, 0, 0.958233, -0.285989, 0, 0.285989, 0.958233, 0, 6.84748, -18.2419)
-shape = SubResource("BoxShape3D_v3m65")
-
-[node name="CollisionShape3D3" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.33793, 22.2339)
-shape = SubResource("BoxShape3D_srdlw")
-
-[node name="CollisionShape3D4" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 18.7717, -51.5561)
-shape = SubResource("BoxShape3D_jq5bv")
-
-[node name="CollisionShape3D5" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.6424, -33.5656)
-shape = SubResource("BoxShape3D_inbvf")
-
 [node name="Chest" parent="." instance=ExtResource("6_2u0g0")]
 transform = Transform3D(-2.18557e-07, -4.10667e-16, -5, -0.641728, 4.95865, 2.80508e-08, 4.95865, 0.641728, -2.16749e-07, 8.89639, 9.81934, -37.1572)
 
@@ -93,7 +52,6 @@ transform = Transform3D(-2.16737e-07, 2.81492e-08, 5, 0.643978, 4.95836, 0, -4.9
 
 [node name="Sail Ship" parent="." instance=ExtResource("2_bk4dv")]
 transform = Transform3D(25, 0, 0, 0, 25, 0, 0, 0, 25, 0, 0, 0)
-visible = false
 
 [node name="Sail Ship2" parent="." instance=ExtResource("1_6ie6l")]
 transform = Transform3D(25, 0, 0, 0, 25, 0, 0, 0, 25, 0, 0, 0)
@@ -102,12 +60,12 @@ transform = Transform3D(25, 0, 0, 0, 25, 0, 0, 0, 25, 0, 0, 0)
 transform = Transform3D(2.5, 0, 0, 0, 2.4993, 0.0593356, 0, -0.0593356, 2.4993, -3.79958, 9.62808, -33.9185)
 
 [node name="Area3D2" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.724875, 12.7654, -35.2102)
 shape = SubResource("BoxShape3D_kp4s0")
 
-[connection signal="body_entered" from="Area3D" to="Area3D" method="_on_body_entered"]
-[connection signal="body_exited" from="Area3D" to="Area3D" method="_on_body_exited"]
 [connection signal="body_entered" from="Area3D2" to="." method="_on_area_3d_2_body_entered"]
 [connection signal="body_exited" from="Area3D2" to="." method="_on_area_3d_2_body_exited"]

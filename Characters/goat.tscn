@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://c12ufhc6674fu"]
+[gd_scene load_steps=17 format=3 uid="uid://c12ufhc6674fu"]
 
 [ext_resource type="Script" path="res://Characters/goat.gd" id="1_on57b"]
 [ext_resource type="PackedScene" uid="uid://bj8f44agdkdp5" path="res://Models/arrow.tscn" id="3_yqmdg"]
@@ -102,6 +102,10 @@ material = SubResource("StandardMaterial3D_bl2y0")
 radial_segments = 8
 rings = 8
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_12aim"]
+radius = 2.0
+height = 4.39244
+
 [node name="goat" type="Node3D"]
 script = ExtResource("1_on57b")
 
@@ -143,6 +147,12 @@ draw_pass_1 = SubResource("SphereMesh_vkfki")
 [node name="map" parent="goat" instance=ExtResource("6_4mc2p")]
 unique_name_in_owner = true
 transform = Transform3D(-0.0589103, 0.0654734, -0.147394, -0.149605, 0.0155636, 0.0748161, 0.0428719, 0.145454, 0.0592126, -4.72982, 1.24947, -0.621525)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.484547)
+shape = SubResource("CapsuleShape3D_12aim")
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered" flags=18]
 [connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited" flags=18]

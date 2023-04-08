@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://duxefvqkae66b"]
+[gd_scene load_steps=11 format=3 uid="uid://duxefvqkae66b"]
 
 [ext_resource type="Script" path="res://Characters/crab.gd" id="1_2yvf1"]
 [ext_resource type="PackedScene" uid="uid://dwf4kotup1jxv" path="res://Characters/crab_model.tscn" id="2_er1kp"]
 [ext_resource type="PackedScene" uid="uid://bj8f44agdkdp5" path="res://Models/arrow.tscn" id="3_28wew"]
 [ext_resource type="PackedScene" uid="uid://8dsa6pekj3qu" path="res://Characters/map.tscn" id="3_n7x38"]
 [ext_resource type="Script" path="res://CameraController.gd" id="4_80ssi"]
+[ext_resource type="Shape3D" uid="uid://dnde6k0cxxjfm" path="res://crab_shape.tres" id="6_0uxjn"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_jh84w"]
 radius = 15.0
@@ -74,6 +75,12 @@ script = ExtResource("4_80ssi")
 libraries = {
 "": SubResource("AnimationLibrary_0n5pw")
 }
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, 0, 0, 0)
+shape = ExtResource("6_0uxjn")
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered" flags=18]
 [connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited" flags=18]
