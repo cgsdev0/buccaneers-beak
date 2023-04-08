@@ -18,10 +18,10 @@ func _input(event):
 			$Arrow.visible = false
 			await Story.finish_dialogue
 			$CameraController.previous_camera()
-			GameState.acquire_map(0)
+			GameState.acquire_map(2)
 		else:
 			$CameraController.active = true
-			Story.trigger(Story.Character.MIMIC, "exposition")
+			Story.trigger(Story.Character.MIMIC, "closer")
 			await Story.finish_dialogue
 			$CameraController.previous_camera()
 

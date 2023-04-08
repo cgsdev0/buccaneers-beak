@@ -163,49 +163,26 @@ func _input(event):
 				Story.trigger(Story.Character.PARROT, "get_map_0")
 				await Story.finish_dialogue
 				$CameraController.previous_camera()
-			1:
-				$CameraController.active = true
-				if !explained_maps[1]:
-					Story.trigger(Story.Character.PARROT, "explain_map_1")
-					$Arrow.visible = false
-					await Story.finish_dialogue
-					explained_maps[1] = true
-					take_off()
-					await get_tree().create_timer(1.0).timeout
-				else:
-					Story.trigger(Story.Character.PARROT, "get_map_1")
-					await Story.finish_dialogue
-					explained_twice[1] = true
-				$CameraController.previous_camera()
-			2:
-				$CameraController.active = true
-				if !explained_maps[2]:
-					Story.trigger(Story.Character.PARROT, "explain_map_2")
-					$Arrow.visible = false
-					await Story.finish_dialogue
-					explained_maps[2] = true
-					take_off()
-					await get_tree().create_timer(1.0).timeout
-				else:
-					Story.trigger(Story.Character.PARROT, "get_map_2")
-					await Story.finish_dialogue
-					explained_twice[2] = true
-				$CameraController.previous_camera()
-			4:
-				$CameraController.active = true
-				if !explained_maps[4]:
-					Story.trigger(Story.Character.PARROT, "explain_map_4")
-					$Arrow.visible = false
-					await Story.finish_dialogue
-					explained_maps[4] = true
-					take_off()
-					await get_tree().create_timer(1.0).timeout
-				else:
-					Story.trigger(Story.Character.PARROT, "get_map_4")
-					await Story.finish_dialogue
-					explained_twice[4] = true
-				$CameraController.previous_camera()
-		
+			_:
+				map_handler(GameState.next_map())
+
+
+
+	
+func map_handler(i: int) -> void:
+		$CameraController.active = true
+		if !explained_maps[i]:
+			Story.trigger(Story.Character.PARROT, "explain_map_" + str(i))
+			$Arrow.visible = false
+			await Story.finish_dialogue
+			explained_maps[i] = true
+			take_off()
+			await get_tree().create_timer(1.0).timeout
+		else:
+			Story.trigger(Story.Character.PARROT, "get_map_" + str(i))
+			await Story.finish_dialogue
+			explained_twice[i] = true
+		$CameraController.previous_camera()
 
 func _on_area_3d_body_entered(body):
 	out = false
