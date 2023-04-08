@@ -1,17 +1,25 @@
-[gd_scene load_steps=9 format=3 uid="uid://fc51jdcfp0ar"]
+[gd_scene load_steps=13 format=3 uid="uid://fc51jdcfp0ar"]
 
 [ext_resource type="PackedScene" uid="uid://bls74xd6ltpph" path="res://Models/sail_ship2.tscn" id="1_6ie6l"]
 [ext_resource type="Script" path="res://Characters/treasure_door.gd" id="1_vxuin"]
 [ext_resource type="PackedScene" uid="uid://bisaoegsvgy3r" path="res://Models/sail_ship.tscn" id="2_bk4dv"]
 [ext_resource type="Material" uid="uid://djof04lbore15" path="res://Materials/wood_top.tres" id="3_ihvrv"]
+[ext_resource type="Script" path="res://Logic/inside.gd" id="4_hj6ds"]
 [ext_resource type="PackedScene" uid="uid://uh8y7efhoco0" path="res://Characters/chest_model.tscn" id="6_2u0g0"]
 [ext_resource type="PackedScene" uid="uid://jbe57tkjganp" path="res://Models/house_door.tscn" id="6_g2ego"]
+[ext_resource type="Script" path="res://CameraController.gd" id="8_b3sew"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fkfjy"]
 size = Vector3(51.479, 1.169, 7.12)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kp4s0"]
 size = Vector3(5, 4.98359, 4.90393)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_aorb2"]
+size = Vector3(21.2502, 16.0215, 16.5927)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_txrg8"]
+size = Vector3(21.2502, 7.90774, 20)
 
 [node name="sail_ship3" type="Node3D"]
 script = ExtResource("1_vxuin")
@@ -52,6 +60,7 @@ transform = Transform3D(-2.16737e-07, 2.81492e-08, 5, 0.643978, 4.95836, 0, -4.9
 
 [node name="Sail Ship" parent="." instance=ExtResource("2_bk4dv")]
 transform = Transform3D(25, 0, 0, 0, 25, 0, 0, 0, 25, 0, 0, 0)
+visible = false
 
 [node name="Sail Ship2" parent="." instance=ExtResource("1_6ie6l")]
 transform = Transform3D(25, 0, 0, 0, 25, 0, 0, 0, 25, 0, 0, 0)
@@ -67,5 +76,24 @@ collision_mask = 2
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.724875, 12.7654, -35.2102)
 shape = SubResource("BoxShape3D_kp4s0")
 
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("4_hj6ds")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 18.0072, -48.5127)
+shape = SubResource("BoxShape3D_aorb2")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.571561, 13.992, -38.9355)
+shape = SubResource("BoxShape3D_txrg8")
+
+[node name="CameraController" type="RemoteTransform3D" parent="."]
+transform = Transform3D(-1, -7.6194e-09, 8.70901e-08, 0, 0.996195, 0.0871557, -8.74228e-08, 0.0871557, -0.996195, -1.32646, 12.6853, -35.0685)
+script = ExtResource("8_b3sew")
+
 [connection signal="body_entered" from="Area3D2" to="." method="_on_area_3d_2_body_entered"]
 [connection signal="body_exited" from="Area3D2" to="." method="_on_area_3d_2_body_exited"]
+[connection signal="body_entered" from="Area3D" to="Area3D" method="_on_body_entered"]
+[connection signal="body_exited" from="Area3D" to="Area3D" method="_on_body_exited"]

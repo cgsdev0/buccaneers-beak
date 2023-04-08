@@ -23,6 +23,7 @@ boot_splash/minimum_display_time=2000
 
 Story="*res://UI/story.gd"
 GameState="*res://Logic/game_state.gd"
+Music="*res://music.tscn"
 
 [input]
 

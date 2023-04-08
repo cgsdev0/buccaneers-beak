@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3 uid="uid://cjqpal7cd40ga"]
+[gd_scene load_steps=53 format=3 uid="uid://cjqpal7cd40ga"]
 
 [ext_resource type="PackedScene" uid="uid://c133ejbc1i57c" path="res://level.tscn" id="1_fwxso"]
 [ext_resource type="PackedScene" uid="uid://b2kbc4yd0xtey" path="res://water.tscn" id="2_bevvh"]
@@ -23,6 +23,7 @@
 [ext_resource type="Texture2D" uid="uid://goalcmb3de2f" path="res://UI/ComicEnd03.png" id="12_lsshw"]
 [ext_resource type="Texture2D" uid="uid://cil8aav6x07it" path="res://UI/ComicEnd04.png" id="13_5xjwi"]
 [ext_resource type="PackedScene" uid="uid://daaedgpnenvv1" path="res://UI/pause_menu.tscn" id="13_qc1rt"]
+[ext_resource type="Texture2D" uid="uid://qhdr8ehjo1vu" path="res://UI/credits.png" id="14_167d0"]
 [ext_resource type="PackedScene" uid="uid://c12ufhc6674fu" path="res://Characters/goat.tscn" id="15_xspii"]
 [ext_resource type="PackedScene" uid="uid://dr2sbfmlmsyxt" path="res://Islands/crab_land.tscn" id="16_d04h1"]
 [ext_resource type="PackedScene" uid="uid://b5nimbw4bu2r6" path="res://island_3.tscn" id="20_8hkeb"]
@@ -85,166 +86,6 @@ region = Rect2(640, 256, 128, 128)
 [sub_resource type="AtlasTexture" id="AtlasTexture_3xh5g"]
 atlas = ExtResource("3_yciay")
 region = Rect2(640, 256, 128, 128)
-
-[sub_resource type="Animation" id="Animation_wmoxx"]
-resource_name = "ending"
-length = 20.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("ColorRect:color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("ColorRect/MarginContainer:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(1.7, 2.7, 4.4, 4.9),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("ColorRect/MarginContainer:theme_override_constants/margin_top")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(1.7, 4.9),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0, -142]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("ColorRect/MarginContainer:theme_override_constants/margin_right")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(1.7, 4.9),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0, -203]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("ColorRect/MarginContainer2:modulate")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(5.9, 7, 8.5, 9),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("ColorRect/MarginContainer2:theme_override_constants/margin_top")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(5.9, 9),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [-86, 0]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("ColorRect/MarginContainer2:theme_override_constants/margin_bottom")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(5.9, 9),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0, -86]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("ColorRect/MarginContainer3:modulate")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(10, 11.1, 12.5, 13.8),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-tracks/8/type = "value"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("ColorRect/MarginContainer3:theme_override_constants/margin_left")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
-"times": PackedFloat32Array(10, 13.8),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [-100, 0]
-}
-tracks/9/type = "value"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("ColorRect/MarginContainer3:theme_override_constants/margin_right")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
-"times": PackedFloat32Array(10, 13.8),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0, -100]
-}
-tracks/10/type = "value"
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/path = NodePath("ColorRect/MarginContainer4:theme_override_constants/margin_top")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/keys = {
-"times": PackedFloat32Array(15.5, 18.7),
-"transitions": PackedFloat32Array(0.466517, 1),
-"update": 0,
-"values": [-80, 0]
-}
-tracks/11/type = "value"
-tracks/11/imported = false
-tracks/11/enabled = true
-tracks/11/path = NodePath("ColorRect/MarginContainer4:theme_override_constants/margin_bottom")
-tracks/11/interp = 1
-tracks/11/loop_wrap = true
-tracks/11/keys = {
-"times": PackedFloat32Array(15.5, 18.7),
-"transitions": PackedFloat32Array(0.466516, 1),
-"update": 0,
-"values": [-80, 0]
-}
-tracks/12/type = "value"
-tracks/12/imported = false
-tracks/12/enabled = true
-tracks/12/path = NodePath("ColorRect/MarginContainer4:modulate")
-tracks/12/interp = 1
-tracks/12/loop_wrap = true
-tracks/12/keys = {
-"times": PackedFloat32Array(15.5, 16.6, 18.1, 20),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
 
 [sub_resource type="Animation" id="Animation_g62qv"]
 length = 0.001
@@ -404,6 +245,190 @@ tracks/12/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 0)]
 }
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("ColorRect/TextureRect:modulate")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_wmoxx"]
+resource_name = "ending"
+length = 26.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect/MarginContainer:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.7, 2.7, 4.4, 4.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ColorRect/MarginContainer:theme_override_constants/margin_top")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1.7, 4.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, -142]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ColorRect/MarginContainer:theme_override_constants/margin_right")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1.7, 4.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, -203]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("ColorRect/MarginContainer2:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(5.9, 7, 8.5, 9),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("ColorRect/MarginContainer2:theme_override_constants/margin_top")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(5.9, 9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-86, 0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("ColorRect/MarginContainer2:theme_override_constants/margin_bottom")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(5.9, 9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, -86]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("ColorRect/MarginContainer3:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(10, 11.1, 12.5, 13.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("ColorRect/MarginContainer3:theme_override_constants/margin_left")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(10, 13.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, -100]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("ColorRect/MarginContainer3:theme_override_constants/margin_right")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(10, 13.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-100, 0]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("ColorRect/MarginContainer4:theme_override_constants/margin_top")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(14.8, 20),
+"transitions": PackedFloat32Array(0.466517, 1),
+"update": 0,
+"values": [-80, 0]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("ColorRect/MarginContainer4:theme_override_constants/margin_bottom")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(14.8, 20),
+"transitions": PackedFloat32Array(0.466516, 1),
+"update": 0,
+"values": [-80, 0]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("ColorRect/MarginContainer4:modulate")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(14.8, 15.9, 21.4, 24),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("ColorRect/TextureRect:modulate")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(24.7, 25.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6dfjq"]
 _data = {
@@ -417,43 +442,6 @@ density = 0.009
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_3edeu"]
 height = 17.8338
 radius = 2.35268
-
-[sub_resource type="Animation" id="Animation_wd80p"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("level:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(-105.234, -141.929, 684.23)]
-}
-
-[sub_resource type="Animation" id="Animation_uq4og"]
-resource_name = "rise"
-length = 16.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("level:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.5, 16),
-"transitions": PackedFloat32Array(0.378929, 0.378929, 1),
-"update": 0,
-"values": [Vector3(-105.234, -141.929, 684.23), Vector3(-105.234, -141.929, 684.23), Vector3(-105.234, -2.97457, 684.23)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_3fpyk"]
-_data = {
-"RESET": SubResource("Animation_wd80p"),
-"rise": SubResource("Animation_uq4og")
-}
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_yi6tk"]
 radius = 1.0
@@ -603,7 +591,7 @@ visible = false
 layout_mode = 1
 
 [node name="EndSequence" type="Control" parent="Control"]
-visible = false
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -633,7 +621,7 @@ grow_vertical = 2
 layout_mode = 2
 texture = ExtResource("10_vtrej")
 expand_mode = 3
-stretch_mode = 6
+stretch_mode = 5
 
 [node name="MarginContainer2" type="MarginContainer" parent="Control/EndSequence/ColorRect"]
 modulate = Color(1, 1, 1, 0)
@@ -649,7 +637,7 @@ theme_override_constants/margin_top = -86
 layout_mode = 2
 texture = ExtResource("11_is5fo")
 expand_mode = 3
-stretch_mode = 6
+stretch_mode = 5
 
 [node name="MarginContainer3" type="MarginContainer" parent="Control/EndSequence/ColorRect"]
 modulate = Color(1, 1, 1, 0)
@@ -660,13 +648,15 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = -100
+theme_override_constants/margin_top = -30
 theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = -26
 
 [node name="TextureRect3" type="TextureRect" parent="Control/EndSequence/ColorRect/MarginContainer3"]
 layout_mode = 2
 texture = ExtResource("12_lsshw")
 expand_mode = 3
-stretch_mode = 6
+stretch_mode = 5
 
 [node name="MarginContainer4" type="MarginContainer" parent="Control/EndSequence/ColorRect"]
 modulate = Color(1, 1, 1, 0)
@@ -683,7 +673,19 @@ theme_override_constants/margin_bottom = -80
 layout_mode = 2
 texture = ExtResource("13_5xjwi")
 expand_mode = 3
-stretch_mode = 6
+stretch_mode = 5
+
+[node name="TextureRect" type="TextureRect" parent="Control/EndSequence/ColorRect"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("14_167d0")
+expand_mode = 3
+stretch_mode = 5
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Control/EndSequence"]
 libraries = {
@@ -699,7 +701,7 @@ transform = Transform3D(0.136563, 0, -0.990631, 0, 1, 0, 0.990631, 0, 0.136563, 
 script = ExtResource("10_hnhhl")
 
 [node name="level" parent="Cove" instance=ExtResource("1_fwxso")]
-transform = Transform3D(0.0751704, 0, -0.997171, 0, 1, 0, 0.997171, 0, 0.0751704, -105.234, -141.929, 684.23)
+transform = Transform3D(0.0751704, 0, -0.997171, 0, 1, 0, 0.997171, 0, 0.0751704, -105.234, -2.97457, 684.23)
 
 [node name="FogVolume" type="FogVolume" parent="Cove/level"]
 transform = Transform3D(1, 0, -5.96046e-08, 0, 1, 0, 5.96046e-08, 0, 1, 135.403, 35.6209, 10.5941)
@@ -708,11 +710,11 @@ shape = 2
 material = SubResource("FogMaterial_0ckys")
 
 [node name="CameraController" type="RemoteTransform3D" parent="Cove"]
-transform = Transform3D(-1, -1.53342e-08, 8.57793e-08, 0, 0.994759, 0.173012, -8.74228e-08, 0.175403, -0.981201, -112.706, 48.8787, 494.369)
+transform = Transform3D(0.978149, 0.098595, -0.182903, 0, 0.89187, 0.467753, 0.207912, -0.463853, 0.860491, -122.348, 25.1932, 876.891)
 script = ExtResource("5_yclud")
 
 [node name="Waypoint7" type="Marker3D" parent="Cove"]
-transform = Transform3D(15, 0, 2.14577e-06, 0, 12, 0, 2.6226e-06, 0, 20, -112.706, 48.8787, 514.586)
+transform = Transform3D(15, 0, 0, 0, 12, 0, 2.6226e-06, 0, 20, -112.706, 48.8787, 650.792)
 script = ExtResource("22_b8uov")
 map_id = 4
 sequence_id = 1
@@ -728,11 +730,6 @@ shape = SubResource("CylinderShape3D_3edeu")
 transform = Transform3D(15, 0, 2.38419e-06, 0, 12, 0, 3.09944e-06, 0, 20, -239.081, 48.8787, -144.295)
 script = ExtResource("22_b8uov")
 map_id = 4
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Cove"]
-libraries = {
-"": SubResource("AnimationLibrary_3fpyk")
-}
 
 [node name="Water" parent="." groups=["water"] instance=ExtResource("2_bevvh")]
 
@@ -757,7 +754,7 @@ script = ExtResource("5_yclud")
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 187.71, 13.9737, -266.778)
 current = true
-far = 1000.0
+far = 750.0
 script = ExtResource("7_x4tpy")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]

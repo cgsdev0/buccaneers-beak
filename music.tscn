@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://y3y1wfyses0g"]
+
+[ext_resource type="Script" path="res://Logic/music.gd" id="1_an6al"]
+[ext_resource type="AudioStream" uid="uid://m7efdhsqowdk" path="res://Music/mimic.mp3" id="2_7tyan"]
+[ext_resource type="AudioStream" uid="uid://dqxi7qnfq2neh" path="res://Music/sailing.mp3" id="3_c5amv"]
+[ext_resource type="AudioStream" uid="uid://blo6k6mkreden" path="res://Music/talking.mp3" id="4_f8ocs"]
+
+[node name="Node" type="Node"]
+script = ExtResource("1_an6al")
+
+[node name="Mimic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_7tyan")
+volume_db = -15.0
+bus = &"music"
+
+[node name="Sailing" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_c5amv")
+bus = &"music"
+
+[node name="Talking" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_f8ocs")
+bus = &"music"

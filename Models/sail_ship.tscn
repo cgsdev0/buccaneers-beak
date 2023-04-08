@@ -6,6 +6,7 @@
 [node name="Sail Ship" instance=ExtResource("1_iuvvo")]
 
 [node name="BigShip" parent="." index="0"]
+visibility_range_end = 100.0
 surface_material_override/0 = ExtResource("2_qsa6n")
 surface_material_override/1 = ExtResource("2_qsa6n")
 surface_material_override/2 = ExtResource("2_qsa6n")

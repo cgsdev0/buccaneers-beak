@@ -17,6 +17,6 @@ func _on_area_3d_body_entered(body):
 		return
 	played = true
 	$CameraController.active = true
-	$AnimationPlayer.play("rise")
-	await $AnimationPlayer.animation_finished
+	$level/AnimationPlayer.play("rise")
+	await $level/AnimationPlayer.animation_finished
 	$CameraController.previous_camera()

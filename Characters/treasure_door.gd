@@ -3,6 +3,9 @@ extends Node3D
 var out = true
 var interactable = true
 
+func set_occluder(v: bool) -> void:
+	$"Sail Ship".visible = v
+	
 func _input(event):
 	if out || Story.in_dialogue:
 		return
