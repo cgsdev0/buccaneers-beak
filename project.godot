@@ -99,3 +99,7 @@ water_offset={
 "type": "vec2",
 "value": Vector2(0, 0)
 }
+hole_punch={
+"type": "vec3",
+"value": Vector3(0, 0, 0)
+}

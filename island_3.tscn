@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://b5nimbw4bu2r6"]
+[gd_scene load_steps=8 format=3 uid="uid://b5nimbw4bu2r6"]
 
 [ext_resource type="PackedScene" uid="uid://dm806lmbclg4a" path="res://Islands/island_3.glb" id="1_kcmkh"]
 [ext_resource type="Material" uid="uid://daoxw5q6ey0gu" path="res://land.tres" id="2_jqin6"]
@@ -13,6 +13,9 @@ render_priority = -2
 shader = ExtResource("3_tqfwu")
 shader_parameter/noise = ExtResource("4_xjw3y")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_ylgpl"]
+size = Vector3(0.0243391, 0.884981, 0.379995)
+
 [node name="island_3" instance=ExtResource("1_kcmkh")]
 
 [node name="Plane" parent="." index="0"]
@@ -25,4 +28,13 @@ visible = false
 shape = SubResource("ConcavePolygonShape3D_dsoqm")
 
 [node name="Plane001" parent="." index="1"]
+visibility_range_fade_mode = 1
 surface_material_override/0 = SubResource("ShaderMaterial_xh2es")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Plane001" index="0"]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Plane001/StaticBody3D" index="0"]
+transform = Transform3D(0.950542, -0.0427648, 0.307638, 0.0731901, 0.993422, -0.0880469, -0.301849, 0.106208, 0.947419, -0.415939, -0.0209646, 0.293566)
+shape = SubResource("BoxShape3D_ylgpl")

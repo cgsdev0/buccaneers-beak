@@ -14,10 +14,15 @@ func allow_driving():
 		
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	if !OS.is_debug_build():
+		allowed = false
 	floor_max_angle = 0
 
 func get_perch():
 	return $%Perch
+	
+func get_camera():
+	return $CameraController
 	
 func get_water_height(world_position: Vector2):
 	var water_time = Time.get_ticks_msec() / 1000.0

@@ -161,7 +161,7 @@ size = Vector3(5.55531, 2.07445, 11.9434)
 [sub_resource type="SphereShape3D" id="SphereShape3D_q5iqv"]
 radius = 12.0
 
-[node name="Sail Boat" type="CharacterBody3D"]
+[node name="Sail Boat" type="CharacterBody3D" groups=["boat"]]
 script = ExtResource("1_rwh0n")
 
 [node name="RootNode" type="Node3D" parent="."]

@@ -12,6 +12,7 @@ func _ready():
 func on_trigger(trigger: Story.Trigger):
 	match trigger:
 		Story.Trigger.GOAT_TRADE:
+			complete = true
 			$%map.hide()
 			$%Pipe.show()
 			$%Pipe/GPUParticles3D.emitting = true
@@ -29,7 +30,6 @@ func _input(event):
 				await Story.finish_dialogue
 				$CameraController.previous_camera()
 			elif GameState.has_item(GameState.Pickup.PIPE):
-				complete = true
 				$CameraController.active = true
 				Story.trigger(Story.Character.GOAT)
 				$Arrow.visible = false

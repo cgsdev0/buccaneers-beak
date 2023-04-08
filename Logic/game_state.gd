@@ -16,6 +16,8 @@ var inventory = {
 	
 }
 
+var scuffed_camera_detector = null;
+
 var sensitivity = 0.25
 
 func is_map_complete():
