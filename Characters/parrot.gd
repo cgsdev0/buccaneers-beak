@@ -31,7 +31,7 @@ var landing = false
 func _process(delta):
 	if attached:
 		return
-	if (boat_to_target() < 15.0 || landing):
+	if (boat_to_target() < 50.0 || landing):
 		if waypoint_list.is_empty():
 			target = boat.get_perch().global_transform.origin
 			land()
@@ -40,14 +40,14 @@ func _process(delta):
 			actual_target = waypoint_list[0]
 			target = actual_target
 			waypoint_list.pop_front()
-	elif dist_to_boat() > 80.0:
+	elif dist_to_boat() > 110.0:
 		target = boat.global_transform.origin
 		boost = true
-	elif dist_to_boat() < 50.0:
+	elif dist_to_boat() < 67.0:
 		target = actual_target
 		boost = false
 	global_transform.origin += velocity * delta
-	var boostv = boat.velocity.length() / 3.0
+	var boostv = boat.velocity.length() / 2.0
 	if boost:
 		boostv = boat.velocity.length()
 	velocity = velocity.move_toward(global_transform.basis.z * speed, delta * speed * 3.0).limit_length(speed + boostv)
@@ -59,7 +59,7 @@ func _process(delta):
 #		if basis_lerp >= 1.0:
 #			target_basis = null
 
-	var turn_mod = 2.0
+	var turn_mod = 4.0
 	if landing:
 		turn_mod = 10.0
 	var q = from_to_rotation(global_transform.origin, target)
@@ -132,7 +132,7 @@ func take_off():
 	
 	if boat && attached:
 		boat.allow_driving()
-		velocity = owner.velocity
+		velocity = boat.velocity
 		var t = global_transform
 		get_parent().remove_child(self)
 		boat.get_parent().add_child(self)

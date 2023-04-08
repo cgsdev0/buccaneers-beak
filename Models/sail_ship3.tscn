@@ -1,16 +1,12 @@
-[gd_scene load_steps=18 format=3 uid="uid://fc51jdcfp0ar"]
+[gd_scene load_steps=15 format=3 uid="uid://fc51jdcfp0ar"]
 
 [ext_resource type="PackedScene" uid="uid://bls74xd6ltpph" path="res://Models/sail_ship2.tscn" id="1_6ie6l"]
+[ext_resource type="Script" path="res://Characters/treasure_door.gd" id="1_vxuin"]
 [ext_resource type="PackedScene" uid="uid://bisaoegsvgy3r" path="res://Models/sail_ship.tscn" id="2_bk4dv"]
 [ext_resource type="Material" uid="uid://djof04lbore15" path="res://Materials/wood_top.tres" id="3_ihvrv"]
 [ext_resource type="Script" path="res://Logic/inside.gd" id="4_hj6ds"]
-[ext_resource type="PackedScene" uid="uid://bedm8qn1q30pa" path="res://Treasure/chest_with_gold.tscn" id="5_pt0mb"]
 [ext_resource type="PackedScene" uid="uid://uh8y7efhoco0" path="res://Characters/chest_model.tscn" id="6_2u0g0"]
-[ext_resource type="PackedScene" uid="uid://b740dq11msm8m" path="res://Treasure/gold_ingots.tscn" id="7_b1oow"]
-[ext_resource type="PackedScene" uid="uid://tjok0y3amq5p" path="res://Treasure/armor_golden.tscn" id="8_7tis2"]
-[ext_resource type="PackedScene" uid="uid://cql2e4qxj8sg1" path="res://Treasure/gold_ingot_single.tscn" id="9_1ityq"]
-[ext_resource type="PackedScene" uid="uid://b0qpyjt8e0awq" path="res://Treasure/apple.tscn" id="10_ivec7"]
-[ext_resource type="PackedScene" uid="uid://v3cxr4yjehvu" path="res://Treasure/shield_celtic_golden.tscn" id="11_1jwgb"]
+[ext_resource type="PackedScene" uid="uid://jbe57tkjganp" path="res://Models/house_door.tscn" id="6_g2ego"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fkfjy"]
 size = Vector3(51.479, 1.169, 7.12)
@@ -30,13 +26,11 @@ size = Vector3(23.1695, 16.9527, 18.7281)
 [sub_resource type="BoxShape3D" id="BoxShape3D_inbvf"]
 size = Vector3(23.1695, 14.9093, 18.434)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_kp4s0"]
+size = Vector3(5, 4.98359, 4.90393)
+
 [node name="sail_ship3" type="Node3D"]
-
-[node name="Sail Ship" parent="." instance=ExtResource("1_6ie6l")]
-
-[node name="Sail Ship3" parent="." instance=ExtResource("1_6ie6l")]
-
-[node name="Sail Ship2" parent="." instance=ExtResource("2_bk4dv")]
+script = ExtResource("1_vxuin")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.02273, 0)
@@ -85,9 +79,6 @@ shape = SubResource("BoxShape3D_jq5bv")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.6424, -33.5656)
 shape = SubResource("BoxShape3D_inbvf")
 
-[node name="Chest with Gold" parent="." instance=ExtResource("5_pt0mb")]
-transform = Transform3D(-0.5, 0, -7.54979e-08, 0, 0.5, 0, 7.54979e-08, 0, -0.5, -0.0466496, -2.78133, 5.46052)
-
 [node name="Chest" parent="." instance=ExtResource("6_2u0g0")]
 transform = Transform3D(-2.18557e-07, -4.10667e-16, -5, -0.641728, 4.95865, 2.80508e-08, 4.95865, 0.641728, -2.16749e-07, 8.89639, 9.81934, -37.1572)
 
@@ -100,479 +91,23 @@ transform = Transform3D(-2.18557e-07, -4.10667e-16, -5, -0.641728, 4.95865, 2.80
 [node name="Chest4" parent="." instance=ExtResource("6_2u0g0")]
 transform = Transform3D(-2.16737e-07, 2.81492e-08, 5, 0.643978, 4.95836, 0, -4.95836, 0.643978, -2.18557e-07, -8.896, 10.545, -42.269)
 
-[node name="Gold Ingots6" parent="." instance=ExtResource("7_b1oow")]
-transform = Transform3D(3.7532, 1.56118, -2.91139, -1.23356, 4.75002, 0.956878, 3.0646, -3.47001e-08, 3.95072, -4.52538, -2.04219, -1.18182)
+[node name="Sail Ship" parent="." instance=ExtResource("2_bk4dv")]
+transform = Transform3D(25, 0, 0, 0, 25, 0, 0, 0, 25, 0, 0, 0)
+visible = false
 
-[node name="Gold Ingots7" parent="." instance=ExtResource("7_b1oow")]
-transform = Transform3D(3.70282, -1.61401, -2.94688, 1.37743, 4.72908, -0.859343, 3.0646, -0.175428, 3.94683, 5.95238, -1.48441, -1.18645)
+[node name="Sail Ship2" parent="." instance=ExtResource("1_6ie6l")]
+transform = Transform3D(25, 0, 0, 0, 25, 0, 0, 0, 25, 0, 0, 0)
 
-[node name="Gold Ingots8" parent="." instance=ExtResource("7_b1oow")]
-transform = Transform3D(0.54733, -1.61401, -4.70057, 0.37065, 4.72908, -1.58064, 4.95611, -0.175428, 0.637322, 5.95238, -1.48441, -7.70029)
+[node name="House Door2" parent="." instance=ExtResource("6_g2ego")]
+transform = Transform3D(2.5, 0, 0, 0, 2.4993, 0.0593356, 0, -0.0593356, 2.4993, -3.79958, 9.62808, -33.9185)
 
-[node name="Gold Ingots9" parent="." instance=ExtResource("7_b1oow")]
-transform = Transform3D(4.47104, -1.61401, 1.55073, 1.46311, 4.72908, 0.703645, -1.69385, -0.175428, 4.70108, 6.5366, -1.26708, -12.9439)
+[node name="Area3D2" type="Area3D" parent="."]
 
-[node name="Gold Ingots5" parent="." instance=ExtResource("7_b1oow")]
-transform = Transform3D(-0.91001, 1.56118, -4.66204, 0.29909, 4.75002, 1.53226, 4.90739, 1.03588e-07, -0.957899, -4.52538, -2.04219, -6.25387)
-
-[node name="Gold Ingots4" parent="." instance=ExtResource("7_b1oow")]
-transform = Transform3D(0.544636, 1.56118, -4.7187, -0.179005, 4.75002, 1.55088, 4.96702, 1.58328e-07, 0.573299, -5.53638, -1.70991, -11.6489)
-
-[node name="Armor Golden" parent="." instance=ExtResource("8_7tis2")]
-transform = Transform3D(0.975531, -0.219863, 4.93845e-09, 0.116526, 0.517025, -0.848002, 0.186444, 0.827252, 0.529993, 2.39881, 4.79626, 12.5179)
-
-[node name="Armor Golden2" parent="." instance=ExtResource("8_7tis2")]
-transform = Transform3D(0.975531, -0.219863, 2.36606e-08, 0.212455, 0.942659, -0.257403, 0.0565934, 0.251104, 0.966304, 2.39881, 4.79626, -0.13904)
-
-[node name="Armor Golden3" parent="." instance=ExtResource("8_7tis2")]
-transform = Transform3D(0.975531, -0.219863, 4.93845e-09, 0.116526, 0.517025, -0.848002, 0.186444, 0.827252, 0.529993, 2.39881, 4.79626, -8.32307)
-
-[node name="Armor Golden4" parent="." instance=ExtResource("8_7tis2")]
-transform = Transform3D(0.975531, -0.219863, 4.93845e-09, 0.116526, 0.517025, -0.848002, 0.186444, 0.827252, 0.529993, -3.04385, 4.79626, -8.32307)
-
-[node name="Armor Golden8" parent="." instance=ExtResource("8_7tis2")]
-transform = Transform3D(0.943161, 0.0003483, -0.332335, -0.275109, 0.561831, -0.780167, 0.186444, 0.827252, 0.529993, -3.04385, 7.58897, -13.2421)
-
-[node name="Armor Golden5" parent="." instance=ExtResource("8_7tis2")]
-transform = Transform3D(0.975531, -0.219863, 4.93845e-09, 0.116526, 0.517025, -0.848002, 0.186444, 0.827252, 0.529993, -3.04385, 4.79626, -3.49515)
-
-[node name="Armor Golden6" parent="." instance=ExtResource("8_7tis2")]
-transform = Transform3D(0.132679, -0.854269, -0.502614, 0.116526, 0.517025, -0.848002, 0.984285, 0.0539446, 0.168143, -3.04385, 4.79626, 2.00165)
-
-[node name="Armor Golden7" parent="." instance=ExtResource("8_7tis2")]
-transform = Transform3D(0.975531, -0.219863, 4.93845e-09, 0.116526, 0.517025, -0.848002, 0.186444, 0.827252, 0.529993, -7.01593, 4.79626, 2.00165)
-
-[node name="Physics" type="Node3D" parent="."]
-transform = Transform3D(0.975531, -0.219863, -7.45058e-09, 0.116526, 0.517025, -0.848002, 0.186444, 0.827252, 0.529993, 2.39881, 2.25133, 8.24203)
-
-[node name="gold_ingot_single" parent="Physics" instance=ExtResource("9_1ityq")]
-transform = Transform3D(0.975531, 0.116526, 0.186444, -0.219863, 0.517025, 0.827252, 7.45058e-09, -0.848002, 0.529993, -6.70632, -21.9559, -18.7696)
-
-[node name="gold_ingot_single2" parent="Physics" instance=ExtResource("9_1ityq")]
-transform = Transform3D(0.975531, 0.116526, 0.186444, -0.219863, 0.517025, 0.827252, 7.45058e-09, -0.848002, 0.529993, -6.70632, -21.9559, -18.7696)
-
-[node name="gold_ingot_single3" parent="Physics" instance=ExtResource("9_1ityq")]
-transform = Transform3D(0.975531, 0.116526, 0.186444, -0.219863, 0.517025, 0.827252, 7.45058e-09, -0.848002, 0.529993, -6.70632, -21.9559, -18.7696)
-
-[node name="gold_ingot_single4" parent="Physics" instance=ExtResource("9_1ityq")]
-transform = Transform3D(0.975531, 0.134139, 0.174202, -0.219863, 0.595175, 0.772934, 5.83658e-08, -0.792322, 0.610104, -7.75492, -26.6085, -25.333)
-
-[node name="gold_ingot_single21" parent="Physics" instance=ExtResource("9_1ityq")]
-transform = Transform3D(0.975531, 0.134139, 0.174202, -0.219863, 0.595175, 0.772934, 5.83658e-08, -0.792322, 0.610104, -7.75492, -26.6085, -25.333)
-
-[node name="gold_ingot_single22" parent="Physics" instance=ExtResource("9_1ityq")]
-transform = Transform3D(0.975531, 0.134139, 0.174202, -0.219863, 0.595175, 0.772934, 5.83658e-08, -0.792322, 0.610104, -7.75492, -26.6085, -25.333)
-
-[node name="gold_ingot_single23" parent="Physics" instance=ExtResource("9_1ityq")]
-transform = Transform3D(0.975531, 0.134139, 0.174202, -0.219863, 0.595175, 0.772934, 5.83658e-08, -0.792322, 0.610104, -7.75492, -26.6085, -25.333)
-
-[node name="gold_ingot_single24" parent="Physics" instance=ExtResource("9_1ityq")]
-transform = Transform3D(0.975531, 0.134139, 0.174202, -0.219863, 0.595175, 0.772934, 7.3267e-08, -0.792322, 0.610104, -6.41998, -26.9094, -25.333)
-
-[node name="gold_ingot_single5" parent="Physics" instance=ExtResource("9_1ityq")]
-transform = Transform3D(0.975531, 0.116526, 0.186444, -0.219863, 0.517025, 0.827252, 7.45058e-09, -0.848002, 0.529993, -6.70632, -21.9559, -18.7696)
-
-[node name="gold_ingot_single6" parent="Physics" instance=ExtResource("9_1ityq")]
-transform = Transform3D(0.975531, 0.116526, 0.186444, -0.219863, 0.517025, 0.827252, 7.45058e-09, -0.848002, 0.529993, -6.70632, -21.9559, -18.7696)
-
-[node name="gold_ingot_single7" parent="Physics" instance=ExtResource("9_1ityq")]
-transform = Transform3D(0.975531, 0.116526, 0.186444, -0.219863, 0.517025, 0.827252, 7.45058e-09, -0.848002, 0.529993, -6.70632, -21.9559, -18.7696)
-
-[node name="gold_ingot_single8" parent="Physics" instance=ExtResource("9_1ityq")]
-transform = Transform3D(0.975531, 0.116526, 0.186444, -0.219863, 0.517025, 0.827252, 7.45058e-09, -0.848002, 0.529993, -6.70632, -21.9559, -18.7696)
-
-[node name="gold_ingot_single9" parent="Physics" instance=ExtResource("9_1ityq")]
-transform = Transform3D(0.975531, 0.116526, 0.186444, -0.219863, 0.517025, 0.827252, 7.45058e-09, -0.848002, 0.529993, -6.70632, -21.9559, -18.7696)
-
-[node name="gold_ingot_single10" parent="Physics" instance=ExtResource("9_1ityq")]
-transform = Transform3D(0.975531, 0.116526, 0.186444, -0.219863, 0.517025, 0.827252, 7.45058e-09, -0.848002, 0.529993, -6.70632, -21.9559, -18.7696)
-
-[node name="gold_ingot_single11" parent="Physics" instance=ExtResource("9_1ityq")]
-transform = Transform3D(0.975531, 0.116526, 0.186444, -0.219863, 0.517025, 0.827252, 7.45058e-09, -0.848002, 0.529993, -6.70632, -21.9559, -18.7696)
-
-[node name="gold_ingot_single12" parent="Physics" instance=ExtResource("9_1ityq")]
-transform = Transform3D(0.975531, 0.116526, 0.186444, -0.219863, 0.517025, 0.827252, 7.45058e-09, -0.848002, 0.529993, -6.70632, -21.9559, -18.7696)
-
-[node name="gold_ingot_single13" parent="Physics" instance=ExtResource("9_1ityq")]
-transform = Transform3D(0.975531, 0.116526, 0.186444, -0.219863, 0.517025, 0.827252, 7.45058e-09, -0.848002, 0.529993, -6.70632, -21.9559, -18.7696)
-
-[node name="gold_ingot_single14" parent="Physics" instance=ExtResource("9_1ityq")]
-transform = Transform3D(0.975531, 0.116526, 0.186444, -0.219863, 0.517025, 0.827252, 7.45058e-09, -0.848002, 0.529993, -6.70632, -21.9559, -18.7696)
-
-[node name="gold_ingot_single15" parent="Physics" instance=ExtResource("9_1ityq")]
-transform = Transform3D(0.975531, 0.116526, 0.186444, -0.219863, 0.517025, 0.827252, 7.45058e-09, -0.848002, 0.529993, -6.70632, -21.9559, -18.7696)
-
-[node name="gold_ingot_single16" parent="Physics" instance=ExtResource("9_1ityq")]
-transform = Transform3D(0.975531, 0.116526, 0.186444, -0.219863, 0.517025, 0.827252, 7.45058e-09, -0.848002, 0.529993, -6.70632, -21.9559, -18.7696)
-
-[node name="gold_ingot_single17" parent="Physics" instance=ExtResource("9_1ityq")]
-transform = Transform3D(0.975531, 0.116526, 0.186444, -0.219863, 0.517025, 0.827252, 7.45058e-09, -0.848002, 0.529993, -6.70632, -21.9559, -18.7696)
-
-[node name="gold_ingot_single18" parent="Physics" instance=ExtResource("9_1ityq")]
-transform = Transform3D(0.975531, 0.116526, 0.186444, -0.219863, 0.517025, 0.827252, 7.45058e-09, -0.848002, 0.529993, -6.70632, -21.9559, -18.7696)
-
-[node name="gold_ingot_single19" parent="Physics" instance=ExtResource("9_1ityq")]
-transform = Transform3D(0.975531, 0.116526, 0.186444, -0.219863, 0.517025, 0.827252, 7.45058e-09, -0.848002, 0.529993, -6.70632, -21.9559, -18.7696)
-
-[node name="gold_ingot_single20" parent="Physics" instance=ExtResource("9_1ityq")]
-transform = Transform3D(0.975531, 0.116526, 0.186444, -0.219863, 0.517025, 0.827252, 7.45058e-09, -0.848002, 0.529993, -6.70632, -21.9559, -18.7696)
-
-[node name="Physics3" type="Node3D" parent="."]
-transform = Transform3D(0.975531, -0.219863, -7.45058e-09, 0.116526, 0.517025, -0.848002, 0.186444, 0.827252, 0.529993, 2.39881, 2.25133, 32.9731)
-
-[node name="gold_ingot_single" parent="Physics3" instance=ExtResource("9_1ityq")]
-transform = Transform3D(0.975531, 0.116526, 0.186444, -0.219863, 0.517025, 0.827252, 7.45058e-09, -0.848002, 0.529993, -6.70632, -21.9559, -18.7696)
-
-[node name="gold_ingot_single2" parent="Physics3" instance=ExtResource("9_1ityq")]
-transform = Transform3D(0.975531, 0.116526, 0.186444, -0.219863, 0.517025, 0.827252, 7.45058e-09, -0.848002, 0.529993, -6.70632, -21.9559, -18.7696)
-
-[node name="gold_ingot_single3" parent="Physics3" instance=ExtResource("9_1ityq")]
-transform = Transform3D(0.975531, 0.116526, 0.186444, -0.219863, 0.517025, 0.827252, 7.45058e-09, -0.848002, 0.529993, -6.70632, -21.9559, -18.7696)
-
-[node name="gold_ingot_single4" parent="Physics3" instance=ExtResource("9_1ityq")]
-transform = Transform3D(0.975531, 0.134139, 0.174202, -0.219863, 0.595175, 0.772934, 5.83658e-08, -0.792322, 0.610104, -7.75492, -26.6085, -25.333)
-
-[node name="gold_ingot_single21" parent="Physics3" instance=ExtResource("9_1ityq")]
-transform = Transform3D(0.975531, 0.134139, 0.174202, -0.219863, 0.595175, 0.772934, 5.83658e-08, -0.792322, 0.610104, -7.75492, -26.6085, -25.333)
-
-[node name="gold_ingot_single22" parent="Physics3" instance=ExtResource("9_1ityq")]
-transform = Transform3D(0.975531, 0.134139, 0.174202, -0.219863, 0.595175, 0.772934, 5.83658e-08, -0.792322, 0.610104, -7.75492, -26.6085, -25.333)
-
-[node name="gold_ingot_single23" parent="Physics3" instance=ExtResource("9_1ityq")]
-transform = Transform3D(0.975531, 0.134139, 0.174202, -0.219863, 0.595175, 0.772934, 5.83658e-08, -0.792322, 0.610104, -7.75492, -26.6085, -25.333)
-
-[node name="gold_ingot_single24" parent="Physics3" instance=ExtResource("9_1ityq")]
-transform = Transform3D(0.975531, 0.134139, 0.174202, -0.219863, 0.595175, 0.772934, 7.3267e-08, -0.792322, 0.610104, -6.41998, -26.9094, -25.333)
-
-[node name="gold_ingot_single5" parent="Physics3" instance=ExtResource("9_1ityq")]
-transform = Transform3D(0.975531, 0.116526, 0.186444, -0.219863, 0.517025, 0.827252, 7.45058e-09, -0.848002, 0.529993, -6.70632, -21.9559, -18.7696)
-
-[node name="gold_ingot_single6" parent="Physics3" instance=ExtResource("9_1ityq")]
-transform = Transform3D(0.975531, 0.116526, 0.186444, -0.219863, 0.517025, 0.827252, 7.45058e-09, -0.848002, 0.529993, -6.70632, -21.9559, -18.7696)
-
-[node name="gold_ingot_single7" parent="Physics3" instance=ExtResource("9_1ityq")]
-transform = Transform3D(0.975531, 0.116526, 0.186444, -0.219863, 0.517025, 0.827252, 7.45058e-09, -0.848002, 0.529993, -6.70632, -21.9559, -18.7696)
-
-[node name="gold_ingot_single8" parent="Physics3" instance=ExtResource("9_1ityq")]
-transform = Transform3D(0.975531, 0.116526, 0.186444, -0.219863, 0.517025, 0.827252, 7.45058e-09, -0.848002, 0.529993, -6.70632, -21.9559, -18.7696)
-
-[node name="gold_ingot_single9" parent="Physics3" instance=ExtResource("9_1ityq")]
-transform = Transform3D(0.975531, 0.116526, 0.186444, -0.219863, 0.517025, 0.827252, 7.45058e-09, -0.848002, 0.529993, -6.70632, -21.9559, -18.7696)
-
-[node name="gold_ingot_single10" parent="Physics3" instance=ExtResource("9_1ityq")]
-transform = Transform3D(0.975531, 0.116526, 0.186444, -0.219863, 0.517025, 0.827252, 7.45058e-09, -0.848002, 0.529993, -6.70632, -21.9559, -18.7696)
-
-[node name="gold_ingot_single11" parent="Physics3" instance=ExtResource("9_1ityq")]
-transform = Transform3D(0.975531, 0.116526, 0.186444, -0.219863, 0.517025, 0.827252, 7.45058e-09, -0.848002, 0.529993, -6.70632, -21.9559, -18.7696)
-
-[node name="gold_ingot_single12" parent="Physics3" instance=ExtResource("9_1ityq")]
-transform = Transform3D(0.975531, 0.116526, 0.186444, -0.219863, 0.517025, 0.827252, 7.45058e-09, -0.848002, 0.529993, -6.70632, -21.9559, -18.7696)
-
-[node name="gold_ingot_single13" parent="Physics3" instance=ExtResource("9_1ityq")]
-transform = Transform3D(0.975531, 0.116526, 0.186444, -0.219863, 0.517025, 0.827252, 7.45058e-09, -0.848002, 0.529993, -6.70632, -21.9559, -18.7696)
-
-[node name="gold_ingot_single14" parent="Physics3" instance=ExtResource("9_1ityq")]
-transform = Transform3D(0.975531, 0.116526, 0.186444, -0.219863, 0.517025, 0.827252, 7.45058e-09, -0.848002, 0.529993, -6.70632, -21.9559, -18.7696)
-
-[node name="gold_ingot_single15" parent="Physics3" instance=ExtResource("9_1ityq")]
-transform = Transform3D(0.975531, 0.116526, 0.186444, -0.219863, 0.517025, 0.827252, 7.45058e-09, -0.848002, 0.529993, -6.70632, -21.9559, -18.7696)
-
-[node name="gold_ingot_single16" parent="Physics3" instance=ExtResource("9_1ityq")]
-transform = Transform3D(0.975531, 0.116526, 0.186444, -0.219863, 0.517025, 0.827252, 7.45058e-09, -0.848002, 0.529993, -6.70632, -21.9559, -18.7696)
-
-[node name="gold_ingot_single17" parent="Physics3" instance=ExtResource("9_1ityq")]
-transform = Transform3D(0.975531, 0.116526, 0.186444, -0.219863, 0.517025, 0.827252, 7.45058e-09, -0.848002, 0.529993, -6.70632, -21.9559, -18.7696)
-
-[node name="gold_ingot_single18" parent="Physics3" instance=ExtResource("9_1ityq")]
-transform = Transform3D(0.975531, 0.116526, 0.186444, -0.219863, 0.517025, 0.827252, 7.45058e-09, -0.848002, 0.529993, -6.70632, -21.9559, -18.7696)
-
-[node name="gold_ingot_single19" parent="Physics3" instance=ExtResource("9_1ityq")]
-transform = Transform3D(0.975531, 0.116526, 0.186444, -0.219863, 0.517025, 0.827252, 7.45058e-09, -0.848002, 0.529993, -6.70632, -21.9559, -18.7696)
-
-[node name="gold_ingot_single20" parent="Physics3" instance=ExtResource("9_1ityq")]
-transform = Transform3D(0.975531, 0.116526, 0.186444, -0.219863, 0.517025, 0.827252, 7.45058e-09, -0.848002, 0.529993, -6.70632, -21.9559, -18.7696)
-
-[node name="Physics2" type="Node3D" parent="."]
-transform = Transform3D(0.975531, -0.219863, -7.45058e-09, 0.116526, 0.517025, -0.848002, 0.186444, 0.827252, 0.529993, 2.39881, 2.25133, 45.6317)
-
-[node name="gold_ingot_single" parent="Physics2" instance=ExtResource("9_1ityq")]
-transform = Transform3D(0.975531, 0.116526, 0.186444, -0.219863, 0.517025, 0.827252, 7.45058e-09, -0.848002, 0.529993, -6.70632, -21.9559, -18.7696)
-
-[node name="gold_ingot_single2" parent="Physics2" instance=ExtResource("9_1ityq")]
-transform = Transform3D(0.975531, 0.116526, 0.186444, -0.219863, 0.517025, 0.827252, 7.45058e-09, -0.848002, 0.529993, -6.70632, -21.9559, -18.7696)
-
-[node name="gold_ingot_single3" parent="Physics2" instance=ExtResource("9_1ityq")]
-transform = Transform3D(0.975531, 0.116526, 0.186444, -0.219863, 0.517025, 0.827252, 7.45058e-09, -0.848002, 0.529993, -6.70632, -21.9559, -18.7696)
-
-[node name="gold_ingot_single4" parent="Physics2" instance=ExtResource("9_1ityq")]
-transform = Transform3D(0.975531, 0.116526, 0.186444, -0.219863, 0.517025, 0.827252, 7.45058e-09, -0.848002, 0.529993, -6.70632, -21.9559, -18.7696)
-
-[node name="gold_ingot_single5" parent="Physics2" instance=ExtResource("9_1ityq")]
-transform = Transform3D(0.975531, 0.116526, 0.186444, -0.219863, 0.517025, 0.827252, 7.45058e-09, -0.848002, 0.529993, -6.70632, -21.9559, -18.7696)
-
-[node name="gold_ingot_single6" parent="Physics2" instance=ExtResource("9_1ityq")]
-transform = Transform3D(0.975531, 0.116526, 0.186444, -0.219863, 0.517025, 0.827252, 7.45058e-09, -0.848002, 0.529993, -6.70632, -21.9559, -18.7696)
-
-[node name="gold_ingot_single7" parent="Physics2" instance=ExtResource("9_1ityq")]
-transform = Transform3D(0.975531, 0.116526, 0.186444, -0.219863, 0.517025, 0.827252, 7.45058e-09, -0.848002, 0.529993, -6.70632, -21.9559, -18.7696)
-
-[node name="gold_ingot_single8" parent="Physics2" instance=ExtResource("9_1ityq")]
-transform = Transform3D(0.975531, 0.116526, 0.186444, -0.219863, 0.517025, 0.827252, 7.45058e-09, -0.848002, 0.529993, -6.70632, -21.9559, -18.7696)
-
-[node name="gold_ingot_single9" parent="Physics2" instance=ExtResource("9_1ityq")]
-transform = Transform3D(0.975531, 0.116526, 0.186444, -0.219863, 0.517025, 0.827252, 7.45058e-09, -0.848002, 0.529993, -6.70632, -21.9559, -18.7696)
-
-[node name="gold_ingot_single10" parent="Physics2" instance=ExtResource("9_1ityq")]
-transform = Transform3D(0.975531, 0.116526, 0.186444, -0.219863, 0.517025, 0.827252, 7.45058e-09, -0.848002, 0.529993, -6.70632, -21.9559, -18.7696)
-
-[node name="gold_ingot_single11" parent="Physics2" instance=ExtResource("9_1ityq")]
-transform = Transform3D(0.975531, 0.116526, 0.186444, -0.219863, 0.517025, 0.827252, 7.45058e-09, -0.848002, 0.529993, -6.70632, -21.9559, -18.7696)
-
-[node name="gold_ingot_single12" parent="Physics2" instance=ExtResource("9_1ityq")]
-transform = Transform3D(0.975531, 0.116526, 0.186444, -0.219863, 0.517025, 0.827252, 7.45058e-09, -0.848002, 0.529993, -6.70632, -21.9559, -18.7696)
-
-[node name="gold_ingot_single13" parent="Physics2" instance=ExtResource("9_1ityq")]
-transform = Transform3D(0.975531, 0.116526, 0.186444, -0.219863, 0.517025, 0.827252, 7.45058e-09, -0.848002, 0.529993, -6.70632, -21.9559, -18.7696)
-
-[node name="gold_ingot_single14" parent="Physics2" instance=ExtResource("9_1ityq")]
-transform = Transform3D(0.975531, 0.116526, 0.186444, -0.219863, 0.517025, 0.827252, 7.45058e-09, -0.848002, 0.529993, -6.70632, -21.9559, -18.7696)
-
-[node name="gold_ingot_single15" parent="Physics2" instance=ExtResource("9_1ityq")]
-transform = Transform3D(0.975531, 0.116526, 0.186444, -0.219863, 0.517025, 0.827252, 7.45058e-09, -0.848002, 0.529993, -6.70632, -21.9559, -18.7696)
-
-[node name="gold_ingot_single16" parent="Physics2" instance=ExtResource("9_1ityq")]
-transform = Transform3D(0.975531, 0.116526, 0.186444, -0.219863, 0.517025, 0.827252, 7.45058e-09, -0.848002, 0.529993, -6.70632, -21.9559, -18.7696)
-
-[node name="gold_ingot_single17" parent="Physics2" instance=ExtResource("9_1ityq")]
-transform = Transform3D(0.975531, 0.116526, 0.186444, -0.219863, 0.517025, 0.827252, 7.45058e-09, -0.848002, 0.529993, -6.70632, -21.9559, -18.7696)
-
-[node name="gold_ingot_single18" parent="Physics2" instance=ExtResource("9_1ityq")]
-transform = Transform3D(0.975531, 0.116526, 0.186444, -0.219863, 0.517025, 0.827252, 7.45058e-09, -0.848002, 0.529993, -6.70632, -21.9559, -18.7696)
-
-[node name="gold_ingot_single19" parent="Physics2" instance=ExtResource("9_1ityq")]
-transform = Transform3D(0.975531, 0.116526, 0.186444, -0.219863, 0.517025, 0.827252, 7.45058e-09, -0.848002, 0.529993, -6.70632, -21.9559, -18.7696)
-
-[node name="gold_ingot_single20" parent="Physics2" instance=ExtResource("9_1ityq")]
-transform = Transform3D(0.975531, 0.116526, 0.186444, -0.219863, 0.517025, 0.827252, 7.45058e-09, -0.848002, 0.529993, -6.70632, -21.9559, -18.7696)
-
-[node name="Physics4" type="Node3D" parent="."]
-transform = Transform3D(0.975531, -0.219863, -7.45058e-09, 0.116526, 0.517025, -0.848002, 0.186444, 0.827252, 0.529993, -3.5121, 2.25133, 29.2253)
-
-[node name="gold_ingot_single" parent="Physics4" instance=ExtResource("9_1ityq")]
-transform = Transform3D(0.975531, 0.116526, 0.186444, -0.219863, 0.517025, 0.827252, 7.45058e-09, -0.848002, 0.529993, -6.70632, -21.9559, -18.7696)
-
-[node name="gold_ingot_single2" parent="Physics4" instance=ExtResource("9_1ityq")]
-transform = Transform3D(0.975531, 0.116526, 0.186444, -0.219863, 0.517025, 0.827252, 7.45058e-09, -0.848002, 0.529993, -6.70632, -21.9559, -18.7696)
-
-[node name="gold_ingot_single3" parent="Physics4" instance=ExtResource("9_1ityq")]
-transform = Transform3D(0.975531, 0.116526, 0.186444, -0.219863, 0.517025, 0.827252, 7.45058e-09, -0.848002, 0.529993, -6.70632, -21.9559, -18.7696)
-
-[node name="gold_ingot_single4" parent="Physics4" instance=ExtResource("9_1ityq")]
-transform = Transform3D(0.975531, 0.116526, 0.186444, -0.219863, 0.517025, 0.827252, 7.45058e-09, -0.848002, 0.529993, -6.70632, -21.9559, -18.7696)
-
-[node name="gold_ingot_single5" parent="Physics4" instance=ExtResource("9_1ityq")]
-transform = Transform3D(0.975531, 0.116526, 0.186444, -0.219863, 0.517025, 0.827252, 7.45058e-09, -0.848002, 0.529993, -6.70632, -21.9559, -18.7696)
-
-[node name="gold_ingot_single6" parent="Physics4" instance=ExtResource("9_1ityq")]
-transform = Transform3D(0.975531, 0.116526, 0.186444, -0.219863, 0.517025, 0.827252, 7.45058e-09, -0.848002, 0.529993, -6.70632, -21.9559, -18.7696)
-
-[node name="gold_ingot_single7" parent="Physics4" instance=ExtResource("9_1ityq")]
-transform = Transform3D(0.975531, 0.116526, 0.186444, -0.219863, 0.517025, 0.827252, 7.45058e-09, -0.848002, 0.529993, -6.70632, -21.9559, -18.7696)
-
-[node name="gold_ingot_single8" parent="Physics4" instance=ExtResource("9_1ityq")]
-transform = Transform3D(0.975531, 0.116526, 0.186444, -0.219863, 0.517025, 0.827252, 7.45058e-09, -0.848002, 0.529993, -6.70632, -21.9559, -18.7696)
-
-[node name="gold_ingot_single9" parent="Physics4" instance=ExtResource("9_1ityq")]
-transform = Transform3D(0.975531, 0.116526, 0.186444, -0.219863, 0.517025, 0.827252, 7.45058e-09, -0.848002, 0.529993, -6.70632, -21.9559, -18.7696)
-
-[node name="gold_ingot_single10" parent="Physics4" instance=ExtResource("9_1ityq")]
-transform = Transform3D(0.975531, 0.116526, 0.186444, -0.219863, 0.517025, 0.827252, 7.45058e-09, -0.848002, 0.529993, -6.70632, -21.9559, -18.7696)
-
-[node name="gold_ingot_single11" parent="Physics4" instance=ExtResource("9_1ityq")]
-transform = Transform3D(0.975531, 0.116526, 0.186444, -0.219863, 0.517025, 0.827252, 7.45058e-09, -0.848002, 0.529993, -6.70632, -21.9559, -18.7696)
-
-[node name="gold_ingot_single12" parent="Physics4" instance=ExtResource("9_1ityq")]
-transform = Transform3D(0.975531, 0.116526, 0.186444, -0.219863, 0.517025, 0.827252, 7.45058e-09, -0.848002, 0.529993, -6.70632, -21.9559, -18.7696)
-
-[node name="gold_ingot_single13" parent="Physics4" instance=ExtResource("9_1ityq")]
-transform = Transform3D(0.975531, 0.116526, 0.186444, -0.219863, 0.517025, 0.827252, 7.45058e-09, -0.848002, 0.529993, -6.70632, -21.9559, -18.7696)
-
-[node name="gold_ingot_single14" parent="Physics4" instance=ExtResource("9_1ityq")]
-transform = Transform3D(0.975531, 0.116526, 0.186444, -0.219863, 0.517025, 0.827252, 7.45058e-09, -0.848002, 0.529993, -6.70632, -21.9559, -18.7696)
-
-[node name="gold_ingot_single15" parent="Physics4" instance=ExtResource("9_1ityq")]
-transform = Transform3D(0.975531, 0.116526, 0.186444, -0.219863, 0.517025, 0.827252, 7.45058e-09, -0.848002, 0.529993, -6.70632, -21.9559, -18.7696)
-
-[node name="gold_ingot_single16" parent="Physics4" instance=ExtResource("9_1ityq")]
-transform = Transform3D(0.975531, 0.116526, 0.186444, -0.219863, 0.517025, 0.827252, 7.45058e-09, -0.848002, 0.529993, -6.70632, -21.9559, -18.7696)
-
-[node name="gold_ingot_single17" parent="Physics4" instance=ExtResource("9_1ityq")]
-transform = Transform3D(0.975531, 0.116526, 0.186444, -0.219863, 0.517025, 0.827252, 7.45058e-09, -0.848002, 0.529993, -6.70632, -21.9559, -18.7696)
-
-[node name="gold_ingot_single18" parent="Physics4" instance=ExtResource("9_1ityq")]
-transform = Transform3D(0.975531, 0.116526, 0.186444, -0.219863, 0.517025, 0.827252, 7.45058e-09, -0.848002, 0.529993, -6.70632, -21.9559, -18.7696)
-
-[node name="gold_ingot_single19" parent="Physics4" instance=ExtResource("9_1ityq")]
-transform = Transform3D(0.975531, 0.116526, 0.186444, -0.219863, 0.517025, 0.827252, 7.45058e-09, -0.848002, 0.529993, -6.70632, -21.9559, -18.7696)
-
-[node name="gold_ingot_single20" parent="Physics4" instance=ExtResource("9_1ityq")]
-transform = Transform3D(0.975531, 0.116526, 0.186444, -0.219863, 0.517025, 0.827252, 7.45058e-09, -0.848002, 0.529993, -6.70632, -21.9559, -18.7696)
-
-[node name="Physics5" type="Node3D" parent="."]
-transform = Transform3D(0.975531, -0.219863, -7.45058e-09, 0.116526, 0.517025, -0.848002, 0.186444, 0.827252, 0.529993, -5.90005, 6.13998, 13.9448)
-
-[node name="gold_ingot_single" parent="Physics5" instance=ExtResource("9_1ityq")]
-transform = Transform3D(0.975531, 0.116526, 0.186444, -0.219863, 0.517025, 0.827252, 7.45058e-09, -0.848002, 0.529993, -6.70632, -21.9559, -18.7696)
-
-[node name="gold_ingot_single2" parent="Physics5" instance=ExtResource("9_1ityq")]
-transform = Transform3D(0.975531, 0.116526, 0.186444, -0.219863, 0.517025, 0.827252, 7.45058e-09, -0.848002, 0.529993, -6.70632, -21.9559, -18.7696)
-
-[node name="gold_ingot_single3" parent="Physics5" instance=ExtResource("9_1ityq")]
-transform = Transform3D(0.975531, 0.116526, 0.186444, -0.219863, 0.517025, 0.827252, 7.45058e-09, -0.848002, 0.529993, -6.70632, -21.9559, -18.7696)
-
-[node name="gold_ingot_single4" parent="Physics5" instance=ExtResource("9_1ityq")]
-transform = Transform3D(0.975531, 0.116526, 0.186444, -0.219863, 0.517025, 0.827252, 7.45058e-09, -0.848002, 0.529993, -6.70632, -21.9559, -18.7696)
-
-[node name="gold_ingot_single5" parent="Physics5" instance=ExtResource("9_1ityq")]
-transform = Transform3D(0.975531, 0.116526, 0.186444, -0.219863, 0.517025, 0.827252, 7.45058e-09, -0.848002, 0.529993, -6.70632, -21.9559, -18.7696)
-
-[node name="gold_ingot_single6" parent="Physics5" instance=ExtResource("9_1ityq")]
-transform = Transform3D(0.975531, 0.116526, 0.186444, -0.219863, 0.517025, 0.827252, 7.45058e-09, -0.848002, 0.529993, -6.70632, -21.9559, -18.7696)
-
-[node name="gold_ingot_single7" parent="Physics5" instance=ExtResource("9_1ityq")]
-transform = Transform3D(0.975531, 0.116526, 0.186444, -0.219863, 0.517025, 0.827252, 7.45058e-09, -0.848002, 0.529993, -6.70632, -21.9559, -18.7696)
-
-[node name="gold_ingot_single8" parent="Physics5" instance=ExtResource("9_1ityq")]
-transform = Transform3D(0.975531, 0.116526, 0.186444, -0.219863, 0.517025, 0.827252, 7.45058e-09, -0.848002, 0.529993, -6.70632, -21.9559, -18.7696)
-
-[node name="gold_ingot_single9" parent="Physics5" instance=ExtResource("9_1ityq")]
-transform = Transform3D(0.975531, 0.116526, 0.186444, -0.219863, 0.517025, 0.827252, 7.45058e-09, -0.848002, 0.529993, -6.70632, -21.9559, -18.7696)
-
-[node name="gold_ingot_single10" parent="Physics5" instance=ExtResource("9_1ityq")]
-transform = Transform3D(0.975531, 0.116526, 0.186444, -0.219863, 0.517025, 0.827252, 7.45058e-09, -0.848002, 0.529993, -6.70632, -21.9559, -18.7696)
-
-[node name="gold_ingot_single11" parent="Physics5" instance=ExtResource("9_1ityq")]
-transform = Transform3D(0.975531, 0.116526, 0.186444, -0.219863, 0.517025, 0.827252, 7.45058e-09, -0.848002, 0.529993, -6.70632, -21.9559, -18.7696)
-
-[node name="gold_ingot_single12" parent="Physics5" instance=ExtResource("9_1ityq")]
-transform = Transform3D(0.975531, 0.116526, 0.186444, -0.219863, 0.517025, 0.827252, 7.45058e-09, -0.848002, 0.529993, -6.70632, -21.9559, -18.7696)
-
-[node name="gold_ingot_single13" parent="Physics5" instance=ExtResource("9_1ityq")]
-transform = Transform3D(0.975531, 0.116526, 0.186444, -0.219863, 0.517025, 0.827252, 7.45058e-09, -0.848002, 0.529993, -6.70632, -21.9559, -18.7696)
-
-[node name="gold_ingot_single14" parent="Physics5" instance=ExtResource("9_1ityq")]
-transform = Transform3D(0.975531, 0.116526, 0.186444, -0.219863, 0.517025, 0.827252, 7.45058e-09, -0.848002, 0.529993, -6.70632, -21.9559, -18.7696)
-
-[node name="gold_ingot_single15" parent="Physics5" instance=ExtResource("9_1ityq")]
-transform = Transform3D(0.975531, 0.116526, 0.186444, -0.219863, 0.517025, 0.827252, 7.45058e-09, -0.848002, 0.529993, -6.70632, -21.9559, -18.7696)
-
-[node name="gold_ingot_single16" parent="Physics5" instance=ExtResource("9_1ityq")]
-transform = Transform3D(0.975531, 0.116526, 0.186444, -0.219863, 0.517025, 0.827252, 7.45058e-09, -0.848002, 0.529993, -6.70632, -21.9559, -18.7696)
-
-[node name="gold_ingot_single17" parent="Physics5" instance=ExtResource("9_1ityq")]
-transform = Transform3D(0.975531, 0.116526, 0.186444, -0.219863, 0.517025, 0.827252, 7.45058e-09, -0.848002, 0.529993, -6.70632, -21.9559, -18.7696)
-
-[node name="gold_ingot_single18" parent="Physics5" instance=ExtResource("9_1ityq")]
-transform = Transform3D(0.975531, 0.116526, 0.186444, -0.219863, 0.517025, 0.827252, 7.45058e-09, -0.848002, 0.529993, -6.70632, -21.9559, -18.7696)
-
-[node name="gold_ingot_single19" parent="Physics5" instance=ExtResource("9_1ityq")]
-transform = Transform3D(0.975531, 0.116526, 0.186444, -0.219863, 0.517025, 0.827252, 7.45058e-09, -0.848002, 0.529993, -6.70632, -21.9559, -18.7696)
-
-[node name="gold_ingot_single20" parent="Physics5" instance=ExtResource("9_1ityq")]
-transform = Transform3D(0.975531, 0.116526, 0.186444, -0.219863, 0.517025, 0.827252, 7.45058e-09, -0.848002, 0.529993, -6.70632, -21.9559, -18.7696)
-
-[node name="Apple" parent="." instance=ExtResource("10_ivec7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.06123, 3.50071, -9.02555)
-
-[node name="Apple2" parent="." instance=ExtResource("10_ivec7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.06123, 3.50071, -9.02555)
-
-[node name="Apple3" parent="." instance=ExtResource("10_ivec7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.06123, 3.50071, -9.02555)
-
-[node name="Apple4" parent="." instance=ExtResource("10_ivec7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.06123, 3.50071, -9.02555)
-
-[node name="Apple5" parent="." instance=ExtResource("10_ivec7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.06123, 3.50071, -9.02555)
-
-[node name="Apple6" parent="." instance=ExtResource("10_ivec7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.06123, 3.50071, -9.02555)
-
-[node name="Apple7" parent="." instance=ExtResource("10_ivec7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.06123, 3.50071, -9.02555)
-
-[node name="Apple8" parent="." instance=ExtResource("10_ivec7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.32551, 3.50071, -9.02555)
-
-[node name="Apple9" parent="." instance=ExtResource("10_ivec7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.32551, 3.50071, -9.02555)
-
-[node name="Apple10" parent="." instance=ExtResource("10_ivec7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.32551, 3.50071, -9.02555)
-
-[node name="Apple11" parent="." instance=ExtResource("10_ivec7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.32551, 3.50071, -9.02555)
-
-[node name="Apple12" parent="." instance=ExtResource("10_ivec7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.32551, 3.50071, -9.02555)
-
-[node name="Apple13" parent="." instance=ExtResource("10_ivec7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.32551, 3.50071, -9.02555)
-
-[node name="Apple14" parent="." instance=ExtResource("10_ivec7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.32551, 3.50071, -9.02555)
-
-[node name="Apple15" parent="." instance=ExtResource("10_ivec7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.32551, 3.50071, -9.02555)
-
-[node name="Apple16" parent="." instance=ExtResource("10_ivec7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.32551, 3.50071, -9.02555)
-
-[node name="Apple17" parent="." instance=ExtResource("10_ivec7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.32551, 3.50071, -0.872375)
-
-[node name="Apple18" parent="." instance=ExtResource("10_ivec7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.32551, 3.50071, -0.872375)
-
-[node name="Apple19" parent="." instance=ExtResource("10_ivec7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.32551, 3.50071, -0.872375)
-
-[node name="Apple20" parent="." instance=ExtResource("10_ivec7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.32551, 3.50071, 9.68285)
-
-[node name="Apple21" parent="." instance=ExtResource("10_ivec7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.32551, 3.50071, 9.68285)
-
-[node name="Apple22" parent="." instance=ExtResource("10_ivec7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.32551, 3.50071, 9.68285)
-
-[node name="Shield Celtic Golden" parent="." instance=ExtResource("11_1jwgb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.12764, 5.54712, -5.43225)
-
-[node name="Shield Celtic Golden8" parent="." instance=ExtResource("11_1jwgb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.12764, 5.54712, -11.9537)
-
-[node name="Shield Celtic Golden9" parent="." instance=ExtResource("11_1jwgb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.06751, 5.54712, -14.7669)
-
-[node name="Shield Celtic Golden2" parent="." instance=ExtResource("11_1jwgb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.12764, 5.54712, -0.241854)
-
-[node name="Shield Celtic Golden3" parent="." instance=ExtResource("11_1jwgb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.12764, 5.54712, 9.7297)
-
-[node name="Shield Celtic Golden4" parent="." instance=ExtResource("11_1jwgb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.39715, 5.54712, 9.7297)
-
-[node name="Shield Celtic Golden5" parent="." instance=ExtResource("11_1jwgb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.39715, 5.54712, 5.35073)
-
-[node name="Shield Celtic Golden6" parent="." instance=ExtResource("11_1jwgb")]
-transform = Transform3D(1, 0, 0, 0, 0.661822, 0.749661, 0, -0.749661, 0.661822, -1.39715, 9.41615, 0.266794)
-
-[node name="Shield Celtic Golden7" parent="." instance=ExtResource("11_1jwgb")]
-transform = Transform3D(1, 0, 0, 0, 0.661822, 0.749661, 0, -0.749661, 0.661822, 4.42248, 9.41615, 0.266794)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.724875, 12.7654, -35.2102)
+shape = SubResource("BoxShape3D_kp4s0")
 
 [connection signal="body_entered" from="Area3D" to="Area3D" method="_on_body_entered"]
 [connection signal="body_exited" from="Area3D" to="Area3D" method="_on_body_exited"]
+[connection signal="body_entered" from="Area3D2" to="." method="_on_area_3d_2_body_entered"]
+[connection signal="body_exited" from="Area3D2" to="." method="_on_area_3d_2_body_exited"]

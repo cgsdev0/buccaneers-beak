@@ -1,0 +1,11 @@
+[gd_scene load_steps=4 format=3 uid="uid://jbe57tkjganp"]
+
+[ext_resource type="PackedScene" uid="uid://c57tu65s0wsd8" path="res://Models/House Door.glb" id="1_x8p36"]
+[ext_resource type="Material" uid="uid://dks8jngwpl2po" path="res://Materials/wood_door.tres" id="2_lifqs"]
+[ext_resource type="Material" uid="uid://d2lnagsoy00ao" path="res://Materials/wood.tres" id="2_xssdc"]
+
+[node name="House Door" instance=ExtResource("1_x8p36")]
+
+[node name="Door_Cube001" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_xssdc")
+surface_material_override/1 = ExtResource("2_lifqs")

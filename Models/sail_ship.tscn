@@ -5,15 +5,12 @@
 
 [node name="Sail Ship" instance=ExtResource("1_iuvvo")]
 
-[node name="RootNode001" parent="." index="0"]
-transform = Transform3D(25, 0, 0, 0, 25, 0, 0, 0, 25, 0, 0, 0)
-
-[node name="BigShip" parent="RootNode001" index="0"]
+[node name="BigShip" parent="." index="0"]
 surface_material_override/0 = ExtResource("2_qsa6n")
 surface_material_override/1 = ExtResource("2_qsa6n")
 surface_material_override/2 = ExtResource("2_qsa6n")
 surface_material_override/3 = ExtResource("2_qsa6n")
 surface_material_override/4 = ExtResource("2_qsa6n")
 
-[node name="Rudder" parent="RootNode001" index="1"]
+[node name="Rudder" parent="." index="1"]
 visible = false

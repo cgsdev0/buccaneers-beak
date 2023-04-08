@@ -121,6 +121,6 @@ transform = Transform3D(-7.21146, -0.265031, 6.92276, 0.709404, 9.9119, 1.11846,
 transform = Transform3D(6.82509, 0, -7.30877, 0, 10, 0, 7.30877, 0, 6.82509, 85.9175, 8.90289, -206.317)
 
 [node name="Waypoint" type="Marker3D" parent="." index="31"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 275.509, 62.16, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 206.541, 62.16, 0)
 script = ExtResource("8_bvfwe")
 map_id = 1

@@ -296,3 +296,6 @@ signal enable_boat_interaction()
 signal disable_boat_interaction()
 signal enable_boat_exit_interaction()
 signal disable_boat_exit_interaction()
+signal enable_door_interaction
+signal disable_door_interaction
+signal you_win
