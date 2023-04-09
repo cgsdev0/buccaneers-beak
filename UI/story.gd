@@ -155,6 +155,7 @@ var lines = {
 	},
 	Character.CAPTAIN_AVERY: {
 		"find_it_yet": { "text": [ "You find that treasure yet?" ]},
+		"you_found_it": { "text": [ "Well shiver me timbers, you've done it! I never doubted for a moment that you'd find the treasure. You've proven yourself to be a true pirate, and a worthy member of my crew. I couldn't be prouder." ]},
 		"ENTRY": { "next": "2", "text": [ "Ahoy there, matey! Ye be lookin' for the treasure of [wave]Captain Blackbeard[/wave], I reckon?" ] },
 		"2": { "input": [
 			{ "text": "Yes, of course I am.", "next": "skip" },
