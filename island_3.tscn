@@ -19,7 +19,6 @@ size = Vector3(0.0243391, 0.884981, 0.379995)
 [node name="island_3" instance=ExtResource("1_kcmkh")]
 
 [node name="Plane" parent="." index="0"]
-visible = false
 surface_material_override/0 = ExtResource("2_jqin6")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Plane" index="0"]

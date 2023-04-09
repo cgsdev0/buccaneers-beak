@@ -14,9 +14,10 @@ func _input(event):
 			$CameraController.active = true
 			Story.you_win.emit()
 			interactable = false
+			await Music.fade_out(1.0)
+			Music.play_from(Music.Track.FINALE, 39.967)
 
 func _on_area_3d_2_body_entered(body):
-	print("OH GOD WHY")
 	Story.enable_door_interaction.emit()
 	out = false
 

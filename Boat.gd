@@ -87,8 +87,12 @@ func _physics_process(delta):
 		Music.start_track(Music.Track.SAILING)
 	if vh.length() < 5.0:
 		Music.stop_looping_if_playing(Music.Track.SAILING)
-		
-	vh = vh.limit_length(20.0)
+	
+	var fly_hack = OS.is_debug_build() && Input.is_key_pressed(KEY_SHIFT)
+	var hack_speed = 1.0
+	if fly_hack:
+		hack_speed = 3.0
+	vh = vh.limit_length(20.0 * hack_speed)
 	if input.y < 0.0:
 		vh = vh.limit_length(10.0)
 	
