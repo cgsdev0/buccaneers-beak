@@ -18,6 +18,7 @@ surface_material_override/0 = ExtResource("2_v60e8")
 surface_material_override/1 = ExtResource("3_4juru")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." index="1"]
+collision_mask = 5
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
 shape = SubResource("BoxShape3D_ucp4o")

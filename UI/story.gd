@@ -202,6 +202,7 @@ var lines = {
 		"Just promise to remember ol' Captain Avery if you find that treasure!" ] },
 	},
 	Character.PARROT: {
+		"we_did_it": { "text": ["I can't believe we actually found it... we're rich!"]},
 		"get_map_0": { "text": ["Squawk! Whaddya lookin' at? Keep movin'! Squawk!"] },
 		"explain_map_1": { "text": ["Squawk! Where'd you get that map, hey?"], "next": "continued" },
 		"continued": { "input": [

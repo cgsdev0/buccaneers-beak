@@ -16,6 +16,8 @@ var inventory = {
 	
 }
 
+var has_won = false
+
 var scuffed_camera_detector = null;
 
 var sensitivity = 0.25
@@ -29,6 +31,11 @@ func next_map() -> int:
 			return i
 	return map_pieces.size()
 	
+func on_win():
+	has_won = true
+	
+func _ready():
+	Story.you_win.connect(on_win)
 #func _ready():
 #	call_deferred("cheats")
 #

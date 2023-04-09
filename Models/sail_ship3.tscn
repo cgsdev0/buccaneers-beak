@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://fc51jdcfp0ar"]
+[gd_scene load_steps=14 format=3 uid="uid://fc51jdcfp0ar"]
 
 [ext_resource type="PackedScene" uid="uid://bls74xd6ltpph" path="res://Models/sail_ship2.tscn" id="1_6ie6l"]
 [ext_resource type="Script" path="res://Characters/treasure_door.gd" id="1_vxuin"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://uh8y7efhoco0" path="res://Characters/chest_model.tscn" id="6_2u0g0"]
 [ext_resource type="PackedScene" uid="uid://jbe57tkjganp" path="res://Models/house_door.tscn" id="6_g2ego"]
 [ext_resource type="Script" path="res://CameraController.gd" id="8_b3sew"]
+[ext_resource type="AudioStream" uid="uid://c4eyiojejmyrg" path="res://Sounds/open_door.wav" id="9_0fbke"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fkfjy"]
 size = Vector3(51.479, 1.169, 7.12)
@@ -100,6 +101,10 @@ text = "brainoid was here
 
 also, you are stuck now"
 font_size = 64
+
+[node name="OpenDoor" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_0fbke")
+bus = &"sfx"
 
 [connection signal="body_entered" from="Area3D2" to="." method="_on_area_3d_2_body_entered"]
 [connection signal="body_exited" from="Area3D2" to="." method="_on_area_3d_2_body_exited"]

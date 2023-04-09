@@ -162,6 +162,7 @@ size = Vector3(5.55531, 2.07445, 11.9434)
 radius = 12.0
 
 [node name="Sail Boat" type="CharacterBody3D" groups=["boat"]]
+collision_mask = 5
 script = ExtResource("1_rwh0n")
 
 [node name="RootNode" type="Node3D" parent="."]

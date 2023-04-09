@@ -1,6 +1,5 @@
 extends Control
 
-
 func screen_scale():
 	return min(get_window().size.x / 1920.0, get_window().size.y / 1080.0)
 

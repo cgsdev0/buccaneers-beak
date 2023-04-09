@@ -57,7 +57,7 @@ func fade_out(duration: float = 2.0):
 			var tween = get_tree().create_tween()
 			current_tween = tween
 			tween.set_parallel()
-			tween.tween_property(child, "volume_db", -50.0, 2.0)
+			tween.tween_property(child, "volume_db", -50.0, duration)
 			await tween.finished
 			child.stop()
 			break

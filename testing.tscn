@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=3 uid="uid://ujx8yvpqechj"]
+[gd_scene load_steps=63 format=3 uid="uid://ujx8yvpqechj"]
 
 [ext_resource type="PackedScene" uid="uid://c133ejbc1i57c" path="res://level.tscn" id="1_fwxso"]
 [ext_resource type="PackedScene" uid="uid://b2kbc4yd0xtey" path="res://water.tscn" id="2_bevvh"]
@@ -23,7 +23,9 @@
 [ext_resource type="Texture2D" uid="uid://goalcmb3de2f" path="res://UI/ComicEnd03.png" id="12_lsshw"]
 [ext_resource type="Texture2D" uid="uid://cil8aav6x07it" path="res://UI/ComicEnd04.png" id="13_5xjwi"]
 [ext_resource type="PackedScene" uid="uid://daaedgpnenvv1" path="res://UI/pause_menu.tscn" id="13_qc1rt"]
+[ext_resource type="Script" path="res://Peephole.gd" id="14_88lfx"]
 [ext_resource type="Texture2D" uid="uid://qhdr8ehjo1vu" path="res://UI/credits.png" id="14_167d0"]
+[ext_resource type="Shader" path="res://peephole.gdshader" id="14_ydgjf"]
 [ext_resource type="PackedScene" uid="uid://c12ufhc6674fu" path="res://Characters/goat.tscn" id="15_xspii"]
 [ext_resource type="PackedScene" uid="uid://dr2sbfmlmsyxt" path="res://Islands/crab_land.tscn" id="16_d04h1"]
 [ext_resource type="PackedScene" uid="uid://b5nimbw4bu2r6" path="res://island_3.tscn" id="20_8hkeb"]
@@ -37,7 +39,10 @@
 [ext_resource type="PackedScene" uid="uid://4j346qu3t7bf" path="res://Islands/goat_land.tscn" id="25_10r6p"]
 [ext_resource type="PackedScene" uid="uid://cyvey7xrm2qix" path="res://Models/chest_open.tscn" id="26_o5miw"]
 [ext_resource type="PackedScene" uid="uid://drpr3t4d377yw" path="res://Props/dock.tscn" id="27_6krst"]
+[ext_resource type="AudioStream" uid="uid://670yp2q87t43" path="res://Sounds/step_gravel.ogg" id="27_yrsxx"]
 [ext_resource type="PackedScene" uid="uid://b8y80hgqposvh" path="res://Props/storage_shed.tscn" id="28_1n0yn"]
+[ext_resource type="AudioStream" uid="uid://ctyw3ojptslqs" path="res://Sounds/step_wood.ogg" id="28_22wji"]
+[ext_resource type="Script" path="res://random_audio.gd" id="28_qgmti"]
 [ext_resource type="Texture2D" uid="uid://bau5xp3n7lvi7" path="res://Characters/goat_tracks.png" id="28_x47lg"]
 [ext_resource type="PackedScene" uid="uid://v0oknpcc8te1" path="res://Pickups/pipe.tscn" id="30_l4qfa"]
 [ext_resource type="PackedScene" uid="uid://behxiei3wkc36" path="res://Props/rock.tscn" id="31_ubask"]
@@ -90,6 +95,12 @@ region = Rect2(640, 256, 128, 128)
 [sub_resource type="AtlasTexture" id="AtlasTexture_3xh5g"]
 atlas = ExtResource("3_yciay")
 region = Rect2(640, 256, 128, 128)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uryqi"]
+shader = ExtResource("14_ydgjf")
+shader_parameter/anchor_position = Vector2(300, 100)
+shader_parameter/peephole = 0.0
+shader_parameter/size = 30.0
 
 [sub_resource type="Animation" id="Animation_g62qv"]
 length = 0.001
@@ -416,7 +427,7 @@ tracks/12/path = NodePath("ColorRect/MarginContainer4:modulate")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/keys = {
-"times": PackedFloat32Array(14.8, 15.9, 21.4, 24),
+"times": PackedFloat32Array(14.8, 15.9, 20, 20.4),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
@@ -432,6 +443,18 @@ tracks/13/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("ColorRect/Peephole:peephole")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(21.1, 21.3, 22.5, 22.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 1.0, 1.0, 0.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6dfjq"]
@@ -480,6 +503,8 @@ radial_segments = 8
 rings = 8
 
 [node name="Node3D" type="Node3D"]
+metadata/_edit_vertical_guides_ = []
+metadata/_edit_horizontal_guides_ = []
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -693,6 +718,28 @@ texture = ExtResource("14_167d0")
 expand_mode = 3
 stretch_mode = 5
 
+[node name="Peephole" type="TextureRect" parent="Control/EndSequence/ColorRect"]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_uryqi")
+layout_mode = 2
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = ExtResource("13_5xjwi")
+expand_mode = 3
+stretch_mode = 5
+script = ExtResource("14_88lfx")
+peephole_base_size = 240.0
+
+[node name="Control" type="Control" parent="Control/EndSequence/ColorRect/Peephole"]
+layout_mode = 1
+anchor_left = 0.374
+anchor_top = 0.247
+anchor_right = 0.374
+anchor_bottom = 0.247
+metadata/_edit_use_anchors_ = true
+
+[node name="Anchor" type="Node2D" parent="Control/EndSequence/ColorRect/Peephole/Control"]
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Control/EndSequence"]
 libraries = {
 "": SubResource("AnimationLibrary_6dfjq")
@@ -774,6 +821,28 @@ stream = ExtResource("23_g8su7")
 
 [node name="PickupItem" type="AudioStreamPlayer" parent="Player/Sounds"]
 stream = ExtResource("23_bmkdx")
+
+[node name="StepGravel" type="AudioStreamPlayer" parent="Player/Sounds"]
+volume_db = -14.5
+pitch_scale = 0.9
+bus = &"sfx"
+script = ExtResource("28_qgmti")
+samples = Array[AudioStream]([ExtResource("27_yrsxx")])
+random_volume_range = 1.251
+random_pitch_range = 0.167
+
+[node name="StepWood" type="AudioStreamPlayer" parent="Player/Sounds"]
+volume_db = -8.5
+pitch_scale = 0.8
+bus = &"sfx"
+script = ExtResource("28_qgmti")
+samples = Array[AudioStream]([ExtResource("28_22wji")])
+random_volume_range = 1.251
+random_pitch_range = 0.167
+
+[node name="GroundCast" type="RayCast3D" parent="Player"]
+target_position = Vector3(0, -3, 0)
+collision_mask = 5
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 187.71, 13.9737, -266.778)

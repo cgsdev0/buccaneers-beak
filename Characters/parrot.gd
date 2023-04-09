@@ -157,6 +157,12 @@ func _input(event):
 	if out || !attached || Story.in_dialogue:
 		return
 	if event.is_action_pressed("interact"):
+		if GameState.has_won:
+			$CameraController.active = true
+			Story.trigger(Story.Character.PARROT, "we_did_it")
+			await Story.finish_dialogue
+			$CameraController.previous_camera()
+			return
 		match GameState.next_map():
 			0:
 				$CameraController.active = true
