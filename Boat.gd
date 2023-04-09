@@ -88,6 +88,11 @@ func _physics_process(delta):
 	if vh.length() < 5.0:
 		Music.stop_looping_if_playing(Music.Track.SAILING)
 	
+	var emit = vh.length() > 3.0
+	$Particles1.emitting = emit
+	$Particles2.emitting = emit
+		
+	
 	var fly_hack = OS.is_debug_build() && Input.is_key_pressed(KEY_SHIFT)
 	var hack_speed = 1.0
 	if fly_hack:

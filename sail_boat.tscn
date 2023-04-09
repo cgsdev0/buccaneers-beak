@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cu5yw8s3rxl27"]
+[gd_scene load_steps=24 format=3 uid="uid://cu5yw8s3rxl27"]
 
 [ext_resource type="Script" path="res://Boat.gd" id="1_rwh0n"]
 [ext_resource type="Script" path="res://CameraController.gd" id="2_1cis3"]
@@ -7,6 +7,7 @@
 [ext_resource type="Material" uid="uid://cc56w7gd6r7un" path="res://Materials/canvas.tres" id="3_etsrp"]
 [ext_resource type="Material" uid="uid://djof04lbore15" path="res://Materials/wood_top.tres" id="4_ywx2l"]
 [ext_resource type="PackedScene" uid="uid://csxvmxee6q5pr" path="res://sail_boat_hull.tscn" id="7_7tml4"]
+[ext_resource type="Shader" path="res://wake.gdshader" id="8_snxjv"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_06tfu"]
 resource_name = "DarkWood"
@@ -161,6 +162,30 @@ size = Vector3(5.55531, 2.07445, 11.9434)
 [sub_resource type="SphereShape3D" id="SphereShape3D_q5iqv"]
 radius = 12.0
 
+[sub_resource type="Gradient" id="Gradient_gxt1n"]
+offsets = PackedFloat32Array(0, 0.888112, 0.996503)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_bve2r"]
+gradient = SubResource("Gradient_gxt1n")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_wtcip"]
+particle_flag_rotate_y = true
+direction = Vector3(0, 0, 1)
+spread = 1.0
+gravity = Vector3(0, 10, 0)
+color_ramp = SubResource("GradientTexture1D_bve2r")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8teff"]
+render_priority = 0
+shader = ExtResource("8_snxjv")
+
+[sub_resource type="SphereMesh" id="SphereMesh_6t610"]
+material = SubResource("ShaderMaterial_8teff")
+radius = 0.7
+height = 0.1
+radial_segments = 8
+
 [node name="Sail Boat" type="CharacterBody3D" groups=["boat"]]
 collision_mask = 5
 script = ExtResource("1_rwh0n")
@@ -206,6 +231,23 @@ collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 shape = SubResource("SphereShape3D_q5iqv")
+
+[node name="Particles1" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.309, 0, 2.497)
+amount = 100
+lifetime = 3.0
+visibility_aabb = AABB(-10.0944, -4, -18.1353, 20.1887, 8, 36.2705)
+process_material = SubResource("ParticleProcessMaterial_wtcip")
+draw_pass_1 = SubResource("SphereMesh_6t610")
+
+[node name="Particles2" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.30852, 0, 2.497)
+cast_shadow = 0
+amount = 100
+lifetime = 3.0
+visibility_aabb = AABB(-10.0944, -4, -18.1353, 20.1887, 8, 36.2705)
+process_material = SubResource("ParticleProcessMaterial_wtcip")
+draw_pass_1 = SubResource("SphereMesh_6t610")
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]

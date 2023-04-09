@@ -721,9 +721,12 @@ stretch_mode = 5
 [node name="Peephole" type="TextureRect" parent="Control/EndSequence/ColorRect"]
 unique_name_in_owner = true
 material = SubResource("ShaderMaterial_uryqi")
-layout_mode = 2
-offset_right = 1152.0
-offset_bottom = 648.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("13_5xjwi")
 expand_mode = 3
 stretch_mode = 5
