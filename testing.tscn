@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://cjqpal7cd40ga"]
+[gd_scene load_steps=57 format=3 uid="uid://ujx8yvpqechj"]
 
 [ext_resource type="PackedScene" uid="uid://c133ejbc1i57c" path="res://level.tscn" id="1_fwxso"]
 [ext_resource type="PackedScene" uid="uid://b2kbc4yd0xtey" path="res://water.tscn" id="2_bevvh"]
@@ -30,6 +30,10 @@
 [ext_resource type="PackedScene" uid="uid://0f5dyuyfw1nf" path="res://chest.tscn" id="21_y20wc"]
 [ext_resource type="Script" path="res://Logic/waypoint.gd" id="22_b8uov"]
 [ext_resource type="Script" path="res://start_emit.gd" id="22_sop3d"]
+[ext_resource type="AudioStream" uid="uid://c1hly4u0aff1l" path="res://Sounds/creaky.wav" id="22_vxrjn"]
+[ext_resource type="AudioStream" uid="uid://dg2o521vyl8wn" path="res://Sounds/pickup_item.wav" id="23_bmkdx"]
+[ext_resource type="AudioStream" uid="uid://cbjgsdsn1uqme" path="res://Sounds/pickup_map.wav" id="23_g8su7"]
+[ext_resource type="Script" path="res://on_item_pickup.gd" id="24_yqvaf"]
 [ext_resource type="PackedScene" uid="uid://4j346qu3t7bf" path="res://Islands/goat_land.tscn" id="25_10r6p"]
 [ext_resource type="PackedScene" uid="uid://cyvey7xrm2qix" path="res://Models/chest_open.tscn" id="26_o5miw"]
 [ext_resource type="PackedScene" uid="uid://drpr3t4d377yw" path="res://Props/dock.tscn" id="27_6krst"]
@@ -739,6 +743,15 @@ map_id = 4
 transform = Transform3D(-0.479534, 0, 0.877523, 0, 1, 0, -0.877523, 0, -0.479534, 264.653, 0.0534959, -237.654)
 allowed = true
 
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Sail Boat"]
+process_mode = 3
+stream = ExtResource("22_vxrjn")
+volume_db = -15.0
+pitch_scale = 0.5
+autoplay = true
+max_distance = 30.0
+bus = &"sfx"
+
 [node name="Player" type="CharacterBody3D" parent="." groups=["player"]]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 169.105, 13.9737, -269.544)
@@ -753,11 +766,22 @@ shape = SubResource("CapsuleShape3D_yi6tk")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.89099, 0)
 script = ExtResource("5_yclud")
 
+[node name="Sounds" type="Node" parent="Player"]
+script = ExtResource("24_yqvaf")
+
+[node name="PickupMap" type="AudioStreamPlayer" parent="Player/Sounds"]
+stream = ExtResource("23_g8su7")
+
+[node name="PickupItem" type="AudioStreamPlayer" parent="Player/Sounds"]
+stream = ExtResource("23_bmkdx")
+
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 187.71, 13.9737, -266.778)
 current = true
 far = 750.0
 script = ExtResource("7_x4tpy")
+
+[node name="AudioListener3D" type="AudioListener3D" parent="Camera3D"]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.504092, 0.863192, -0.0281389, -0.185709, -0.0765172, 0.979621, 0.843448, 0.499044, 0.198874, 0, 0, 0)

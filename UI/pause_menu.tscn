@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://daaedgpnenvv1"]
+[gd_scene load_steps=24 format=3 uid="uid://daaedgpnenvv1"]
 
 [ext_resource type="Theme" uid="uid://4s2i76go0wv0" path="res://UI/menu.theme" id="1_olc6f"]
 [ext_resource type="Script" path="res://UI/pause_menu.gd" id="2_bqjf3"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://b8adn2ttyug18" path="res://Map/map05.png" id="10_ik00s"]
 [ext_resource type="AudioStream" uid="uid://cqqin6a5txvuo" path="res://Sounds/open_map.wav" id="13_mq7ir"]
 [ext_resource type="AudioStream" uid="uid://b6cl6emltg4vf" path="res://Sounds/close_map.wav" id="14_a2sma"]
+[ext_resource type="AudioStream" uid="uid://cy0hx0wj5dbxk" path="res://Sounds/map_magic.wav" id="15_pwlxs"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xvnyl"]
 atlas = ExtResource("5_f6l7r")
@@ -166,6 +167,20 @@ tracks/4/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Magic")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6as02"]
@@ -346,10 +361,17 @@ libraries = {
 
 [node name="OpenMap" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("13_mq7ir")
+volume_db = -3.0
 bus = &"sfx"
 
 [node name="CloseMap" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("14_a2sma")
+volume_db = -2.0
+bus = &"sfx"
+
+[node name="Magic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("15_pwlxs")
+volume_db = -5.0
 bus = &"sfx"
 
 [connection signal="value_changed" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer2/VBoxContainer/HSlider" to="." method="_on_h_slider_value_changed"]
