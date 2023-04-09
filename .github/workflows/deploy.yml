@@ -44,12 +44,12 @@ jobs:
           butlerApiKey: ${{secrets.BUTLER_API_KEY}}
           gameData: ./builds/windows/windows.zip
           itchUsername: badcop
-          itchGameId: treasure
+          itchGameId: bucc-beak
           buildChannel: windows
       - uses: KikimoraGames/itch-publish@v0.0.3
         with:
           butlerApiKey: ${{secrets.BUTLER_API_KEY}}
           gameData: ./builds/linux/linux.zip
           itchUsername: badcop
-          itchGameId: treasure
+          itchGameId: bucc-beak
           buildChannel: linux
