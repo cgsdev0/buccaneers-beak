@@ -14,7 +14,7 @@ func _input(event):
 		if interactable:
 			$CameraController.active = true
 			Story.trigger(Story.Character.MIMIC, "exposition")
-			Music.play_track(Music.Track.MIMIC)
+			Music.start_track(Music.Track.MIMIC)
 			interactable = false
 			$Arrow.visible = false
 			await Story.finish_dialogue

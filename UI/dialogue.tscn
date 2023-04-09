@@ -1,8 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://ddo7ue3gqvu3a"]
+[gd_scene load_steps=13 format=3 uid="uid://m6lm6v6t2i0v"]
 
 [ext_resource type="Script" path="res://UI/dialogue.gd" id="1_wnxmf"]
 [ext_resource type="Texture2D" uid="uid://pr3rwumwg1u" path="res://Characters/Portraits/captain_avery.png" id="2_7s0ty"]
 [ext_resource type="Texture2D" uid="uid://dbl5poln2tn1r" path="res://UI/left_click.png" id="3_fbyst"]
+[ext_resource type="Script" path="res://random_audio.gd" id="4_juhdn"]
+[ext_resource type="AudioStream" uid="uid://bdqwp17wwifoy" path="res://Sounds/talk_parrot.wav" id="5_lsy7r"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hj16s"]
 bg_color = Color(0.270588, 0.427451, 0.458824, 1)
@@ -160,3 +162,11 @@ libraries = {
 libraries = {
 "": SubResource("AnimationLibrary_7utu7")
 }
+
+[node name="SpeechSound" type="AudioStreamPlayer" parent="."]
+volume_db = -15.0
+bus = &"sfx"
+script = ExtResource("4_juhdn")
+samples = Array[AudioStream]([ExtResource("5_lsy7r")])
+random_volume_range = 1.1
+random_pitch_range = 0.2

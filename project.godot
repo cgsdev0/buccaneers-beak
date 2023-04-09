@@ -25,6 +25,11 @@ Story="*res://UI/story.gd"
 GameState="*res://Logic/game_state.gd"
 Music="*res://music.tscn"
 
+[debug]
+
+gdscript/warnings/unused_variable=0
+gdscript/warnings/unused_parameter=0
+
 [input]
 
 move_left={

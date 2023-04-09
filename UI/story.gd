@@ -13,6 +13,21 @@ enum Trigger {
 	CRAB_MAP
 }
 
+func get_voice(char: Character):
+	match char:
+		Character.PARROT:
+			return [[preload("res://Sounds/talk_parrot.wav")], true]
+		Character.CAPTAIN_AVERY:
+			return [[preload("res://Sounds/talk_avery.wav")], true]
+		Character.CRAB:
+			return [[preload("res://Sounds/talk_crab.wav")], true]
+		Character.MIMIC:
+			return [[preload("res://Sounds/talk_mimic.wav")], true]
+		Character.GOAT:
+			return [[preload("res://Sounds/talk_goat.wav"), preload("res://Sounds/talk_goat2.wav")], false]
+		_:
+			return [[preload("res://Sounds/talk1.wav")], true]
+
 func get_portrait(char: Character):
 	match char:
 		Character.CAPTAIN_AVERY:

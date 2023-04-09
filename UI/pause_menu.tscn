@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://daaedgpnenvv1"]
+[gd_scene load_steps=23 format=3 uid="uid://daaedgpnenvv1"]
 
 [ext_resource type="Theme" uid="uid://4s2i76go0wv0" path="res://UI/menu.theme" id="1_olc6f"]
 [ext_resource type="Script" path="res://UI/pause_menu.gd" id="2_bqjf3"]
@@ -12,6 +12,8 @@
 [ext_resource type="Texture2D" uid="uid://b2xq64odb2o2n" path="res://Map/map04.png" id="8_l1osr"]
 [ext_resource type="Shader" path="res://UI/shiny.gdshader" id="10_dv2l3"]
 [ext_resource type="Texture2D" uid="uid://b8adn2ttyug18" path="res://Map/map05.png" id="10_ik00s"]
+[ext_resource type="AudioStream" uid="uid://cqqin6a5txvuo" path="res://Sounds/open_map.wav" id="13_mq7ir"]
+[ext_resource type="AudioStream" uid="uid://b6cl6emltg4vf" path="res://Sounds/close_map.wav" id="14_a2sma"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xvnyl"]
 atlas = ExtResource("5_f6l7r")
@@ -341,6 +343,14 @@ stretch_mode = 4
 libraries = {
 "": SubResource("AnimationLibrary_6as02")
 }
+
+[node name="OpenMap" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_mq7ir")
+bus = &"sfx"
+
+[node name="CloseMap" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_a2sma")
+bus = &"sfx"
 
 [connection signal="value_changed" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer2/VBoxContainer/HSlider" to="." method="_on_h_slider_value_changed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Button" to="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Button" method="_on_pressed"]

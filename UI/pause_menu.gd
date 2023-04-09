@@ -15,10 +15,12 @@ func _input(event):
 		self.visible = !self.visible
 		get_tree().paused = !get_tree().paused
 		if visible:
+			$OpenMap.play()
 			check_map()
 			prev_mouse_mode = Input.mouse_mode
 			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 		else:
+			$CloseMap.play()
 			Input.mouse_mode = prev_mouse_mode
 		
 func check_map():

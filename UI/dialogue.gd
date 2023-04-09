@@ -35,6 +35,7 @@ func strip_bbcode(source: String) -> String:
 	return regex.sub(source, "", true)
 	
 var state = ""
+
 func on_dialogue(char, data):
 #	Game.block_interaction = true
 #	Tutorial.in_dialogue = true
@@ -46,6 +47,16 @@ func on_dialogue(char, data):
 		$%Portrait.texture.atlas = Story.get_portrait(char)[data.portrait]
 	else:
 		$%Portrait.texture.atlas = Story.get_portrait(char)[0]
+	
+	var voice = Story.get_voice(char)
+	var typewriter = voice[1]
+		
+	var temp: Array[AudioStream] = []
+	for v in voice[0]:
+		temp.push_back(v)
+		
+		
+	$SpeechSound.samples = temp
 		
 	if data.has("delay"):
 		await get_tree().create_timer(data.delay).timeout
@@ -80,7 +91,7 @@ func on_dialogue(char, data):
 			state += get_text(next)
 			
 			$AnimationPlayer.play("talk")
-			call_deferred("type_message", next, i)
+			call_deferred("type_message", next, i, typewriter)
 			await self.done_typing_or_confirmed
 			$%DialogueLabel.visible_characters = $%DialogueLabel.get_total_character_count()
 			typing = false
@@ -110,14 +121,16 @@ func _process(delta):
 		else:
 			self.confirm.emit()
 		
-func type_message(msg, i):
+func type_message(msg, i, typewriter):
 	var stripped = strip_bbcode(state)
+	var stung = false
 	typing = true
 	for j in range($%DialogueLabel.visible_characters, $%DialogueLabel.get_total_character_count()):
 		if self.i != i:
 			return
-#		if !$SpeechSound.playing:
-#			$SpeechSound.play()
+		if !$SpeechSound.playing && (typewriter || !stung):
+			stung = true
+			$SpeechSound.play_random()
 		$%DialogueLabel.visible_characters += 1
 		if stripped[j] == ",":
 #			$"%Friend".bounce()

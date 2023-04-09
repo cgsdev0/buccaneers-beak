@@ -12,7 +12,7 @@
 [ext_resource type="Script" path="res://UI/inventory_hints.gd" id="6_tm5ef"]
 [ext_resource type="Script" path="res://MainCamera3D.gd" id="7_x4tpy"]
 [ext_resource type="Environment" uid="uid://747lwqmhioy3" path="res://environment.tres" id="8_xq8ue"]
-[ext_resource type="PackedScene" uid="uid://ddo7ue3gqvu3a" path="res://UI/dialogue.tscn" id="9_bjaa3"]
+[ext_resource type="PackedScene" uid="uid://m6lm6v6t2i0v" path="res://UI/dialogue.tscn" id="9_bjaa3"]
 [ext_resource type="Theme" uid="uid://wfvqaww73llt" path="res://UI/ui.theme" id="9_r33j7"]
 [ext_resource type="Script" path="res://UI/interact_hint.gd" id="10_f5jdh"]
 [ext_resource type="Script" path="res://Islands/cove.gd" id="10_hnhhl"]
