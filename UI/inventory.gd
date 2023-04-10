@@ -11,7 +11,6 @@ func count_shells():
 	total = get_tree().get_nodes_in_group("seashell").size()
 
 func update_inventory():
-	print(GameState.inventory)
 	for child in get_children():
 		remove_child(child)
 		child.queue_free()

@@ -104,7 +104,6 @@ func _physics_process(delta):
 	move_and_slide()
 	if is_on_floor() && $RemoteTransform3D.active:
 		if $GroundCast.is_colliding() && Vector2(velocity.x, velocity.z).length() > 3.0:
-			print($GroundCast.get_collider().collision_mask)
 			if $GroundCast.get_collider().get_collision_mask_value(3):
 				if !$Sounds/StepWood.playing:
 					$Sounds/StepWood.play_random()
