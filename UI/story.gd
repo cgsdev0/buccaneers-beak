@@ -29,6 +29,21 @@ func get_voice(char: Character):
 		_:
 			return [[preload("res://Sounds/talk1.wav")], true]
 
+func get_character_name(char: Character):
+	match char:
+		Character.CAPTAIN_AVERY:
+			return "Captain Avery"
+		Character.PARROT:
+			return "Parrot"
+		Character.CRAB:
+			return "Crab Hermit"
+		Character.GOAT:
+			return "Mr. Goat"
+		Character.MIMIC:
+			return "Suspicious Chest"
+		Character.CAPYBARA:
+			return "Farmer"
+			
 func get_portrait(char: Character):
 	match char:
 		Character.CAPTAIN_AVERY:

@@ -48,6 +48,7 @@ func on_dialogue(char, data):
 	else:
 		$%Portrait.texture.atlas = Story.get_portrait(char)[0]
 	
+	$%Nameplate.text = Story.get_character_name(char)
 	var voice = Story.get_voice(char)
 	var typewriter = voice[1]
 		
@@ -65,6 +66,7 @@ func on_dialogue(char, data):
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	
 	if "input" in data:
+		$%Namebox.hide()
 		$%ConfirmIcon.hide()
 		$%Character.hide()
 		for option in data.input:
@@ -79,6 +81,7 @@ func on_dialogue(char, data):
 		$%Player.get_child(0).grab_focus()
 
 	elif "text" in data:
+		$%Namebox.show()
 		$%Character.show()
 		while !data.text.is_empty():
 			$%ConfirmIcon.hide()
