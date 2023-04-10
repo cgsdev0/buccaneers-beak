@@ -16,7 +16,7 @@ func on_pickup(item: GameState.Pickup):
 	var hint = InventoryHint.new()
 	hint.text = "+1 " + GameState.item_names[item]
 	if item == GameState.Pickup.SHELL:
-		hint.text = str(GameState.inventory[GameState.Pickup.SHELL]) + "/" + str(total) + " Hidden Seashells Found!"
+		hint.text = str(GameState.inventory[GameState.Pickup.SHELL]) + " / " + str(total) + " Hidden Seashells Found!"
 	add_child(hint)
 	
 func on_map(i: int):

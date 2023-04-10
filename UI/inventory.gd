@@ -20,7 +20,7 @@ func update_inventory():
 		item.text = GameState.item_names[key]
 		item.text = str(GameState.inventory[key]) + "x " + item.text
 		if key == GameState.Pickup.SHELL:
-			item.text = str(GameState.inventory[GameState.Pickup.SHELL]) + "/" + str(total) + " Seashells"
+			item.text = str(GameState.inventory[GameState.Pickup.SHELL]) + " / " + str(total) + " Seashells"
 			if GameState.inventory[GameState.Pickup.SHELL] == total:
 				item.modulate = Color.GREEN
 		add_child(item)
