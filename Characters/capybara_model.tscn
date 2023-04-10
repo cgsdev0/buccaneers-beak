@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://ctxky55yqjgsb"]
+
+[ext_resource type="PackedScene" uid="uid://ytv24eeafpb3" path="res://Characters/Capybara.glb" id="1_0gghj"]
+[ext_resource type="ArrayMesh" uid="uid://dy72dwhipco4j" path="res://Characters/capymodel.tres" id="2_i00fe"]
+
+[node name="Capybara" instance=ExtResource("1_0gghj")]
+
+[node name="Capybara_mesh" parent="." index="0"]
+mesh = ExtResource("2_i00fe")

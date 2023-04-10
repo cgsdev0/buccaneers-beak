@@ -17,6 +17,9 @@ func on_pickup(item: GameState.Pickup):
 	hint.text = "+1 " + GameState.item_names[item]
 	if item == GameState.Pickup.SHELL:
 		hint.text = str(GameState.inventory[GameState.Pickup.SHELL]) + " / " + str(total) + " Hidden Seashells Found!"
+		if GameState.inventory[GameState.Pickup.SHELL] == total:
+			hint.modulate = Color.GREEN
+			GameState.has_all_shells = true
 	add_child(hint)
 	
 func on_map(i: int):

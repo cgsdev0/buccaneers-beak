@@ -5,7 +5,8 @@ enum Character {
 	PARROT,
 	CRAB,
 	GOAT,
-	MIMIC
+	MIMIC,
+	CAPYBARA
 }
 
 enum Trigger {
@@ -40,6 +41,8 @@ func get_portrait(char: Character):
 			return [preload("res://Characters/Portraits/goat2.png"), preload("res://Characters/Portraits/goat3.png")]
 		Character.MIMIC:
 			return [preload('res://Characters/Portraits/mimic.png')]
+		Character.CAPYBARA:
+			return [preload("res://Characters/Portraits/cappy.png")]
 
 var templates = {
 		"a": { "next": "", "text": [] },
@@ -48,6 +51,14 @@ var templates = {
 		] },
 }
 var lines = {
+	Character.CAPYBARA: {
+		"ENTRY": 	{ "text": [
+			"Howdy there! You wouldn't happen to have seen any of my seashells around, would ya?",
+			"Those danged birds come by and scatter 'em all over the place! I've lost my entire prized collection...",
+			"I can't offer much if you find them, but it just ain't right having them all lost at sea. If you see 'em, please grab 'em!"
+		] },
+		"you_did_it": 	{ "text": ["Oh my goodness! I can't believe you've found them all!", "I can't really offer much other than my humble gratitude! Thank you so so much!"] },
+	},
 	Character.MIMIC: {
 		"exposition": { "next": "dont", "text": ["Surprise! You thought I was just a chest, didn't you? Well, I'm not. I'm a mimic, and I love eating adventurers like you!"] },
 		"dont": { "input": [
@@ -199,7 +210,8 @@ var lines = {
 		] },
 		"start": { "text": [ "You can start here, matey. [i](pulls out a crumpled map)[/i]",
 		"I've had this piece of the map for years, but I'm 'fraid I'm too old for treasure hunting these days.",
-		"Just promise to remember ol' Captain Avery if you find that treasure!" ] },
+		"Just promise to remember ol' Captain Avery if you find that treasure!",
+		{ "text": " [color=cyan][b](Press ESC to open your map)[b] ", "clear": false } ] },
 	},
 	Character.PARROT: {
 		"we_did_it": { "text": ["I can't believe we actually found it... we're rich!"]},

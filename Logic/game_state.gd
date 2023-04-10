@@ -19,6 +19,7 @@ var inventory = {
 }
 
 var has_won = false
+var has_all_shells = false
 
 var scuffed_camera_detector = null;
 

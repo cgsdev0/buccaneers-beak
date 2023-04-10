@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dtmrhk6554e6d"]
+[gd_scene load_steps=19 format=3 uid="uid://dtmrhk6554e6d"]
 
 [ext_resource type="PackedScene" uid="uid://bsg1jxbbgn7gk" path="res://spawn.glb" id="1_pfc6m"]
 [ext_resource type="Shader" path="res://level.gdshader" id="2_a1hq8"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://cd3bwqgtk7jsh" path="res://Props/farm.tscn" id="14_3xuuw"]
 [ext_resource type="PackedScene" uid="uid://pmsvqrx4817f" path="res://Props/houses.tscn" id="14_kftr2"]
 [ext_resource type="PackedScene" uid="uid://dma11kbn4hxt1" path="res://Props/palm_tree.tscn" id="14_odxwh"]
+[ext_resource type="PackedScene" uid="uid://cw8804xcu3lh6" path="res://Characters/capybara.tscn" id="15_7plxp"]
 [ext_resource type="PackedScene" uid="uid://sovwg5ni65bi" path="res://Props/market_stalls.tscn" id="15_andce"]
 [ext_resource type="PackedScene" uid="uid://dxw2lynqr5xdv" path="res://Props/mine.tscn" id="15_rcagl"]
 
@@ -122,3 +123,6 @@ transform = Transform3D(-0.000352825, -4.53267e-05, 0.814589, -0.119889, 0.64760
 
 [node name="Palm tree11" parent="Trees" index="10" instance=ExtResource("14_odxwh")]
 transform = Transform3D(0.625519, 0.0803242, -0.483884, -0.119889, 0.647609, -5.92547e-12, 0.461898, 0.0593132, 0.655294, -48.4499, 0, 14.3011)
+
+[node name="capybara" parent="." index="18" instance=ExtResource("15_7plxp")]
+transform = Transform3D(0.0965558, 0, -0.284037, 0, 0.3, 0, 0.284037, 0, 0.0965558, 72.9641, 20.3457, 9.21679)
