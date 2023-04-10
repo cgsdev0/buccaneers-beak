@@ -266,7 +266,7 @@ var lines = {
 			{ "text": "Why are you acting so suspicious?", "next": "feathers" },
 			{ "text": "Makes sense to me." },
 		] },
-		"feathers": { "next": "", "text": ["Squawk! I just don't like getting my feathers wet, okay?!"] },
+		"feathers": { "text": ["Squawk! I just don't like getting my feathers wet, okay?!"] },
 		"explain_map_3": { "text": ["How uh... how did it go in there? Squawk!"], "next": "hate" },
 		"hate": { "input": [
 			{ "text": "I hate you.", "next": "hate2" }
