@@ -272,7 +272,7 @@ horizontal_alignment = 1
 
 [node name="HSlider" type="HSlider" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer2/VBoxContainer"]
 layout_mode = 2
-min_value = 0.1
+min_value = 0.01
 max_value = 1.0
 step = 0.01
 value = 0.5
