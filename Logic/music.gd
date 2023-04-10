@@ -79,6 +79,8 @@ func start_track(track: Track):
 	if player.playing && player.should_loop:
 		set_loop(player, true)
 		return
+	if player.playing:
+		return
 	if current_tween != null:
 		await current_tween.finished
 		await get_tree().process_frame
@@ -104,6 +106,7 @@ func start_track(track: Track):
 			child.stop()
 			break
 	if !started:
+		player.volume_db = player.initial_db
 		player.play()
 	current_tween = null
 	

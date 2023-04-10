@@ -45,6 +45,8 @@ func _input(event):
 func _update_mouselook():
 	if Input.get_mouse_mode() != Input.MOUSE_MODE_CAPTURED:
 		return
+	if !$RemoteTransform3D.active:
+		return
 	_mouse_position *= GameState.sensitivity
 	var yaw = _mouse_position.x
 	var pitch = _mouse_position.y
