@@ -40,6 +40,7 @@ func get_water_normal(pos: Vector2, forward: Vector3, right: Vector3):
 	var cross = Vector3(right.x, 0, right.y)
 	return Vector3(front.x, get_water_height(front), front.y) - Vector3(back.x, get_water_height(back), back.y)
 	
+var sail_angle = 0.0
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
 	if Input.is_action_just_pressed("enter_boat") && allowed:
@@ -126,6 +127,10 @@ func _physics_process(delta):
 	move_and_slide()
 	if global_transform.origin.y < water_height - 0.5:
 		global_transform.origin.y = water_height - 0.5
+	
+	$RootNode/Boat.rotation.z = lerp_angle($RootNode/Boat.rotation.z, -input.x / 3.0, delta)
+	sail_angle = lerp_angle(sail_angle, rotation.y, delta * 3.0)
+	$RootNode/Sail.rotation.y = -rotation.y + sail_angle
 
 
 func _on_area_3d_body_entered(body):
