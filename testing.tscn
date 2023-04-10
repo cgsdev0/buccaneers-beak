@@ -1,4 +1,4 @@
-[gd_scene load_steps=63 format=3 uid="uid://ujx8yvpqechj"]
+[gd_scene load_steps=64 format=3 uid="uid://ujx8yvpqechj"]
 
 [ext_resource type="PackedScene" uid="uid://c133ejbc1i57c" path="res://level.tscn" id="1_fwxso"]
 [ext_resource type="PackedScene" uid="uid://b2kbc4yd0xtey" path="res://water.tscn" id="2_bevvh"]
@@ -46,6 +46,7 @@
 [ext_resource type="Texture2D" uid="uid://bau5xp3n7lvi7" path="res://Characters/goat_tracks.png" id="28_x47lg"]
 [ext_resource type="PackedScene" uid="uid://v0oknpcc8te1" path="res://Pickups/pipe.tscn" id="30_l4qfa"]
 [ext_resource type="PackedScene" uid="uid://behxiei3wkc36" path="res://Props/rock.tscn" id="31_ubask"]
+[ext_resource type="PackedScene" uid="uid://cbtdwr6vrgnbn" path="res://Pickups/shell.tscn" id="47_jktc2"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_81a06"]
 atlas = ExtResource("3_yciay")
@@ -821,9 +822,11 @@ script = ExtResource("24_yqvaf")
 
 [node name="PickupMap" type="AudioStreamPlayer" parent="Player/Sounds"]
 stream = ExtResource("23_g8su7")
+bus = &"sfx"
 
 [node name="PickupItem" type="AudioStreamPlayer" parent="Player/Sounds"]
 stream = ExtResource("23_bmkdx")
+bus = &"sfx"
 
 [node name="StepGravel" type="AudioStreamPlayer" parent="Player/Sounds"]
 volume_db = -14.5
@@ -972,5 +975,8 @@ transform = Transform3D(-10.979, -0.0568948, -16.717, 1.86265e-09, 19.9999, -0.0
 
 [node name="Rock2" parent="." instance=ExtResource("31_ubask")]
 transform = Transform3D(-23.2043, 0, -19.0148, 0, 30, 0, 19.0148, 0, -23.2043, -465.059, 88.3385, -518.183)
+
+[node name="BasePickup" parent="." instance=ExtResource("47_jktc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 223.509, 0.326397, -215.431)
 
 [connection signal="body_entered" from="Cove/Waypoint7/Area3D" to="Cove" method="_on_area_3d_body_entered"]

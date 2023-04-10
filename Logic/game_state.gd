@@ -2,12 +2,14 @@ extends Node
 
 enum Pickup {
 	PIPE,
-	APPLE
+	APPLE,
+	SHELL
 }
 
 var item_names = {
 	Pickup.PIPE: "Mysterious Pipe",
 	Pickup.APPLE: "Apple",
+	Pickup.SHELL: "Seashell"
 }
 
 var map_pieces = [ false, false, false, false ]

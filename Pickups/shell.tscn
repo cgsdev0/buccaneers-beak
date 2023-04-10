@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://cbtdwr6vrgnbn"]
+
+[ext_resource type="PackedScene" uid="uid://v2kdg4y087xl" path="res://Pickups/base_pickup.tscn" id="1_hl566"]
+[ext_resource type="PackedScene" uid="uid://bnayfkqtoixb4" path="res://Pickups/nautilus_shell_model.tscn" id="2_4di6h"]
+
+[node name="BasePickup" groups=["seashell"] instance=ExtResource("1_hl566")]
+pickup_type = 2
+
+[node name="Nautilus shell" parent="Object" index="0" instance=ExtResource("2_4di6h")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 2.25621, 0)

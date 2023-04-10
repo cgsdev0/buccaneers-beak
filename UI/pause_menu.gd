@@ -34,3 +34,19 @@ func check_map():
 # sensitivity
 func _on_h_slider_value_changed(value):
 	GameState.sensitivity = value / 2.0
+
+
+func _on_h_slider_2_value_changed(value):
+	if value == -20.0:
+		AudioServer.set_bus_mute(AudioServer.get_bus_index("sfx"), true)
+	else:
+		AudioServer.set_bus_mute(AudioServer.get_bus_index("sfx"), false)
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("sfx"), value)
+
+
+func _on_h_slider_3_value_changed(value):
+	if value == -20.0:
+		AudioServer.set_bus_mute(AudioServer.get_bus_index("music"), true)
+	else:
+		AudioServer.set_bus_mute(AudioServer.get_bus_index("music"), false)
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("music"), value)
