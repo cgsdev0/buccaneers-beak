@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://y3y1wfyses0g"]
+[gd_scene load_steps=10 format=3 uid="uid://y3y1wfyses0g"]
 
 [ext_resource type="Script" path="res://Logic/music.gd" id="1_an6al"]
 [ext_resource type="AudioStream" uid="uid://m7efdhsqowdk" path="res://Music/mimic.mp3" id="2_7tyan"]
@@ -8,6 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://bh0sjkdwi3qfj" path="res://Music/ambient.mp3" id="6_n1umi"]
 [ext_resource type="AudioStream" uid="uid://bhqmnaijtsqoj" path="res://Music/finale.wav" id="6_pspuu"]
 [ext_resource type="AudioStream" uid="uid://btx0ayu7chogc" path="res://Music/stinger.mp3" id="7_wphq6"]
+[ext_resource type="AudioStream" uid="uid://damnra4g5uowp" path="res://Music/stinger2.mp3" id="8_sygyf"]
 
 [node name="Node" type="Node"]
 process_mode = 3
@@ -37,6 +38,10 @@ stream = ExtResource("6_n1umi")
 autoplay = true
 bus = &"sfx"
 
+[node name="Stinger" type="AudioStreamPlayer" parent="Node"]
+stream = ExtResource("7_wphq6")
+bus = &"sfx"
+
 [node name="Finale" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_pspuu")
 volume_db = -5.0
@@ -44,8 +49,8 @@ bus = &"music"
 script = ExtResource("3_oo2a1")
 
 [node name="Stinger" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("7_wphq6")
-volume_db = -5.0
+stream = ExtResource("8_sygyf")
+volume_db = -13.5
 bus = &"sfx"
 script = ExtResource("3_oo2a1")
 should_loop = false

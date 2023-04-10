@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cw8804xcu3lh6"]
+[gd_scene load_steps=10 format=3 uid="uid://cw8804xcu3lh6"]
 
 [ext_resource type="PackedScene" uid="uid://g5immh507xlx" path="res://Characters/captain_avery.glb" id="1_fxcms"]
 [ext_resource type="Script" path="res://Characters/capybara.gd" id="2_agc7q"]
@@ -31,6 +31,9 @@ _data = {
 "breathe": SubResource("Animation_1y2am")
 }
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_sbl4u"]
+radius = 4.0
+
 [node name="capybara" instance=ExtResource("1_fxcms")]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
 script = ExtResource("2_agc7q")
@@ -43,7 +46,6 @@ visibility_range_fade_mode = 1
 mesh = null
 
 [node name="Capybara" parent="SeaLion_Mesh" index="0" instance=ExtResource("3_mqblx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="Arrow" parent="." index="1" instance=ExtResource("4_34p6u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.15676, 1.08482)
@@ -63,6 +65,12 @@ script = ExtResource("5_t2cth")
 libraries = {
 "": SubResource("AnimationLibrary_tcow4")
 }
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="5"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.34043, 0)
+shape = SubResource("SphereShape3D_sbl4u")
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]

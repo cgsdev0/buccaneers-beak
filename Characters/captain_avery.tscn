@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://c463elqruuo5v"]
+[gd_scene load_steps=10 format=3 uid="uid://c463elqruuo5v"]
 
 [ext_resource type="PackedScene" uid="uid://g5immh507xlx" path="res://Characters/captain_avery.glb" id="1_6h4cc"]
 [ext_resource type="Script" path="res://Characters/captain_avery.gd" id="2_2rxov"]
@@ -31,6 +31,10 @@ _data = {
 "breathe": SubResource("Animation_1y2am")
 }
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8dv0v"]
+radius = 5.0
+height = 16.0
+
 [node name="captain_avery" instance=ExtResource("1_6h4cc")]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
 script = ExtResource("2_2rxov")
@@ -62,6 +66,12 @@ script = ExtResource("4_en5wr")
 libraries = {
 "": SubResource("AnimationLibrary_tcow4")
 }
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="5"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.73942, 0)
+shape = SubResource("CapsuleShape3D_8dv0v")
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]

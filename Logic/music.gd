@@ -72,6 +72,8 @@ func set_loop(player: AudioStreamPlayer, loop: bool) -> void:
 		else:
 			player.stream.loop_mode = AudioStreamWAV.LoopMode.LOOP_DISABLED
 		
+func play_stinger():
+	$Node/Stinger.play()
 func start_track(track: Track):
 	var player = get_player(track)
 	if player.playing && player.should_loop:

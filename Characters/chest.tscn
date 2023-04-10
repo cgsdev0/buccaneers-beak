@@ -1,9 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://0f5dyuyfw1nf"]
+[gd_scene load_steps=10 format=3 uid="uid://0f5dyuyfw1nf"]
 
-[ext_resource type="Script" path="res://Characters/chest.gd" id="1_6mhwg"]
-[ext_resource type="PackedScene" uid="uid://uh8y7efhoco0" path="res://Characters/chest_model.tscn" id="1_pf1qe"]
-[ext_resource type="Script" path="res://CameraController.gd" id="3_c4xol"]
-[ext_resource type="PackedScene" uid="uid://bj8f44agdkdp5" path="res://Models/arrow.tscn" id="3_clb5f"]
+[ext_resource type="Script" path="res://Characters/chest.gd" id="1_dhqrq"]
+[ext_resource type="PackedScene" uid="uid://uh8y7efhoco0" path="res://Characters/chest_model.tscn" id="2_icaak"]
+[ext_resource type="PackedScene" uid="uid://bj8f44agdkdp5" path="res://Models/arrow.tscn" id="3_xnvo2"]
+[ext_resource type="Script" path="res://CameraController.gd" id="4_ue2db"]
 
 [sub_resource type="Animation" id="Animation_biadj"]
 length = 0.001
@@ -70,12 +70,15 @@ _data = {
 [sub_resource type="SphereShape3D" id="SphereShape3D_k78m0"]
 radius = 0.824409
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_dv4ne"]
+size = Vector3(0.5, 0.5, 0.5)
+
 [node name="chest" type="Node3D"]
-script = ExtResource("1_6mhwg")
+script = ExtResource("1_dhqrq")
 
-[node name="Chest" parent="." instance=ExtResource("1_pf1qe")]
+[node name="Chest" parent="." instance=ExtResource("2_icaak")]
 
-[node name="Arrow" parent="." instance=ExtResource("3_clb5f")]
+[node name="Arrow" parent="." instance=ExtResource("3_xnvo2")]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 1.12037, 0)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -91,7 +94,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.257, 0, 0)
 
 [node name="CameraController" type="RemoteTransform3D" parent="."]
 transform = Transform3D(0.273763, -0.141022, 0.951402, 0.0389963, 0.990006, 0.135523, -0.961006, 0, 0.276526, 1.18128, 0.551415, 0.518746)
-script = ExtResource("3_c4xol")
+script = ExtResource("4_ue2db")
 
 [node name="Area3D" type="Area3D" parent="."]
 collision_layer = 0
@@ -100,6 +103,12 @@ collision_mask = 2
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.330707, 0.3498)
 shape = SubResource("SphereShape3D_k78m0")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.201569, 0)
+shape = SubResource("BoxShape3D_dv4ne")
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]

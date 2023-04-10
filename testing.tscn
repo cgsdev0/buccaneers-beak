@@ -1,4 +1,4 @@
-[gd_scene load_steps=64 format=3 uid="uid://ujx8yvpqechj"]
+[gd_scene load_steps=64 format=3]
 
 [ext_resource type="PackedScene" uid="uid://c133ejbc1i57c" path="res://level.tscn" id="1_fwxso"]
 [ext_resource type="PackedScene" uid="uid://b2kbc4yd0xtey" path="res://water.tscn" id="2_bevvh"]
@@ -29,7 +29,7 @@
 [ext_resource type="PackedScene" uid="uid://c12ufhc6674fu" path="res://Characters/goat.tscn" id="15_xspii"]
 [ext_resource type="PackedScene" uid="uid://dr2sbfmlmsyxt" path="res://Islands/crab_land.tscn" id="16_d04h1"]
 [ext_resource type="PackedScene" uid="uid://b5nimbw4bu2r6" path="res://island_3.tscn" id="20_8hkeb"]
-[ext_resource type="PackedScene" uid="uid://0f5dyuyfw1nf" path="res://chest.tscn" id="21_y20wc"]
+[ext_resource type="PackedScene" uid="uid://0f5dyuyfw1nf" path="res://Characters/chest.tscn" id="21_y20wc"]
 [ext_resource type="Script" path="res://Logic/waypoint.gd" id="22_b8uov"]
 [ext_resource type="Script" path="res://start_emit.gd" id="22_sop3d"]
 [ext_resource type="AudioStream" uid="uid://c1hly4u0aff1l" path="res://Sounds/creaky.wav" id="22_vxrjn"]
