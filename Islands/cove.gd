@@ -20,9 +20,11 @@ func trigger_music():
 func _on_area_3d_body_entered(body):
 	if GameState.next_map() != 4 || played:
 		return
+	Story.in_dialogue = true # block dialogue, or you can get stuck talking to parrot
 	played = true
 	trigger_music()
 	$CameraController.active = true
 	$level/AnimationPlayer.play("rise")
 	await $level/AnimationPlayer.animation_finished
 	$CameraController.previous_camera()
+	Story.in_dialogue = false

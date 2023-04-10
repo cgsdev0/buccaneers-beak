@@ -10,6 +10,7 @@ func _input(event):
 		return
 	if event.is_action_pressed("interact"):
 		if !$CameraController.active:
+			Story.in_dialogue = true
 			$CameraController.active = true
 			Story.you_win.emit()
 			$OpenDoor.play()

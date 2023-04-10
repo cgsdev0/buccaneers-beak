@@ -10,6 +10,7 @@ func _process(delta):
 		if !waiting && $%EndSequence.visible:
 			$%EndSequence/AnimationPlayer.play("RESET")
 			$%EndSequence.visible = false
+			Story.in_dialogue = false
 			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 func _ready():
