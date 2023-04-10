@@ -979,4 +979,25 @@ transform = Transform3D(-23.2043, 0, -19.0148, 0, 30, 0, 19.0148, 0, -23.2043, -
 [node name="BasePickup" parent="." instance=ExtResource("47_jktc2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 223.509, 0.326397, -215.431)
 
+[node name="BasePickup2" parent="." instance=ExtResource("47_jktc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -484.137, -3.28399, -459.551)
+
+[node name="BasePickup3" parent="." instance=ExtResource("47_jktc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 117.861, -2.48925, -800.361)
+
+[node name="BasePickup4" parent="." instance=ExtResource("47_jktc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 749.635, 3.66244, -42.204)
+
+[node name="BasePickup5" parent="." instance=ExtResource("47_jktc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -470.163, 90.2071, -534.751)
+
+[node name="BasePickup6" parent="." instance=ExtResource("47_jktc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 55.3284, 58.8348, -306.541)
+
+[node name="BasePickup7" parent="." instance=ExtResource("47_jktc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 149.839, 25.6684, -269.92)
+
+[node name="BasePickup8" parent="." instance=ExtResource("47_jktc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 203.091, 12.8609, -326.807)
+
 [connection signal="body_entered" from="Cove/Waypoint7/Area3D" to="Cove" method="_on_area_3d_body_entered"]

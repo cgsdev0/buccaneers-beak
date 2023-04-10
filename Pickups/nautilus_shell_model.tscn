@@ -3,3 +3,6 @@
 [ext_resource type="PackedScene" uid="uid://dg8mtranhs0bj" path="res://Models/Nautilus shell.glb" id="1_pbptt"]
 
 [node name="Nautilus shell" instance=ExtResource("1_pbptt")]
+
+[node name="nautilus_shell" parent="." index="0"]
+visibility_range_end = 500.0
