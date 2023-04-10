@@ -51,11 +51,12 @@ func _update_mouselook():
 	_mouse_position = Vector2(0, 0)
 	
 	# Prevents looking up/down too far
-	pitch = clamp(pitch, -90 - _total_pitch, 90 - _total_pitch)
 	_total_pitch += pitch
+	_total_pitch = clamp(_total_pitch, -90.0, 90.0)
 
 	rotate_y(deg_to_rad(-yaw))
-	$RemoteTransform3D.rotate_object_local(Vector3(1,0,0), deg_to_rad(-pitch))
+	$RemoteTransform3D.rotation = Vector3.ZERO
+	$RemoteTransform3D.rotate_object_local(Vector3(1,0,0), deg_to_rad(-_total_pitch))
 
 func _process(delta):
 	_update_mouselook()
