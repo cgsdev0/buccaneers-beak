@@ -858,6 +858,11 @@ script = ExtResource("7_x4tpy")
 
 [node name="AudioListener3D" type="AudioListener3D" parent="Camera3D"]
 
+[node name="ReflectionProbe" type="ReflectionProbe" parent="Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -306.095, 0, 247.01)
+intensity = 0.0
+size = Vector3(3000, 3000, 3000)
+
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.504092, 0.863192, -0.0281389, -0.185709, -0.0765172, 0.979621, 0.843448, 0.499044, 0.198874, 0, 0, 0)
 light_bake_mode = 1
