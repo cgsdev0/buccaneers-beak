@@ -24,6 +24,7 @@ jobs:
           relative_project_path: ./
           archive_output: true
           use_preset_export_path: true
+          export_debug: true
           
 #      - name: Deploy Server
 #        uses: easingthemes/ssh-deploy@main
