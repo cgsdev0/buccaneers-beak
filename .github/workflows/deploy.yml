@@ -24,7 +24,7 @@ jobs:
           relative_project_path: ./
           archive_output: true
           use_preset_export_path: true
-          export_debug: true
+          export_debug: false
           
 #      - name: Deploy Server
 #        uses: easingthemes/ssh-deploy@main
@@ -40,17 +40,22 @@ jobs:
 #              cd linux
 #              unzip linux.zip
 #              systemctl --user start ldgjam2023
-      - uses: KikimoraGames/itch-publish@v0.0.3
+#      - uses: KikimoraGames/itch-publish@v0.0.3
+#        with:
+#          butlerApiKey: ${{secrets.BUTLER_API_KEY}}
+#          gameData: ./builds/windows/windows.zip
+#          itchUsername: badcop
+#          itchGameId: bucc-beak
+#          buildChannel: windows
+#      - uses: KikimoraGames/itch-publish@v0.0.3
+#        with:
+#          butlerApiKey: ${{secrets.BUTLER_API_KEY}}
+#          gameData: ./builds/linux/linux.zip
+#          itchUsername: badcop
+#          itchGameId: bucc-beak
+#          buildChannel: linux
+      - name: Archive the build
+        uses: actions/upload-artifact@v3
         with:
-          butlerApiKey: ${{secrets.BUTLER_API_KEY}}
-          gameData: ./builds/windows/windows.zip
-          itchUsername: badcop
-          itchGameId: bucc-beak
-          buildChannel: windows
-      - uses: KikimoraGames/itch-publish@v0.0.3
-        with:
-          butlerApiKey: ${{secrets.BUTLER_API_KEY}}
-          gameData: ./builds/linux/linux.zip
-          itchUsername: badcop
-          itchGameId: bucc-beak
-          buildChannel: linux
+          name: windows build
+          path: ./builds/windows/windows.zip
