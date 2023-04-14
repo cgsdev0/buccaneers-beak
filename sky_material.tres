@@ -1,0 +1,14 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://ddrfnvjkt1pl"]
+
+[ext_resource type="Shader" path="res://sky2.gdshader" id="1_8rbn7"]
+
+[resource]
+shader = ExtResource("1_8rbn7")
+shader_parameter/offset_horizon = 0.6
+shader_parameter/horizon_intensity = 0.524
+shader_parameter/horizon_color_day = Color(1, 1, 1, 1)
+shader_parameter/sun_color = Color(1, 1, 1, 1)
+shader_parameter/sun_radius = 0.13
+shader_parameter/flat_sun = true
+shader_parameter/day_bottom_color = Color(0.2, 0.207843, 0.239216, 1)
+shader_parameter/day_top_color = Color(0.329412, 0.67451, 0.984314, 1)
