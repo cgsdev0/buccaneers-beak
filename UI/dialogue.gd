@@ -150,3 +150,4 @@ func type_message(msg, i, typewriter):
 
 signal confirm
 signal done_typing_or_confirmed
+
