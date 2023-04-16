@@ -17,7 +17,7 @@ func trigger_music():
 	await get_tree().create_timer(9.0).timeout
 	Music.start_track(Music.Track.FINALE)
 
-func _on_area_3d_body_entered(body: Node2D):
+func _on_area_3d_body_entered(body):
 	if GameState.next_map() != 4 || played:
 		return
 	Story.in_dialogue = true # block dialogue, or you can get stuck talking to parrot
