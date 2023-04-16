@@ -1,8 +1,6 @@
-class_name CameraController
-extends RemoteTransform3D
+class_name CameraController extends RemoteTransform3D
 
-@export
-var active = false : set = _set_active
+@export var active = false : set = _set_active
 
 var lerpFrom = Transform3D()
 var lerpTimer = 1.0
